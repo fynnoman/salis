@@ -1,8 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Salif Gebäudeservice – Haus und mehr GbR
+
+Moderne Website für Salif Gebäudeservice, eine professionelle Reinigungsfirma in Pirmasens.
+
+## Tech Stack
+
+- **Next.js** (App Router) mit TypeScript
+- **Tailwind CSS v4** für Styling
+- **Framer Motion** für Animationen
+- **Lucide React** für Icons
 
 ## Getting Started
 
-First, run the development server:
+Entwicklungsserver starten:
 
 ```bash
 npm run dev
