@@ -138,7 +138,6 @@ export default function Portfolio() {
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  // Total horizontal distance to scroll = all cards + gaps minus one viewport
   const totalCards = projects.length;
   const trackWidth = totalCards * CARD_W + (totalCards - 1) * CARD_GAP;
   const stickyHeight = `calc(${trackWidth}px + 100vh)`;
@@ -160,11 +159,10 @@ export default function Portfolio() {
     [0, -(trackWidth - (typeof window !== 'undefined' ? window.innerWidth : 1440) + 64)]
   );
 
-  // Mobile: simple vertical grid
+  // ── MOBILE ──────────────────────────────────────────────────────────────────
   if (isMobile) {
     return (
-      <section id="portfolio" className="bg-[#0a0a0a] py-20 px-4">
-        {/* Background glow */}
+      <section id="portfolio" className="relative bg-[#0a0a0a] py-20 px-4">
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full opacity-5 blur-[100px] pointer-events-none"
           style={{ backgroundColor: '#39ff14' }}
@@ -204,39 +202,18 @@ export default function Portfolio() {
               className="relative rounded-2xl overflow-hidden flex flex-col"
               style={{ backgroundColor: project.color }}
             >
-              {/* Photo */}
               <div className="relative w-full h-48 flex-shrink-0">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 400px"
-                />
+                <Image src={project.image} alt={project.title} fill className="object-cover" sizes="100vw" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent" />
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
-                  <span
-                    className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full backdrop-blur-sm"
-                    style={{ backgroundColor: project.accent + '33', color: project.accent, border: `1px solid ${project.accent}55` }}
-                  >
-                    {project.tag}
-                  </span>
+                  <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full backdrop-blur-sm" style={{ backgroundColor: project.accent + '33', color: project.accent, border: `1px solid ${project.accent}55` }}>{project.tag}</span>
                   <span className="text-white/60 text-xs font-mono bg-black/30 backdrop-blur-sm px-2 py-0.5 rounded-full">{project.year}</span>
                 </div>
               </div>
-              {/* Content */}
               <div className="relative p-5">
-                <div
-                  className="absolute inset-0 opacity-[0.04]"
-                  style={{
-                    backgroundImage: `linear-gradient(${project.accent} 1px, transparent 1px), linear-gradient(90deg, ${project.accent} 1px, transparent 1px)`,
-                    backgroundSize: '32px 32px',
-                  }}
-                />
+                <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `linear-gradient(${project.accent} 1px, transparent 1px), linear-gradient(90deg, ${project.accent} 1px, transparent 1px)`, backgroundSize: '32px 32px' }} />
                 <div className="relative z-10 space-y-1">
-                  <div className="text-xs font-semibold tracking-widest uppercase" style={{ color: project.accent }}>
-                    {project.category}
-                  </div>
+                  <div className="text-xs font-semibold tracking-widest uppercase" style={{ color: project.accent }}>{project.category}</div>
                   <h3 className="text-lg font-bold text-white">{project.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{project.description}</p>
                 </div>
@@ -252,18 +229,10 @@ export default function Portfolio() {
           transition={{ delay: 0.6 }}
           className="flex flex-wrap justify-center gap-3 mt-10"
         >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-black text-sm"
-            style={{ backgroundColor: '#39ff14', boxShadow: '0 0 24px #39ff1444' }}
-          >
+          <a href="#contact" className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-black text-sm" style={{ backgroundColor: '#39ff14', boxShadow: '0 0 24px #39ff1444' }}>
             Jetzt Anfrage stellen →
           </a>
-          <a
-            href="/portfolio"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm border"
-            style={{ color: '#39ff14', borderColor: '#39ff1466', backgroundColor: '#39ff1411' }}
-          >
+          <a href="/portfolio" className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm border" style={{ color: '#39ff14', borderColor: '#39ff1466', backgroundColor: '#39ff1411' }}>
             Alle Projekte ansehen
           </a>
         </motion.div>
@@ -271,10 +240,11 @@ export default function Portfolio() {
     );
   }
 
+  // ── DESKTOP: sticky horizontal scroll ────────────────────────────────────────
   return (
-    <div ref={containerRef} style={{ height: stickyHeight }} className="relative bg-[#0a0a0a]">
+    <div ref={containerRef} id="portfolio" style={{ height: stickyHeight }} className="relative bg-[#0a0a0a]">
       {/* Sticky viewport */}
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center" id="portfolio">
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
         {/* Background glow */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full opacity-5 blur-[120px] pointer-events-none"
@@ -317,7 +287,7 @@ export default function Portfolio() {
           style={{ x, willChange: 'transform' }}
           className="flex gap-6 px-8 sm:px-16 flex-shrink-0"
         >
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </motion.div>
