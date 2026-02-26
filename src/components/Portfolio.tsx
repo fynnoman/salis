@@ -250,7 +250,7 @@ export default function Portfolio() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6 }}
-          className="flex justify-center mt-10"
+          className="flex flex-wrap justify-center gap-3 mt-10"
         >
           <a
             href="#contact"
@@ -258,6 +258,13 @@ export default function Portfolio() {
             style={{ backgroundColor: '#39ff14', boxShadow: '0 0 24px #39ff1444' }}
           >
             Jetzt Anfrage stellen →
+          </a>
+          <a
+            href="/portfolio"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm border"
+            style={{ color: '#39ff14', borderColor: '#39ff1466', backgroundColor: '#39ff1411' }}
+          >
+            Alle Projekte ansehen
           </a>
         </motion.div>
       </section>
@@ -333,7 +340,7 @@ export default function Portfolio() {
       </div>
 
       {/* CTA below sticky — rendered after the scroll ends */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 flex items-center justify-center bg-[#0a0a0a]">
+      <div className="absolute bottom-0 left-0 right-0 h-24 flex items-center justify-center gap-4 bg-[#0a0a0a]">
         <motion.a
           href="#contact"
           className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-black text-sm"
@@ -342,6 +349,15 @@ export default function Portfolio() {
           whileTap={{ scale: 0.97 }}
         >
           Jetzt Anfrage stellen →
+        </motion.a>
+        <motion.a
+          href="/portfolio"
+          className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm border"
+          style={{ color: '#39ff14', borderColor: '#39ff1466', backgroundColor: '#39ff1411' }}
+          whileHover={{ scale: 1.05, backgroundColor: '#39ff1422' }}
+          whileTap={{ scale: 0.97 }}
+        >
+          Alle Projekte ansehen
         </motion.a>
       </div>
     </div>
