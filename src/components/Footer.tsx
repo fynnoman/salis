@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, ArrowUp } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowUp, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 const footerLinks = [
@@ -44,6 +44,15 @@ export default function Footer() {
               Haus und mehr GbR – Ihre zuverlässigen Dienstleistungen aus einer
               Hand in Pirmasens und Umgebung.
             </p>
+            <motion.a
+              href="/portfolio"
+              className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent/10 text-accent border border-accent/30 hover:bg-accent hover:text-white transition-all"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Alle Projekte ansehen
+              <ArrowRight className="w-4 h-4" />
+            </motion.a>
           </div>
 
           {/* Quick links */}
