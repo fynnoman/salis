@@ -352,9 +352,9 @@ export default function Portfolio() {
         </motion.a>
         <motion.a
           href="/portfolio"
-          className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm border"
+          className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm border hover:opacity-80 transition-opacity"
           style={{ color: '#39ff14', borderColor: '#39ff1466', backgroundColor: '#39ff1411' }}
-          whileHover={{ scale: 1.05, backgroundColor: '#39ff1422' }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
         >
           Alle Projekte ansehen
