@@ -19,7 +19,8 @@ export default function About() {
   const contentRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  // ref is placed on the section itself so it works on all screen sizes
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   return (
     <section ref={sectionRef} id="about" className="py-24 sm:py-32 bg-white relative">
@@ -32,9 +33,9 @@ export default function About() {
         <div ref={contentRef} className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left side - Logo: hidden on mobile, shown on lg+ */}
           <motion.div
-            ref={ref}
             initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7 }}
             className="relative hidden lg:flex items-center justify-center"
           >
@@ -51,9 +52,10 @@ export default function About() {
 
           {/* Right side - Text */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
           >
             <span className="inline-block text-accent font-semibold text-sm tracking-widest uppercase mb-3">
               Über uns
@@ -87,8 +89,9 @@ export default function About() {
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.4 + i * 0.1 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: i * 0.1 }}
                   className="flex items-center gap-3"
                 >
                   <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
@@ -102,9 +105,10 @@ export default function About() {
         {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 sm:mt-20"
         >
           {stats.map((stat, i) => (
             <motion.div

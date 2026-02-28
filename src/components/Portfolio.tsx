@@ -167,10 +167,11 @@ export default function Portfolio() {
           className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full opacity-5 blur-[100px] pointer-events-none"
           style={{ backgroundColor: '#39ff14' }}
         />
-        <div ref={headingRef} className="mb-8">
+        <div className="mb-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#39ff14' }}>
@@ -184,7 +185,8 @@ export default function Portfolio() {
                   className="absolute -bottom-1 left-0 h-1 rounded-full"
                   style={{ backgroundColor: '#39ff14' }}
                   initial={{ width: 0 }}
-                  animate={isInView ? { width: '100%' } : {}}
+                  whileInView={{ width: '100%' }}
+                  viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 />
               </span>
@@ -197,8 +199,9 @@ export default function Portfolio() {
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
               className="relative rounded-2xl overflow-hidden flex flex-col"
               style={{ backgroundColor: project.color }}
             >
@@ -225,8 +228,9 @@ export default function Portfolio() {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="flex flex-col gap-3 mt-10"
         >
           <a href="#contact" className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-full font-semibold text-black text-sm" style={{ backgroundColor: '#39ff14', boxShadow: '0 0 24px #39ff1444' }}>
@@ -255,7 +259,8 @@ export default function Portfolio() {
         <div ref={headingRef} className="px-8 sm:px-16 mb-12 flex-shrink-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#39ff14' }}>
@@ -270,7 +275,8 @@ export default function Portfolio() {
                     className="absolute -bottom-1 left-0 h-1 rounded-full"
                     style={{ backgroundColor: '#39ff14' }}
                     initial={{ width: 0 }}
-                    animate={isInView ? { width: '100%' } : {}}
+                    whileInView={{ width: '100%' }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                   />
                 </span>
@@ -295,7 +301,8 @@ export default function Portfolio() {
         {/* Scroll hint */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ delay: 1 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 text-white/30 text-xs tracking-widest uppercase"
         >
