@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform, useInView, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 
 const projects = [
   {
@@ -140,23 +140,27 @@ export default function Portfolio() {
 
   const totalCards = projects.length;
   const trackWidth = totalCards * CARD_W + (totalCards - 1) * CARD_GAP;
-  const stickyHeight = `calc(${trackWidth}px + 100vh)`;
+  // Extra scroll room: 150vh gives smooth travel to reach the last card
+  const stickyHeight = `calc(${trackWidth}px + 150vh)`;
 
   const { scrollYProgress } = useScroll({
     target: isMobile ? undefined : containerRef,
     offset: ['start start', 'end end'],
   });
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 200,
-    damping: 40,
-    restDelta: 0.0001,
-  });
+  // How far we need to translate: full track width minus one viewport width, plus padding offset
+  const [viewportW, setViewportW] = useState(1440);
+  useEffect(() => {
+    const update = () => setViewportW(window.innerWidth);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
 
   const x = useTransform(
-    smoothProgress,
+    scrollYProgress,
     [0, 1],
-    [0, -(trackWidth - (typeof window !== 'undefined' ? window.innerWidth : 1440) + 64)]
+    [0, -(trackWidth - viewportW + 64)]
   );
 
   // ── MOBILE / TABLET ─────────────────────────────────────────────────────────
@@ -169,10 +173,10 @@ export default function Portfolio() {
         />
         <div className="mb-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <span className="inline-block text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#39ff14' }}>
               Referenzen
@@ -198,10 +202,10 @@ export default function Portfolio() {
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94], delay: i * 0.06 }}
               className="relative rounded-2xl overflow-hidden flex flex-col"
               style={{ backgroundColor: project.color }}
             >
@@ -258,10 +262,10 @@ export default function Portfolio() {
         {/* Header */}
         <div ref={headingRef} className="px-8 sm:px-16 mb-12 flex-shrink-0">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <span className="inline-block text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#39ff14' }}>
               Referenzen
@@ -277,7 +281,7 @@ export default function Portfolio() {
                     initial={{ width: 0 }}
                     whileInView={{ width: '100%' }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
                   />
                 </span>
               </h2>

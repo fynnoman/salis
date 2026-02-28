@@ -1,9 +1,10 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 
+
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 const contactItems = [
   {
@@ -33,9 +34,6 @@ const contactItems = [
 ];
 
 export default function Contact() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="contact" className="py-24 sm:py-32 bg-white relative overflow-hidden">
       {/* Subtle green grid */}
@@ -53,10 +51,10 @@ export default function Contact() {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease }}
           className="text-center mb-16"
         >
           <span className="inline-block text-accent font-semibold text-sm tracking-widest uppercase mb-3">
@@ -88,9 +86,10 @@ export default function Contact() {
             return (
               <motion.div
                 key={label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.45, ease, delay: i * 0.07 }}
               >
                 {href ? (
                   <a
@@ -111,9 +110,10 @@ export default function Contact() {
 
         {/* WhatsApp CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5, ease, delay: 0.25 }}
           className="flex justify-center"
         >
           <motion.a

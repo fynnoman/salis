@@ -4,6 +4,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
 export default function Hero() {
   return (
     <section
@@ -35,9 +37,9 @@ export default function Hero() {
       {/* Mobile CTA overlay */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 sm:hidden w-full">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.65, ease }}
         >
           <span className="inline-block text-[#22c55e] font-semibold text-xs tracking-widest uppercase mb-3">
             Pirmasens & Umgebung
@@ -68,10 +70,16 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.6 }}
       >
-        <ArrowDown className="w-6 h-6 text-white/60" />
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ArrowDown className="w-6 h-6 text-white/60" />
+        </motion.div>
       </motion.div>
     </section>
   );
