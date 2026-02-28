@@ -120,7 +120,7 @@ export default function Contact() {
             href="https://wa.me/4915229043159"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-4 rounded-2xl font-bold text-white text-lg"
+            className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 rounded-2xl font-bold text-white text-lg"
             style={{ backgroundColor: '#22c55e', boxShadow: '0 0 32px rgba(34,197,94,0.25)' }}
             whileHover={{ scale: 1.03, boxShadow: '0 0 48px rgba(34,197,94,0.4)' }}
             whileTap={{ scale: 0.97 }}

@@ -26,7 +26,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Main footer */}
-        <div className="grid md:grid-cols-3 gap-16 py-28">
+        <div className="grid md:grid-cols-3 gap-10 md:gap-16 py-14 md:py-28">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -114,7 +114,7 @@ export default function Footer() {
         <div className="border-t border-white/10" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between py-10 gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between py-8 md:py-10 gap-4">
           <p className="text-white/40 text-sm">
             © {new Date().getFullYear()} Salif Gebäudeservice – Haus und mehr
             GbR. Alle Rechte vorbehalten.

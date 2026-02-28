@@ -141,7 +141,7 @@ export default function AnfahrtPage() {
             {/* CTA */}
             <motion.a
               href="tel:015229043159"
-              className="mt-8 inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-white text-base"
+              className="mt-8 inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-white text-base"
               style={{
                 backgroundColor: "#22c55e",
                 boxShadow: "0 0 32px rgba(34,197,94,0.25)",
@@ -169,7 +169,7 @@ export default function AnfahrtPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="block relative rounded-3xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-xl transition-shadow group"
-              style={{ height: 460 }}
+              style={{ height: 'clamp(280px, 50vw, 460px)' }}
             >
               <iframe
                 src={EMBED_URL}

@@ -18,6 +18,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide Next.js skip-to-content link */
+[data-nextjs-scroll-focus-boundary] {
+  display: contents;
+}
+[data-nextjs-scroll-focus-boundary]:focus-within > a[href="#main-content"],
+a[href^="#__next"],
+.skip-nav,
+#__next-skip-link {
+  display: none !important;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);

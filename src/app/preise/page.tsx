@@ -123,7 +123,7 @@ export default function PreisePage() {
           />
           <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-10 blur-3xl" style={{ backgroundColor: "#22c55e" }} />
 
-          <div className="relative z-10 p-10 sm:p-16 flex flex-col sm:flex-row items-center gap-10">
+          <div className="relative z-10 p-8 sm:p-16 flex flex-col sm:flex-row items-center gap-8 sm:gap-10">
             <div className="text-center sm:text-left flex-1">
               <div className="text-[#22c55e] text-xs font-bold tracking-widest uppercase mb-3">
                 Richtwert Stundensatz
@@ -145,7 +145,7 @@ export default function PreisePage() {
             <div className="flex-shrink-0">
               <motion.a
                 href="tel:015229043159"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-black text-base"
+                className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-black text-base"
                 style={{ backgroundColor: "#22c55e", boxShadow: "0 0 32px rgba(34,197,94,0.3)" }}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}

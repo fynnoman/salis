@@ -172,6 +172,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <style>{`[data-nextjs-scroll-focus-boundary] > a { display: none !important; }`}</style>
         {children}
       </body>
     </html>

@@ -132,7 +132,7 @@ export default function Portfolio() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
+    const check = () => setIsMobile(window.innerWidth < 1024);
     check();
     window.addEventListener('resize', check);
     return () => window.removeEventListener('resize', check);
@@ -143,7 +143,7 @@ export default function Portfolio() {
   const stickyHeight = `calc(${trackWidth}px + 100vh)`;
 
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: isMobile ? undefined : containerRef,
     offset: ['start start', 'end end'],
   });
 
@@ -159,15 +159,15 @@ export default function Portfolio() {
     [0, -(trackWidth - (typeof window !== 'undefined' ? window.innerWidth : 1440) + 64)]
   );
 
-  // ── MOBILE ──────────────────────────────────────────────────────────────────
+  // ── MOBILE / TABLET ─────────────────────────────────────────────────────────
   if (isMobile) {
     return (
-      <section id="portfolio" className="relative bg-[#0a0a0a] py-20 px-4">
+      <section id="portfolio" className="relative bg-[#0a0a0a] py-16 px-4">
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full opacity-5 blur-[100px] pointer-events-none"
           style={{ backgroundColor: '#39ff14' }}
         />
-        <div ref={headingRef} className="mb-10">
+        <div ref={headingRef} className="mb-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -192,7 +192,7 @@ export default function Portfolio() {
           </motion.div>
         </div>
 
-        <div className="grid gap-5">
+        <div className="flex flex-col gap-4">
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
@@ -202,17 +202,17 @@ export default function Portfolio() {
               className="relative rounded-2xl overflow-hidden flex flex-col"
               style={{ backgroundColor: project.color }}
             >
-              <div className="relative w-full h-48 flex-shrink-0">
+              <div className="relative w-full h-52 flex-shrink-0">
                 <Image src={project.image} alt={project.title} fill className="object-cover" sizes="100vw" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent" />
-                <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                <div className="absolute top-3 left-3 z-10">
                   <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full backdrop-blur-sm" style={{ backgroundColor: project.accent + '33', color: project.accent, border: `1px solid ${project.accent}55` }}>{project.tag}</span>
-                  <span className="text-white/60 text-xs font-mono bg-black/30 backdrop-blur-sm px-2 py-0.5 rounded-full">{project.year}</span>
                 </div>
               </div>
               <div className="relative p-5">
                 <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `linear-gradient(${project.accent} 1px, transparent 1px), linear-gradient(90deg, ${project.accent} 1px, transparent 1px)`, backgroundSize: '32px 32px' }} />
-                <div className="relative z-10 space-y-1">
+                <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full opacity-20 blur-3xl pointer-events-none" style={{ backgroundColor: project.accent }} />
+                <div className="relative z-10 space-y-1.5">
                   <div className="text-xs font-semibold tracking-widest uppercase" style={{ color: project.accent }}>{project.category}</div>
                   <h3 className="text-lg font-bold text-white">{project.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{project.description}</p>
@@ -227,12 +227,12 @@ export default function Portfolio() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6 }}
-          className="flex flex-wrap justify-center gap-3 mt-10"
+          className="flex flex-col gap-3 mt-10"
         >
-          <a href="#contact" className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-black text-sm" style={{ backgroundColor: '#39ff14', boxShadow: '0 0 24px #39ff1444' }}>
+          <a href="#contact" className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-full font-semibold text-black text-sm" style={{ backgroundColor: '#39ff14', boxShadow: '0 0 24px #39ff1444' }}>
             Jetzt Anfrage stellen →
           </a>
-          <a href="/portfolio" className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm border" style={{ color: '#39ff14', borderColor: '#39ff1466', backgroundColor: '#39ff1411' }}>
+          <a href="/portfolio" className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-full font-semibold text-sm border" style={{ color: '#39ff14', borderColor: '#39ff1466', backgroundColor: '#39ff1411' }}>
             Alle Projekte ansehen
           </a>
         </motion.div>
