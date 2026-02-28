@@ -10,14 +10,23 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Desktop background image */}
       <Image
-        src="/56D96AC4-821E-4D77-BDC8-CFFC22BC6193.png"
+        src="/289A1875-2870-4AB3-9CCB-C4BC7C0E7DAA.png"
         alt="Salif Gebäudeservice – professionelle Reinigung und Hausmeisterservice in Pirmasens"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center"
+        className="object-cover object-center hidden sm:block"
+      />
+      {/* Mobile background image */}
+      <Image
+        src="/5D43DF16-4B08-486D-8BDE-A09AE262B6FC.png"
+        alt="Salif Gebäudeservice – professionelle Reinigung und Hausmeisterservice in Pirmasens"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center sm:hidden"
       />
 
       {/* Dark overlay for mobile readability */}
