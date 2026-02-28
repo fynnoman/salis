@@ -103,127 +103,138 @@ export default function RootLayout({
         <meta name="geo.position" content="49.2;7.6" />
         <meta name="ICBM" content="49.2, 7.6" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* Schema 1: WebSite */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "@id": `${BASE_URL}/#website`,
-                url: BASE_URL,
-                name: "Salif Gebäudeservice – Haus und mehr GbR",
-                description: "Professionelle Gebäudereinigung & Hausmeisterservice in Pirmasens",
-                inLanguage: "de-DE",
-                potentialAction: {
-                  "@type": "SearchAction",
-                  target: `${BASE_URL}/?s={search_term_string}`,
-                  "query-input": "required name=search_term_string",
-                },
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": `${BASE_URL}/#website`,
+              url: BASE_URL,
+              name: "Salif Gebäudeservice – Haus und mehr GbR",
+              description: "Professionelle Gebäudereinigung & Hausmeisterservice in Pirmasens",
+              inLanguage: "de-DE",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: `${BASE_URL}/?s={search_term_string}`,
+                "query-input": "required name=search_term_string",
               },
-              {
-                "@context": "https://schema.org",
-                "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-                "@id": `${BASE_URL}/#localbusiness`,
-                name: "Salif Gebäudeservice – Haus und mehr GbR",
-                alternateName: "Salif Gebäudeservice",
-                url: BASE_URL,
-                logo: {
-                  "@type": "ImageObject",
-                  url: `${BASE_URL}/51D6E89F-A80E-41DF-9C4F-68DD77279567.png`,
-                  width: 512,
-                  height: 512,
-                },
-                image: `${BASE_URL}/og-image.png`,
-                description:
-                  "Professionelle Gebäudereinigung, Hausmeisterservice, Fensterreinigung, Treppenhausreinigung, Umzüge und Entrümpelung in Pirmasens und Umgebung.",
-                telephone: "+4915229043159",
-                email: "salif-dienstleistungen@gmx.de",
-                address: {
-                  "@type": "PostalAddress",
-                  streetAddress: "Emilienstraße 5a",
-                  addressLocality: "Pirmasens",
-                  postalCode: "66955",
-                  addressRegion: "Rheinland-Pfalz",
-                  addressCountry: "DE",
-                },
-                geo: {
-                  "@type": "GeoCoordinates",
-                  latitude: 49.2,
-                  longitude: 7.6,
-                },
-                openingHoursSpecification: [
-                  {
-                    "@type": "OpeningHoursSpecification",
-                    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                    opens: "07:00",
-                    closes: "20:00",
-                  },
-                ],
-                priceRange: "€€",
-                currenciesAccepted: "EUR",
-                paymentAccepted: "Bar, Überweisung",
-                areaServed: [
-                  { "@type": "City", name: "Pirmasens" },
-                  { "@type": "City", name: "Zweibrücken" },
-                  { "@type": "City", name: "Kaiserslautern" },
-                  { "@type": "City", name: "Landau" },
-                  { "@type": "AdministrativeArea", name: "Südwestpfalz" },
-                ],
-                hasOfferCatalog: {
-                  "@type": "OfferCatalog",
-                  name: "Dienstleistungen",
-                  itemListElement: [
-                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Gebäudereinigung", description: "Professionelle Unterhalts- und Grundreinigung für Gewerbe und Privat" } },
-                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hausmeisterservice", description: "Kleinreparaturen, Grünpflege, Winterdienst, Mülltonnenservice" } },
-                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fensterreinigung", description: "Streifenfreie Glas- und Fensterreinigung" } },
-                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Treppenhausreinigung", description: "Regelmäßige Reinigung von Treppenhäusern und Gemeinschaftsflächen" } },
-                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Entrümpelung", description: "Wohnungsauflösung, Entrümpelung und fachgerechte Entsorgung" } },
-                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Umzüge & Kleintransporte", description: "Umzugsservice und Kleintransporte in Pirmasens und Umgebung" } },
-                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dachrinnenreinigung", description: "Professionelle Reinigung von Dachrinnen" } },
-                  ],
-                },
-                sameAs: [],
+            }),
+          }}
+        />
+        {/* Schema 2: LocalBusiness */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+              "@id": `${BASE_URL}/#localbusiness`,
+              name: "Salif Gebäudeservice – Haus und mehr GbR",
+              alternateName: "Salif Gebäudeservice",
+              url: BASE_URL,
+              logo: {
+                "@type": "ImageObject",
+                url: `${BASE_URL}/51D6E89F-A80E-41DF-9C4F-68DD77279567.png`,
+                width: 512,
+                height: 512,
               },
-              {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                mainEntity: [
-                  {
-                    "@type": "Question",
-                    name: "Was kostet eine Gebäudereinigung in Pirmasens?",
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: "Der Stundensatz für Reinigungsarbeiten liegt bei ca. 28 € pro Stunde. Der genaue Preis hängt vom Umfang, der Häufigkeit und der Art des Auftrags ab. Für größere Objekte oder Daueraufträge erstellen wir ein individuelles Angebot.",
-                    },
-                  },
-                  {
-                    "@type": "Question",
-                    name: "In welchen Städten ist Salif Gebäudeservice tätig?",
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: "Wir sind hauptsächlich in Pirmasens und der Region Südwestpfalz tätig, darunter Zweibrücken, Kaiserslautern, Landau und Umgebung.",
-                    },
-                  },
-                  {
-                    "@type": "Question",
-                    name: "Bietet Salif Gebäudeservice auch Hausmeisterservice an?",
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: "Ja, wir bieten umfassenden Hausmeisterservice an: Kleinreparaturen, Grünpflege, Winterdienst, Mülltonnenservice und mehr – alles aus einer Hand.",
-                    },
-                  },
-                  {
-                    "@type": "Question",
-                    name: "Wie kann ich ein unverbindliches Angebot anfragen?",
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: "Sie können uns jederzeit unter 01522 904 3159 anrufen, eine WhatsApp-Nachricht schreiben oder eine E-Mail an salif-dienstleistungen@gmx.de senden. Wir melden uns schnell zurück.",
-                    },
-                  },
+              image: `${BASE_URL}/og-image.png`,
+              description:
+                "Professionelle Gebäudereinigung, Hausmeisterservice, Fensterreinigung, Treppenhausreinigung, Umzüge und Entrümpelung in Pirmasens und Umgebung.",
+              telephone: "+4915229043159",
+              email: "salif-dienstleistungen@gmx.de",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Emilienstraße 5a",
+                addressLocality: "Pirmasens",
+                postalCode: "66955",
+                addressRegion: "Rheinland-Pfalz",
+                addressCountry: "DE",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 49.2,
+                longitude: 7.6,
+              },
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                  opens: "07:00",
+                  closes: "20:00",
+                },
+              ],
+              priceRange: "€€",
+              currenciesAccepted: "EUR",
+              paymentAccepted: "Bar, Überweisung",
+              areaServed: [
+                { "@type": "City", name: "Pirmasens" },
+                { "@type": "City", name: "Zweibrücken" },
+                { "@type": "City", name: "Kaiserslautern" },
+                { "@type": "City", name: "Landau" },
+                { "@type": "AdministrativeArea", name: "Südwestpfalz" },
+              ],
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Dienstleistungen",
+                itemListElement: [
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Gebäudereinigung", description: "Professionelle Unterhalts- und Grundreinigung für Gewerbe und Privat" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hausmeisterservice", description: "Kleinreparaturen, Grünpflege, Winterdienst, Mülltonnenservice" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fensterreinigung", description: "Streifenfreie Glas- und Fensterreinigung" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Treppenhausreinigung", description: "Regelmäßige Reinigung von Treppenhäusern und Gemeinschaftsflächen" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Entrümpelung", description: "Wohnungsauflösung, Entrümpelung und fachgerechte Entsorgung" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Umzüge & Kleintransporte", description: "Umzugsservice und Kleintransporte in Pirmasens und Umgebung" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dachrinnenreinigung", description: "Professionelle Reinigung von Dachrinnen" } },
                 ],
               },
-            ]),
+              sameAs: [],
+            }),
+          }}
+        />
+        {/* Schema 3: FAQPage */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "Was kostet eine Gebäudereinigung in Pirmasens?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Der Stundensatz für Reinigungsarbeiten liegt bei ca. 28 € pro Stunde. Der genaue Preis hängt vom Umfang, der Häufigkeit und der Art des Auftrags ab. Für größere Objekte oder Daueraufträge erstellen wir ein individuelles Angebot.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "In welchen Städten ist Salif Gebäudeservice tätig?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Wir sind hauptsächlich in Pirmasens und der Region Südwestpfalz tätig, darunter Zweibrücken, Kaiserslautern, Landau und Umgebung.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Bietet Salif Gebäudeservice auch Hausmeisterservice an?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Ja, wir bieten umfassenden Hausmeisterservice an: Kleinreparaturen, Grünpflege, Winterdienst, Mülltonnenservice und mehr – alles aus einer Hand.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Wie kann ich ein unverbindliches Angebot anfragen?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Sie können uns jederzeit unter 01522 904 3159 anrufen, eine WhatsApp-Nachricht schreiben oder eine E-Mail an salif-dienstleistungen@gmx.de senden. Wir melden uns schnell zurück.",
+                  },
+                },
+              ],
+            }),
           }}
         />
       </head>

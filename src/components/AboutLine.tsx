@@ -43,13 +43,15 @@ export default function AboutLine({ sectionRef, contentRef, headingRef, textRef 
     const sectionH = sr.height;
     const sectionW = sr.width;
 
-    const pad = 32;
+    const padH = 32;
+    const padTop = 42;
+    const padBottom = 32;
 
     // Relative to section
-    const boxLeft = cr.left - sr.left - pad;
-    const boxRight = cr.right - sr.left + pad;
-    const boxTop = cr.top - sr.top - pad;
-    const boxBottom = cr.bottom - sr.top + pad;
+    const boxLeft = cr.left - sr.left - padH;
+    const boxRight = cr.right - sr.left + padH;
+    const boxTop = cr.top - sr.top - padTop;
+    const boxBottom = cr.bottom - sr.top + padBottom;
 
     const x = boxLeft;
 
@@ -57,14 +59,14 @@ export default function AboutLine({ sectionRef, contentRef, headingRef, textRef 
     let notch1Y: number | null = null;
     if (headingRef.current) {
       const hr = headingRef.current.getBoundingClientRect();
-      notch1Y = hr.bottom - sr.top + 8;
+      notch1Y = hr.bottom - sr.top + 20;
     }
 
     // Notch 2: unter dem zweiten Absatz
     let notch2Y: number | null = null;
     if (textRef.current) {
       const tr = textRef.current.getBoundingClientRect();
-      notch2Y = tr.bottom - sr.top + 8;
+      notch2Y = tr.bottom - sr.top + 20;
     }
 
     const notchLen1 = 200;

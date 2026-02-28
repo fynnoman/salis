@@ -55,7 +55,7 @@ export default function ScrollLine() {
     const r = section.getBoundingClientRect();
     // Linie beginnt weiter unten (nach dem Heading)
     const startY = r.top + sy + 220;
-    const endY = r.bottom + sy - 20;
+    const endY = r.bottom + sy - 180;
     const x = vw * 0.72;
 
     const d = `M ${x} ${startY} L ${x} ${endY}`;
