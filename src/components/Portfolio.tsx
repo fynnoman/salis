@@ -36,7 +36,7 @@ const projects = [
     color: '#1a3a5c',
     accent: '#39ff14',
     year: '2024',
-    image: '/6A6F6875-0456-4CEF-B5F7-BBF5ED8272D7_1_105_c.jpeg',
+    image: '/WhatsApp Image 2026-03-02 at 00.20.02.jpeg',
   },
   {
     id: 4,

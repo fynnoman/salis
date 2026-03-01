@@ -14,8 +14,8 @@ const pairs = [
   },
   {
     label: 'Entrümpelung',
-    before: '/5230b468-5b76-4488-8abf-36743fe3922e.JPG',
-    after: '/a998c5e8-6c48-4a0f-8b93-87a3f5254594.JPG',
+    before: '/a998c5e8-6c48-4a0f-8b93-87a3f5254594.JPG',
+    after: '/5230b468-5b76-4488-8abf-36743fe3922e.JPG',
   },
 ];
 
