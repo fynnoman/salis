@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import Portfolio from "@/components/Portfolio";
+import BeforeAfter from "@/components/BeforeAfter";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollLine from "@/components/ScrollLine";
@@ -17,6 +18,7 @@ export default function Home() {
         <Services />
         <About />
         <Portfolio />
+        <BeforeAfter />
         <Contact />
       </main>
       <Footer />

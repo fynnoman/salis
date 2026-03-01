@@ -9,6 +9,9 @@ import { useScrollLineY } from "./ScrollLineContext";
 const services = [
   "Glas- & Fensterreinigung",
   "Gebäudereinigung",
+  "Grundreinigung",
+  "Sonderreinigung",
+  "Unterhaltsreinigung",
   "Hausmeisterservice",
   "Treppenhausreinigung",
   "Dachrinnenreinigung",
