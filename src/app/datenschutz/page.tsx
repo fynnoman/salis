@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Datenschutz",
-  description: "Datenschutzerklärung der Salif Gebäudeservice – Haus und mehr GbR gemäß DSGVO. Informationen zur Datenverarbeitung auf unserer Website.",
+  description: "Datenschutzerklärung der Salif Haus und Mehr gemäß DSGVO. Informationen zur Datenverarbeitung auf unserer Website.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://www.salif-gebaeude.de/datenschutz" },
 };
@@ -41,7 +41,7 @@ export default function DatenschutzPage() {
             <h2 className="text-lg font-bold text-[#1a3a5c] mb-2">2. Verantwortlicher</h2>
             <p>
               Verantwortlicher im Sinne der DSGVO ist:<br /><br />
-              Salif Gebäudeservice – Haus und mehr GbR<br />
+              Salif Haus und Mehr<br />
               Emilienstraße 5a<br />
               66955 Pirmasens<br /><br />
               Telefon: 01522 904 3159<br />
