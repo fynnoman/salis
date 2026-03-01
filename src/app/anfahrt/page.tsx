@@ -70,7 +70,7 @@ export default function AnfahrtPage() {
               <span className="text-[#22c55e]">Kontakt</span>
             </h1>
             <p className="text-white/60 text-lg sm:text-xl max-w-2xl leading-relaxed">
-              Salif Gebäudeservice – Haus und mehr GbR ist Ihr lokaler Partner
+              Salif Gebäudeservice – Haus und mehr ist Ihr lokaler Partner
               für Reinigung und Hausmeisterservice im Herzen von Pirmasens. Wir
               sind schnell für Sie da – persönlich, telefonisch oder per
               WhatsApp.

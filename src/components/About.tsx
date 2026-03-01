@@ -58,7 +58,7 @@ export default function About() {
               </span>
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Salif Gebäudeservice – Haus und mehr GbR steht für professionelle
+              Salif Gebäudeservice – Haus und mehr steht für professionelle
               Dienstleistungen rund ums Haus. Von der Gebäudereinigung über den
               Hausmeisterservice bis hin zu Umzügen und Entrümpelungen bieten wir
               Ihnen alles aus einer Hand.

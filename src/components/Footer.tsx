@@ -41,7 +41,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-              Haus und mehr GbR – Ihre zuverlässigen Dienstleistungen aus einer
+              Haus und mehr – Ihre zuverlässigen Dienstleistungen aus einer
               Hand in Pirmasens und Umgebung.
             </p>
             <motion.a
@@ -116,8 +116,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between py-8 md:py-10 gap-4">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} Salif Gebäudeservice – Haus und mehr
-            GbR. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} Salif Gebäudeservice – Haus und mehr. Alle Rechte vorbehalten.
           </p>
 
           <div className="flex items-center gap-6">
