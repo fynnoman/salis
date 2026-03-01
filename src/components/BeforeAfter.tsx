@@ -8,7 +8,7 @@ const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 const pairs = [
   {
-    label: 'Treppenhaus',
+    label: 'Küche',
     before: '/5955C3A5-2591-4944-A2BD-6900D2740CB7.jpeg',
     after: '/64E834E8-C290-42B3-AEC8-1DAAF4F05F2D.jpeg',
   },
