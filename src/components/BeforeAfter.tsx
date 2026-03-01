@@ -12,31 +12,6 @@ const pairs = [
     before: '/5955C3A5-2591-4944-A2BD-6900D2740CB7.jpeg',
     after: '/64E834E8-C290-42B3-AEC8-1DAAF4F05F2D.jpeg',
   },
-  {
-    label: 'Büro',
-    before: '/6EABC122-929C-4BB9-B865-1878F807BE28.jpeg',
-    after: '/7B5D6DB3-E519-4D2B-A353-7183D5A383BB.jpeg',
-  },
-  {
-    label: 'Außenbereich',
-    before: '/7BFB8B28-93F3-4221-8303-30C383304D21.jpeg',
-    after: '/8819F992-DBA7-47D1-B231-770392592E1C.jpeg',
-  },
-  {
-    label: 'Küche',
-    before: '/8AA0A298-1146-4053-B7DB-019AC0BBDC7C.jpeg',
-    after: '/974C1C1F-D529-4B4D-B385-A8B5A3568C83.jpeg',
-  },
-  {
-    label: 'Badezimmer',
-    before: '/B18C21EC-0577-4DA7-B866-A76747B6CA8C.jpeg',
-    after: '/D4F2A45F-4658-46AF-A4CA-5EFEC3C69ACE.jpeg',
-  },
-  {
-    label: 'Eingang',
-    before: '/DE3BE5F1-BB70-49D6-BCDF-1261D3A61B7F.jpeg',
-    after: '/EC396CBB-027D-46C1-9C9A-BAE1B4E77666.jpeg',
-  },
 ];
 
 function SliderCard({ pair }: { pair: typeof pairs[0] }) {
@@ -207,7 +182,7 @@ export default function BeforeAfter() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="max-w-2xl mx-auto">
           {pairs.map((pair, i) => (
             <motion.div
               key={pair.label}
