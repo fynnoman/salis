@@ -61,7 +61,7 @@ const projects = [
 		tag: "Dauerpflege",
 		color: "#1a3a5c",
 		accent: "#39ff14",
-		image: "/EB839597-D878-4F7D-8990-2DD154F502A8_1_105_c.jpeg",
+		image: "/WhatsApp Image 2026-03-02 at 00.24.19.jpeg",
 	},
 	{
 		id: 6,
