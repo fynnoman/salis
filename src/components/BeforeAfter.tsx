@@ -8,9 +8,14 @@ const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 const pairs = [
   {
-    label: 'Küche',
-    before: '/5955C3A5-2591-4944-A2BD-6900D2740CB7.jpeg',
-    after: '/64E834E8-C290-42B3-AEC8-1DAAF4F05F2D.jpeg',
+    label: 'Reinigung',
+    before: '/4217c760-c23b-44fe-94b1-765ab7d80154.JPG',
+    after: '/4686ff1c-1973-46b4-85f8-c118fd319087.JPG',
+  },
+  {
+    label: 'Entrümpelung',
+    before: '/5230b468-5b76-4488-8abf-36743fe3922e.JPG',
+    after: '/a998c5e8-6c48-4a0f-8b93-87a3f5254594.JPG',
   },
 ];
 
@@ -182,7 +187,7 @@ export default function BeforeAfter() {
         </motion.div>
 
         {/* Grid */}
-        <div className="max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {pairs.map((pair, i) => (
             <motion.div
               key={pair.label}
