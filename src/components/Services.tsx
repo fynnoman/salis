@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Wrench } from "lucide-react";
 import Image from "next/image";
 import { useScrollLineY } from "./ScrollLineContext";
 
@@ -106,6 +106,32 @@ export default function Services() {
               <ServiceItem key={service} label={service} index={i} />
             ))}
           </ul>
+
+          {/* Küchenmontage Highlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
+            className="mt-12 rounded-2xl border border-accent/30 bg-white/80 backdrop-blur-sm p-6 shadow-sm"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Wrench className="w-5 h-5 text-accent" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-primary mb-2">
+                  Küchen­ab- & Wiederaufbau beim Umzug
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Bei Umzügen übernehmen wir auf Wunsch den fachgerechten Abbau Ihrer Küche
+                  sowie die professionelle Wieder&shy;montage am neuen Standort. Bei Bedarf
+                  passen wir die Küche an die neuen Räumlichkeiten an – für einen sauberen,
+                  sicheren und professionellen Wiedereinbau.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
