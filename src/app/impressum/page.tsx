@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Impressum",
-  description: "Impressum der Salif Gebäudeservice – Haus und mehr GbR, Emilienstraße 5a, 66955 Pirmasens. Rechtliche Angaben gemäß § 5 TMG.",
+  description: "Impressum der Salif Haus und Mehr, Emilienstraße 5a, 66955 Pirmasens. Rechtliche Angaben gemäß § 5 TMG.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://www.salif-gebaeude.de/impressum" },
 };
@@ -30,7 +30,7 @@ export default function ImpressumPage() {
           <div>
             <h2 className="text-lg font-bold text-[#1a3a5c] mb-2">Unternehmensangaben</h2>
             <p>
-              Salif Gebäudeservice – Haus und mehr GbR<br />
+              Salif Haus und Mehr<br />
               Emilienstraße 5a<br />
               66955 Pirmasens<br />
               Deutschland
