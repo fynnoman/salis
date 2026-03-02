@@ -146,8 +146,6 @@ function SliderCard({ pair }: { pair: typeof pairs[0] }) {
         )}
       </div>
 
-      {/* Label */}
-      <p className="text-center text-sm font-semibold text-gray-500 tracking-wide">{pair.label}</p>
     </div>
   );
 }

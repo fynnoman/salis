@@ -17,8 +17,8 @@ const services = [
   "Dachrinnenreinigung",
   "Firmenreinigung",
   "Hausreinigung",
-  "Kleintransporte",
   "Umzüge & Entrümpelung",
+  "Kleintransporte",
 ];
 
 function ServiceItem({ label, index }: { label: string; index: number }) {
