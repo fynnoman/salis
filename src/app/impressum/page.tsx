@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Impressum",
-  description: "Impressum der Salif Haus und Mehr, Emilienstraße 5a, 66955 Pirmasens. Rechtliche Angaben gemäß § 5 TMG.",
+  description: "Impressum der Salif Haus und Mehr, Emilienstraße 5a, 66955 Pirmasens. Rechtliche Angaben gemäß § 5 DDG.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://www.salif-gebaeude.de/impressum" },
 };
@@ -23,7 +23,7 @@ export default function ImpressumPage() {
         </Link>
 
         <h1 className="text-4xl font-bold text-[#1a3a5c] mb-2">Impressum</h1>
-        <p className="text-gray-400 text-sm mb-12">Angaben gemäß § 5 TMG</p>
+        <p className="text-gray-400 text-sm mb-12">Angaben gemäß § 5 DDG</p>
 
         <div className="space-y-10 text-gray-700 leading-relaxed">
 
@@ -83,23 +83,6 @@ export default function ImpressumPage() {
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-[#1a3a5c] mb-2">EU-Streitschlichtung</h2>
-            <p>
-              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
-              <a
-                href="https://ec.europa.eu/consumers/odr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#22c55e] hover:underline"
-              >
-                https://ec.europa.eu/consumers/odr/
-              </a>
-              .<br />
-              Unsere E-Mail-Adresse finden Sie oben im Impressum.
-            </p>
-          </div>
-
-          <div>
             <h2 className="text-lg font-bold text-[#1a3a5c] mb-2">
               Verbraucherstreitbeilegung / Universalschlichtungsstelle
             </h2>
@@ -112,8 +95,8 @@ export default function ImpressumPage() {
           <div>
             <h2 className="text-lg font-bold text-[#1a3a5c] mb-2">Haftung für Inhalte</h2>
             <p>
-              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten
-              nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
+              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten
+              nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als
               Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
               Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
               Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
