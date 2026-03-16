@@ -58,15 +58,15 @@ export default function About() {
               </span>
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Salif Gebäudeservice – Haus und mehr steht für professionelle
-              Dienstleistungen rund ums Haus. Von der Gebäudereinigung über den
+              Salif Haus und Mehr steht für professionelle Reinigung in Pirmasens
+              und der Region Südwestpfalz. Von der Gebäudereinigung über den
               Hausmeisterservice bis hin zu Umzügen und Entrümpelungen bieten wir
-              Ihnen alles aus einer Hand.
+              Ihnen zuverlässige Reinigung aus einer Hand – für Privat und Gewerbe.
             </p>
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Unser Team arbeitet gründlich, zuverlässig und immer mit dem Ziel,
-              unsere Kunden zu 100% zufriedenzustellen. Überzeugen Sie sich selbst
-              von unserer Qualität!
+              Als lokales Reinigungsunternehmen in Pirmasens arbeiten wir gründlich,
+              flexibel und immer mit dem Ziel, unsere Kunden zu 100 % zufriedenzustellen.
+              Überzeugen Sie sich von unserer Qualität!
             </p>
 
             {/* Key points */}

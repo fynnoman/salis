@@ -45,10 +45,10 @@ export default function Hero() {
             Pirmasens & Umgebung
           </span>
           <h1 className="text-4xl font-bold text-white mb-4 leading-tight">
-            Reinigung &<br />Hausmeisterservice
+            Professionelle Reinigung<br />in Pirmasens
           </h1>
           <p className="text-white/80 text-base mb-8 max-w-xs mx-auto">
-            Professionell, zuverlässig und fair – Ihr lokaler Partner für alles rund ums Haus.
+            Gebäudereinigung, Hausmeisterservice & mehr – Ihr zuverlässiger Partner für Reinigung in Pirmasens und Umgebung.
           </p>
           <div className="flex flex-col gap-3 w-full max-w-xs mx-auto">
             <a
