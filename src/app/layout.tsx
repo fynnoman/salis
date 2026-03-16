@@ -17,30 +17,27 @@ const BASE_URL = "https://www.salif-gebaeude.de";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Gebäudereinigung Pirmasens | Salif Gebäudeservice – Haus und mehr GbR",
-    template: "%s | Salif Gebäudeservice Pirmasens",
+    default: "Reinigung Pirmasens | Salif Haus und Mehr",
+    template: "%s | Salif Haus und Mehr",
   },
   description:
-    "Gebäudereinigung, Hausmeisterservice & Entrümpelung in Pirmasens. Professionell, zuverlässig, faire Preise. Jetzt kostenlos anfragen: 01522 904 3159.",
+    "Zuverlässige Reinigung in Pirmasens — Gebäudereinigung, Fensterreinigung, Treppenhausservice und mehr. Jetzt Angebot anfragen: 01522 904 3159.",
   keywords: [
+    "Reinigung Pirmasens",
     "Gebäudereinigung Pirmasens",
     "Hausmeisterservice Pirmasens",
-    "Reinigungsfirma Pirmasens",
     "Fensterreinigung Pirmasens",
     "Treppenhausreinigung Pirmasens",
     "Entrümpelung Pirmasens",
     "Umzüge Pirmasens",
     "Gebäudeservice Pirmasens",
     "Unterhaltsreinigung Pirmasens",
-    "Haus und mehr GbR",
-    "Salif Gebäudeservice",
-    "Reinigung Südwestpfalz",
-    "Hausreinigung Zweibrücken",
-    "Hausreinigung Kaiserslautern",
+    "Salif Haus und Mehr",
+    "Reinigungsfirma Pirmasens",
   ],
-  authors: [{ name: "Salif Gebäudeservice – Haus und mehr GbR" }],
-  creator: "Salif Gebäudeservice – Haus und mehr GbR",
-  publisher: "Salif Gebäudeservice – Haus und mehr GbR",
+  authors: [{ name: "Salif Haus und Mehr" }],
+  creator: "Salif Haus und Mehr",
+  publisher: "Salif Haus und Mehr",
   robots: {
     index: true,
     follow: true,
@@ -59,8 +56,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     url: BASE_URL,
-    siteName: "Salif Gebäudeservice – Haus und mehr GbR",
-    title: "Gebäudereinigung Pirmasens | Salif Gebäudeservice",
+    siteName: "Salif Haus und Mehr",
+    title: "Reinigung Pirmasens | Salif Haus und Mehr",
     description:
       "Professionelle Gebäudereinigung, Hausmeisterservice & Entrümpelung in Pirmasens. Faire Preise, persönliche Beratung. ☎ 01522 904 3159.",
     images: [
@@ -68,13 +65,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Salif Gebäudeservice – Gebäudereinigung & Hausmeisterservice Pirmasens",
+        alt: "Salif Haus und Mehr – Gebäudereinigung & Hausmeisterservice Pirmasens",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gebäudereinigung Pirmasens | Salif Gebäudeservice",
+    title: "Reinigung Pirmasens | Salif Haus und Mehr",
     description:
       "Professionelle Gebäudereinigung & Hausmeisterservice in Pirmasens. Jetzt anfragen: 01522 904 3159.",
     images: ["/og-image.png"],
@@ -112,8 +109,8 @@ export default function RootLayout({
               "@type": "WebSite",
               "@id": `${BASE_URL}/#website`,
               url: BASE_URL,
-              name: "Salif Gebäudeservice – Haus und mehr GbR",
-              description: "Professionelle Gebäudereinigung & Hausmeisterservice in Pirmasens",
+              name: "Salif Haus und Mehr",
+              description: "Professionelle Reinigung & Hausmeisterservice in Pirmasens",
               inLanguage: "de-DE",
               potentialAction: {
                 "@type": "SearchAction",
@@ -131,7 +128,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
               "@id": `${BASE_URL}/#localbusiness`,
-              name: "Salif Gebäudeservice – Haus und mehr GbR",
+              name: "Salif Haus und Mehr",
               alternateName: "Salif Gebäudeservice",
               url: BASE_URL,
               logo: {
@@ -211,7 +208,7 @@ export default function RootLayout({
                 },
                 {
                   "@type": "Question",
-                  name: "In welchen Städten ist Salif Gebäudeservice tätig?",
+                  name: "In welchen Städten ist Salif Haus und Mehr tätig?",
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "Wir sind hauptsächlich in Pirmasens und der Region Südwestpfalz tätig, darunter Zweibrücken, Kaiserslautern, Landau und Umgebung.",
@@ -219,7 +216,7 @@ export default function RootLayout({
                 },
                 {
                   "@type": "Question",
-                  name: "Bietet Salif Gebäudeservice auch Hausmeisterservice an?",
+                  name: "Bietet Salif Haus und Mehr auch Hausmeisterservice an?",
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "Ja, wir bieten umfassenden Hausmeisterservice an: Kleinreparaturen, Grünpflege, Winterdienst, Mülltonnenservice und mehr – alles aus einer Hand.",
