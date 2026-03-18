@@ -138,6 +138,21 @@ export default function Footer() {
             </motion.a>
           </div>
         </div>
+
+        {/* Designer credit (kleiner Schriftzug unten) */}
+        <div className="mt-4 pt-4 border-t border-white/6">
+          <p className="text-white/30 text-xs text-center">
+            designed by{" "}
+            <a
+              href="https://fylumarketing.de"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-accent"
+            >
+              fylu - marketing fylumarketing.de
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
