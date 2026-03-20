@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
     ],
-    sitemap: "https://www.salif-gebaeude.de/sitemap.xml",
-    host: "https://www.salif-gebaeude.de",
+    sitemap: "https://www.salif-gebäudeservice.de/sitemap.xml",
+    host: "https://www.salif-gebäudeservice.de",
   };
 }

@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const BASE_URL = "https://www.salif-gebaeude.de";
+const BASE_URL = "https://www.salif-gebäudeservice.de";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

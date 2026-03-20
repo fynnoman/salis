@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const BASE_URL = "https://www.salif-gebaeude.de";
+  const BASE_URL = "https://www.salif-gebäudeservice.de";
 
   return [
     {

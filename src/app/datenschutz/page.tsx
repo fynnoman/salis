@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Datenschutz",
   description: "Datenschutzerklärung der Salif Haus und Mehr gemäß DSGVO. Informationen zur Datenverarbeitung auf unserer Website.",
   robots: { index: false, follow: false },
-  alternates: { canonical: "https://www.salif-gebaeude.de/datenschutz" },
+  alternates: { canonical: "https://www.salif-gebäudeservice.de/datenschutz" },
 };
 
 export default function DatenschutzPage() {
