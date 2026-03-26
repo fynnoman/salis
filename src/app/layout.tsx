@@ -112,10 +112,10 @@ export default function RootLayout({
               name: "Salif Haus und Mehr",
               description: "Professionelle Reinigung & Hausmeisterservice in Pirmasens",
               inLanguage: "de-DE",
-              potentialAction: {
-                "@type": "SearchAction",
-                target: `${BASE_URL}/?s={search_term_string}`,
-                "query-input": "required name=search_term_string",
+              publisher: {
+                "@type": "Organization",
+                name: "Salif Haus und Mehr",
+                url: BASE_URL,
               },
             }),
           }}
@@ -186,7 +186,6 @@ export default function RootLayout({
                   { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dachrinnenreinigung", description: "Professionelle Reinigung von Dachrinnen" } },
                 ],
               },
-              sameAs: [],
             }),
           }}
         />

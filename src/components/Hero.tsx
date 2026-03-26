@@ -31,11 +31,11 @@ export default function Hero() {
         className="object-cover object-center sm:hidden"
       />
 
-      {/* Dark overlay for mobile readability */}
-      <div className="absolute inset-0 bg-black/40 sm:bg-transparent" />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/40 sm:bg-black/30" />
 
-      {/* Mobile CTA overlay */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 sm:hidden w-full">
+      {/* H1 – always in DOM for SEO, visually styled per breakpoint */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 w-full">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -44,22 +44,22 @@ export default function Hero() {
           <span className="inline-block text-[#22c55e] font-semibold text-xs tracking-widest uppercase mb-3">
             Pirmasens & Umgebung
           </span>
-          <h1 className="text-4xl font-bold text-white mb-4 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
             Professionelle Reinigung<br />in Pirmasens
           </h1>
-          <p className="text-white/80 text-base mb-8 max-w-xs mx-auto">
+          <p className="text-white/80 text-base sm:text-lg mb-8 max-w-xs sm:max-w-lg mx-auto">
             Gebäudereinigung, Hausmeisterservice & mehr – Ihr zuverlässiger Partner für Reinigung in Pirmasens und Umgebung.
           </p>
-          <div className="flex flex-col gap-3 w-full max-w-xs mx-auto">
+          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-xs sm:max-w-md mx-auto">
             <a
               href="tel:015229043159"
-              className="flex items-center justify-center gap-2 bg-[#22c55e] text-white py-3.5 rounded-full font-semibold text-sm shadow-lg"
+              className="flex items-center justify-center gap-2 bg-[#22c55e] hover:bg-[#16a34a] text-white py-3.5 px-6 rounded-full font-semibold text-sm shadow-lg transition-colors"
             >
               Jetzt anrufen – 01522 904 3159
             </a>
             <a
               href="#services"
-              className="flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white py-3.5 rounded-full font-semibold text-sm"
+              className="flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white py-3.5 px-6 rounded-full font-semibold text-sm hover:bg-white/25 transition-colors"
             >
               Leistungen entdecken
             </a>
