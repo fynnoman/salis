@@ -10,61 +10,40 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#0f2440]"
     >
-      {/* Desktop background image */}
+      {/* Background image */}
       <Image
-        src="/289A1875-2870-4AB3-9CCB-C4BC7C0E7DAA.png"
+        src="/Gemini_Generated_Image_lr33hilr33hilr33.png"
         alt="Salif Gebäudeservice – professionelle Reinigung und Hausmeisterservice in Pirmasens"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center hidden sm:block"
-      />
-      {/* Mobile background image */}
-      <Image
-        src="/5D43DF16-4B08-486D-8BDE-A09AE262B6FC.png"
-        alt="Salif Gebäudeservice – professionelle Reinigung und Hausmeisterservice in Pirmasens"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center sm:hidden"
+        className="object-cover object-center -scale-x-100"
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/40 sm:bg-black/30" />
+      {/* Left-side dark gradient for text readability on desktop */}
+      <div className="absolute inset-0 hidden lg:block bg-gradient-to-r from-[#0f2440]/80 via-transparent to-transparent" />
 
-      {/* H1 – always in DOM for SEO, visually styled per breakpoint */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease }}
-        >
-          <span className="inline-block text-[#22c55e] font-semibold text-xs tracking-widest uppercase mb-3">
-            Pirmasens & Umgebung
-          </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-            Professionelle Reinigung<br />in Pirmasens
-          </h1>
-          <p className="text-white/80 text-base sm:text-lg mb-8 max-w-xs sm:max-w-lg mx-auto">
-            Gebäudereinigung, Hausmeisterservice & mehr – Ihr zuverlässiger Partner für Reinigung in Pirmasens und Umgebung.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-xs sm:max-w-md mx-auto">
-            <a
-              href="tel:015229043159"
-              className="flex items-center justify-center gap-2 bg-[#22c55e] hover:bg-[#16a34a] text-white py-3.5 px-6 rounded-full font-semibold text-sm shadow-lg transition-colors"
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center min-h-screen py-20">
+          {/* Left side – text content, max 50% width */}
+          <div className="w-full lg:w-1/2 lg:pr-8">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease }}
             >
-              Jetzt anrufen – 01522 904 3159
-            </a>
-            <a
-              href="#services"
-              className="flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white py-3.5 px-6 rounded-full font-semibold text-sm hover:bg-white/25 transition-colors"
-            >
-              Leistungen entdecken
-            </a>
+              {/* Big brand heading */}
+              <h1 className="font-[family-name:var(--font-space-grotesk)] text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[0.9] tracking-tight uppercase">
+                Salif<br />
+                <span className="text-[#22c55e]">Gebäude</span>service
+                <span className="sr-only"> – Professionelle Reinigung in Pirmasens</span>
+              </h1>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}

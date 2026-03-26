@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,13 +12,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["700"],
+});
+
 const BASE_URL = "https://www.xn--salif-gebudeservice-owb.de";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Reinigung Pirmasens | Salif Haus und Mehr",
-    template: "%s | Salif Haus und Mehr",
+    default: "Salif Gebäudeservice | Reinigung Pirmasens",
+    template: "%s | Salif Gebäudeservice",
   },
   description:
     "Zuverlässige Reinigung in Pirmasens — Gebäudereinigung, Fensterreinigung, Treppenhausservice und mehr. Jetzt Angebot anfragen: 01522 904 3159.",
@@ -33,11 +39,12 @@ export const metadata: Metadata = {
     "Gebäudeservice Pirmasens",
     "Unterhaltsreinigung Pirmasens",
     "Salif Haus und Mehr",
+    "Salif Gebäudeservice",
     "Reinigungsfirma Pirmasens",
   ],
-  authors: [{ name: "Salif Haus und Mehr" }],
-  creator: "Salif Haus und Mehr",
-  publisher: "Salif Haus und Mehr",
+  authors: [{ name: "Salif Gebäudeservice" }],
+  creator: "Salif Gebäudeservice",
+  publisher: "Salif Gebäudeservice",
   robots: {
     index: true,
     follow: true,
@@ -56,8 +63,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     url: BASE_URL,
-    siteName: "Salif Haus und Mehr",
-    title: "Reinigung Pirmasens | Salif Haus und Mehr",
+    siteName: "Salif Gebäudeservice",
+    title: "Salif Gebäudeservice | Reinigung Pirmasens",
     description:
       "Professionelle Gebäudereinigung, Hausmeisterservice & Entrümpelung in Pirmasens. Faire Preise, persönliche Beratung. ☎ 01522 904 3159.",
     images: [
@@ -65,13 +72,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Salif Haus und Mehr – Gebäudereinigung & Hausmeisterservice Pirmasens",
+        alt: "Salif Gebäudeservice – Reinigung & Hausmeisterservice Pirmasens",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reinigung Pirmasens | Salif Haus und Mehr",
+    title: "Salif Gebäudeservice | Reinigung Pirmasens",
     description:
       "Professionelle Gebäudereinigung & Hausmeisterservice in Pirmasens. Jetzt anfragen: 01522 904 3159.",
     images: ["/og-image.png"],
@@ -109,12 +116,12 @@ export default function RootLayout({
               "@type": "WebSite",
               "@id": `${BASE_URL}/#website`,
               url: BASE_URL,
-              name: "Salif Haus und Mehr",
+              name: "Salif Gebäudeservice – Haus und Mehr",
               description: "Professionelle Reinigung & Hausmeisterservice in Pirmasens",
               inLanguage: "de-DE",
               publisher: {
                 "@type": "Organization",
-                name: "Salif Haus und Mehr",
+                name: "Salif Gebäudeservice – Haus und Mehr",
                 url: BASE_URL,
               },
             }),
@@ -235,7 +242,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
       >
         <style>{`[data-nextjs-scroll-focus-boundary] > a { display: none !important; }`}</style>
         {children}
