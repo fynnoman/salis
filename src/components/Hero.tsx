@@ -39,8 +39,13 @@ export default function Hero() {
               <h1 className="font-[family-name:var(--font-space-grotesk)] text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[0.9] tracking-tight uppercase">
                 Salif<br />
                 <span className="text-[#22c55e]">Gebäude</span>service
-                <span className="sr-only"> – Professionelle Reinigung in Pirmasens</span>
               </h1>
+              <p className="font-[family-name:var(--font-space-grotesk)] text-lg sm:text-xl lg:text-2xl font-medium text-white/60 mt-4 tracking-wide uppercase">
+                Professionelle Reinigung &<br />Gebäudeservice in Pirmasens
+              </p>
+              <span className="sr-only">
+                Salif Gebäudeservice – Ihre Reinigungsfirma in Pirmasens. Professionelle Gebäudereinigung, Fensterreinigung, Treppenhausreinigung, Hausmeisterservice, Entrümpelung und Umzüge in Pirmasens, Zweibrücken und der Südwestpfalz.
+              </span>
             </motion.div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Datenschutz",
-  description: "Datenschutzerklärung der Salif Haus und Mehr gemäß DSGVO. Informationen zur Datenverarbeitung auf unserer Website.",
+  description: "Datenschutzerklärung der Salif Gebäudeservice gemäß DSGVO. Informationen zur Datenverarbeitung auf unserer Website.",
   robots: { index: true, follow: true },
   alternates: { canonical: "https://www.xn--salif-gebudeservice-owb.de/datenschutz" },
 };

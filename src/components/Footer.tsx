@@ -8,6 +8,9 @@ const footerLinks = [
   { name: "Start", href: "#hero" },
   { name: "Leistungen", href: "#services" },
   { name: "Über uns", href: "#about" },
+  { name: "Projekte", href: "/portfolio" },
+  { name: "Preise", href: "/preise" },
+  { name: "Anfahrt", href: "/anfahrt" },
   { name: "Kontakt", href: "#contact" },
 ];
 

@@ -27,10 +27,13 @@ export const metadata: Metadata = {
     template: "%s | Salif Gebäudeservice",
   },
   description:
-    "Zuverlässige Reinigung in Pirmasens — Gebäudereinigung, Fensterreinigung, Treppenhausservice und mehr. Jetzt Angebot anfragen: 01522 904 3159.",
+    "Salif Gebäudeservice – Ihre Reinigungsfirma in Pirmasens. Professionelle Gebäudereinigung, Fensterreinigung, Treppenhausreinigung, Hausmeisterservice & Entrümpelung. ✓ Faire Preise ✓ Zuverlässig ✓ Jetzt Angebot anfragen: 01522 904 3159.",
   keywords: [
     "Reinigung Pirmasens",
     "Gebäudereinigung Pirmasens",
+    "Reinigungsfirma Pirmasens",
+    "Reinigungsunternehmen Pirmasens",
+    "Putzfirma Pirmasens",
     "Hausmeisterservice Pirmasens",
     "Fensterreinigung Pirmasens",
     "Treppenhausreinigung Pirmasens",
@@ -38,9 +41,16 @@ export const metadata: Metadata = {
     "Umzüge Pirmasens",
     "Gebäudeservice Pirmasens",
     "Unterhaltsreinigung Pirmasens",
-    "Salif Haus und Mehr",
+    "Grundreinigung Pirmasens",
+    "Büroreinigung Pirmasens",
+    "Glasreinigung Pirmasens",
+    "Dachrinnenreinigung Pirmasens",
+    "Winterdienst Pirmasens",
     "Salif Gebäudeservice",
-    "Reinigungsfirma Pirmasens",
+    "Salif Haus und Mehr",
+    "Reinigung Südwestpfalz",
+    "Gebäudereinigung Zweibrücken",
+    "Reinigungsservice Kaiserslautern",
   ],
   authors: [{ name: "Salif Gebäudeservice" }],
   creator: "Salif Gebäudeservice",
@@ -66,7 +76,7 @@ export const metadata: Metadata = {
     siteName: "Salif Gebäudeservice",
     title: "Salif Gebäudeservice | Reinigung Pirmasens",
     description:
-      "Professionelle Gebäudereinigung, Hausmeisterservice & Entrümpelung in Pirmasens. Faire Preise, persönliche Beratung. ☎ 01522 904 3159.",
+      "Professionelle Gebäudereinigung, Fensterreinigung, Hausmeisterservice & Entrümpelung in Pirmasens. ✓ Faire Preise ✓ Zuverlässig ✓ Jetzt anfragen: 01522 904 3159.",
     images: [
       {
         url: "/og-image.png",
@@ -135,8 +145,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
               "@id": `${BASE_URL}/#localbusiness`,
-              name: "Salif Haus und Mehr",
-              alternateName: "Salif Gebäudeservice",
+              name: "Salif Gebäudeservice",
+              alternateName: ["Salif Haus und Mehr", "Salif Gebäudeservice – Haus und mehr"],
               url: BASE_URL,
               logo: {
                 "@type": "ImageObject",
@@ -146,9 +156,19 @@ export default function RootLayout({
               },
               image: `${BASE_URL}/og-image.png`,
               description:
-                "Professionelle Gebäudereinigung, Hausmeisterservice, Fensterreinigung, Treppenhausreinigung, Umzüge und Entrümpelung in Pirmasens und Umgebung.",
+                "Professionelle Gebäudereinigung, Hausmeisterservice, Fensterreinigung, Treppenhausreinigung, Umzüge und Entrümpelung in Pirmasens und Umgebung. Ihre zuverlässige Reinigungsfirma in der Südwestpfalz.",
               telephone: "+4915229043159",
               email: "salif-dienstleistungen@gmx.de",
+              foundingDate: "2020",
+              founder: {
+                "@type": "Person",
+                name: "Salif",
+              },
+              numberOfEmployees: {
+                "@type": "QuantitativeValue",
+                minValue: 1,
+                maxValue: 10,
+              },
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Emilienstraße 5a",
@@ -178,19 +198,27 @@ export default function RootLayout({
                 { "@type": "City", name: "Zweibrücken" },
                 { "@type": "City", name: "Kaiserslautern" },
                 { "@type": "City", name: "Landau" },
+                { "@type": "City", name: "Rodalben" },
+                { "@type": "City", name: "Dahn" },
+                { "@type": "City", name: "Waldfischbach-Burgalben" },
                 { "@type": "AdministrativeArea", name: "Südwestpfalz" },
+                { "@type": "AdministrativeArea", name: "Rheinland-Pfalz" },
               ],
+              knowsLanguage: ["de", "fr"],
               hasOfferCatalog: {
                 "@type": "OfferCatalog",
-                name: "Dienstleistungen",
+                name: "Reinigung & Gebäudeservice Dienstleistungen",
                 itemListElement: [
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Gebäudereinigung", description: "Professionelle Unterhalts- und Grundreinigung für Gewerbe und Privat" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hausmeisterservice", description: "Kleinreparaturen, Grünpflege, Winterdienst, Mülltonnenservice" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fensterreinigung", description: "Streifenfreie Glas- und Fensterreinigung" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Treppenhausreinigung", description: "Regelmäßige Reinigung von Treppenhäusern und Gemeinschaftsflächen" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Entrümpelung", description: "Wohnungsauflösung, Entrümpelung und fachgerechte Entsorgung" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Gebäudereinigung Pirmasens", description: "Professionelle Unterhalts- und Grundreinigung für Gewerbe und Privat in Pirmasens" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hausmeisterservice Pirmasens", description: "Kleinreparaturen, Grünpflege, Winterdienst, Mülltonnenservice in Pirmasens" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fensterreinigung Pirmasens", description: "Streifenfreie Glas- und Fensterreinigung für Privat und Gewerbe" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Treppenhausreinigung Pirmasens", description: "Regelmäßige Reinigung von Treppenhäusern und Gemeinschaftsflächen" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Entrümpelung Pirmasens", description: "Wohnungsauflösung, Entrümpelung und fachgerechte Entsorgung" } },
                   { "@type": "Offer", itemOffered: { "@type": "Service", name: "Umzüge & Kleintransporte", description: "Umzugsservice und Kleintransporte in Pirmasens und Umgebung" } },
                   { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dachrinnenreinigung", description: "Professionelle Reinigung von Dachrinnen" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Grundreinigung", description: "Intensive Grundreinigung für stark verschmutzte Räumlichkeiten" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Büroreinigung Pirmasens", description: "Regelmäßige Reinigung von Büros und Gewerbeflächen" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Winterdienst Pirmasens", description: "Schneeräumung und Streudienst für Privat und Gewerbe" } },
                 ],
               },
             }),
@@ -214,18 +242,18 @@ export default function RootLayout({
                 },
                 {
                   "@type": "Question",
-                  name: "In welchen Städten ist Salif Haus und Mehr tätig?",
+                  name: "In welchen Städten ist Salif Gebäudeservice tätig?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Wir sind hauptsächlich in Pirmasens und der Region Südwestpfalz tätig, darunter Zweibrücken, Kaiserslautern, Landau und Umgebung.",
+                    text: "Wir sind hauptsächlich in Pirmasens und der Region Südwestpfalz tätig, darunter Zweibrücken, Kaiserslautern, Landau, Rodalben, Dahn und Waldfischbach-Burgalben.",
                   },
                 },
                 {
                   "@type": "Question",
-                  name: "Bietet Salif Haus und Mehr auch Hausmeisterservice an?",
+                  name: "Bietet Salif Gebäudeservice auch Hausmeisterservice an?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Ja, wir bieten umfassenden Hausmeisterservice an: Kleinreparaturen, Grünpflege, Winterdienst, Mülltonnenservice und mehr – alles aus einer Hand.",
+                    text: "Ja, wir bieten umfassenden Hausmeisterservice in Pirmasens an: Kleinreparaturen, Grünpflege, Winterdienst, Mülltonnenservice und mehr – alles aus einer Hand.",
                   },
                 },
                 {
@@ -234,6 +262,30 @@ export default function RootLayout({
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "Sie können uns jederzeit unter 01522 904 3159 anrufen, eine WhatsApp-Nachricht schreiben oder eine E-Mail an salif-dienstleistungen@gmx.de senden. Wir melden uns schnell zurück.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Welche Reinigungsleistungen bietet Salif Gebäudeservice in Pirmasens an?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Wir bieten Gebäudereinigung, Fensterreinigung, Treppenhausreinigung, Grundreinigung, Unterhaltsreinigung, Büroreinigung, Dachrinnenreinigung, Hausmeisterservice, Entrümpelung, Umzüge und Kleintransporte in Pirmasens und der Südwestpfalz.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Bietet Salif Gebäudeservice auch Entrümpelung und Umzüge an?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Ja, wir übernehmen komplette Wohnungsauflösungen, Entrümpelungen mit fachgerechter Entsorgung sowie Umzüge und Kleintransporte in Pirmasens und der Region.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Wann ist Salif Gebäudeservice erreichbar?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Wir sind Montag bis Samstag von 7:00 bis 20:00 Uhr erreichbar. Sonntags auf Anfrage. Rufen Sie uns an unter 01522 904 3159 oder schreiben Sie uns per WhatsApp.",
                   },
                 },
               ],
