@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Impressum",
   description: "Impressum der Salif Gebäudeservice – Haus und mehr, Emilienstraße 5a, 66955 Pirmasens. Rechtliche Angaben gemäß § 5 DDG.",
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.xn--salif-gebudeservice-owb.de/impressum" },
+  alternates: { canonical: "https://www.salif-gebaeudeservice.de/impressum" },
 };
 
 export default function ImpressumPage() {

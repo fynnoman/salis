@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["700"],
 });
 
-const BASE_URL = "https://www.xn--salif-gebudeservice-owb.de";
+const BASE_URL = "https://www.salif-gebaeudeservice.de";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

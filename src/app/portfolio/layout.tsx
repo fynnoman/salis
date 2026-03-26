@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const BASE_URL = "https://www.xn--salif-gebudeservice-owb.de";
+const BASE_URL = "https://www.salif-gebaeudeservice.de";
 
 export const metadata: Metadata = {
   title: "Referenzprojekte Pirmasens – Reinigung & Hausmeister",
