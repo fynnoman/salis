@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const BASE_URL = "https://www.salif-gebäudeservice.de";
+const BASE_URL = "https://www.xn--salif-gebudeservice-owb.de";
 
 export const metadata: Metadata = {
   title: "Preise Gebäudereinigung Pirmasens – ab 28 €/Std.",
