@@ -13,6 +13,19 @@ export const metadata: Metadata = {
 export default function DatenschutzPage() {
   return (
     <main className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Startseite", item: "https://www.salif-gebaeudeservice.de" },
+              { "@type": "ListItem", position: 2, name: "Datenschutz", item: "https://www.salif-gebaeudeservice.de/datenschutz" },
+            ],
+          }),
+        }}
+      />
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <Link
           href="/"

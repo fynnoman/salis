@@ -99,7 +99,7 @@ function ProjectCard({
 			<div className="relative w-full h-60 flex-shrink-0 overflow-hidden">
 				<Image
 					src={project.image}
-					alt={project.title}
+					alt={`${project.category} – ${project.title} | Salif Gebäudeservice Pirmasens`}
 					fill
 					className="object-cover transition-transform duration-700 hover:scale-105"
 					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

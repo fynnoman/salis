@@ -76,7 +76,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
       <div className="relative w-full h-56 flex-shrink-0 overflow-hidden">
         <Image
           src={project.image}
-          alt={project.title}
+          alt={`${project.category} – ${project.title} | Salif Gebäudeservice Pirmasens`}
           fill
           className="object-cover"
           sizes="400px"

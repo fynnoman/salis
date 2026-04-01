@@ -78,10 +78,10 @@ export default function Services() {
       {/* Background image */}
       <Image
         src="/9ABD4A74-BF19-4D7A-9ADE-51AC3DDCBBD1.png"
-        alt=""
+        alt="Hintergrund Reinigungsservice Pirmasens"
         fill
         className="object-cover object-center"
-        priority={false}
+        loading="lazy"
         sizes="100vw"
       />
 

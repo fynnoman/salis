@@ -14,6 +14,14 @@ const footerLinks = [
   { name: "Kontakt", href: "#contact" },
 ];
 
+const serviceLinks = [
+  { name: "Gebäudereinigung", href: "/gebaeudereinigung-pirmasens" },
+  { name: "Treppenhausreinigung", href: "/treppenhausreinigung-pirmasens" },
+  { name: "Fensterreinigung", href: "/fensterreinigung-pirmasens" },
+  { name: "Entrümpelung", href: "/entruempelung-pirmasens" },
+  { name: "Hausmeisterservice", href: "/hausmeisterservice-pirmasens" },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-primary-dark text-white relative overflow-hidden">
@@ -21,7 +29,7 @@ export default function Footer() {
       <div className="absolute inset-0 pointer-events-none opacity-[0.10]">
         <Image
           src="/51D6E89F-A80E-41DF-9C4F-68DD77279567.png"
-          alt=""
+          alt="Salif Gebäudeservice Logo"
           fill
           className="object-cover"
         />
@@ -29,7 +37,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Main footer */}
-        <div className="grid md:grid-cols-3 gap-10 md:gap-16 py-14 md:py-28">
+        <div className="grid md:grid-cols-4 gap-10 md:gap-12 py-14 md:py-28">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -66,6 +74,27 @@ export default function Footer() {
             <nav aria-label="Footer Navigation">
               <ul className="space-y-3">
                 {footerLinks.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-white/70 hover:text-accent transition-colors text-sm"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          {/* Service links */}
+          <div>
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-white/40 mb-5">
+              Leistungen
+            </h4>
+            <nav aria-label="Leistungen Navigation">
+              <ul className="space-y-3">
+                {serviceLinks.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
