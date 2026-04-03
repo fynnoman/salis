@@ -29,7 +29,7 @@ export default function About() {
           >
             <div className="relative w-full max-w-lg mx-auto aspect-square rounded-3xl overflow-hidden shadow-2xl bg-white">
               <Image
-                src="/B817091D-7DD4-4933-B2A3-C1F9F15867F1.png"
+                src={about.logoImage}
                 alt="Salif Gebäudeservice Logo"
                 fill
                 className="object-contain scale-90"

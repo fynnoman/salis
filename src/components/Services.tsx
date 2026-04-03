@@ -64,7 +64,7 @@ export default function Services() {
     <section id="services" className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background image */}
       <Image
-        src="/9ABD4A74-BF19-4D7A-9ADE-51AC3DDCBBD1.png"
+        src={services.backgroundImage}
         alt="Hintergrund Reinigungsservice Pirmasens"
         fill
         className="object-cover object-center"

@@ -4,7 +4,8 @@
     "title2": "Gebäude",
     "title3": "service",
     "subtitle": "Professionelle Reinigung &\nGebäudeservice in Pirmasens",
-    "srText": "Salif Gebäudeservice – Ihre Reinigungsfirma in Pirmasens. Professionelle Gebäudereinigung, Fensterreinigung, Treppenhausreinigung, Hausmeisterservice, Entrümpelung und Umzüge in Pirmasens, Zweibrücken und der Südwestpfalz."
+    "srText": "Salif Gebäudeservice – Ihre Reinigungsfirma in Pirmasens. Professionelle Gebäudereinigung, Fensterreinigung, Treppenhausreinigung, Hausmeisterservice, Entrümpelung und Umzüge in Pirmasens, Zweibrücken und der Südwestpfalz.",
+    "backgroundImage": "/Gemini_Generated_Image_lr33hilr33hilr33.png"
   },
   "services": {
     "label": "Was wir bieten",
@@ -24,12 +25,14 @@
       "Kleintransporte"
     ],
     "highlightTitle": "Küchen­ab- & Wiederaufbau beim Umzug",
-    "highlightText": "Bei Umzügen übernehmen wir auf Wunsch den fachgerechten Abbau Ihrer Küche sowie die professionelle Wieder­montage am neuen Standort. Bei Bedarf passen wir die Küche an die neuen Räumlichkeiten an – für einen sauberen, sicheren und professionellen Wiedereinbau."
+    "highlightText": "Bei Umzügen übernehmen wir auf Wunsch den fachgerechten Abbau Ihrer Küche sowie die professionelle Wieder­montage am neuen Standort. Bei Bedarf passen wir die Küche an die neuen Räumlichkeiten an – für einen sauberen, sicheren und professionellen Wiedereinbau.",
+    "backgroundImage": "/9ABD4A74-BF19-4D7A-9ADE-51AC3DDCBBD1.png"
   },
   "about": {
     "label": "Über uns",
     "title": "Ihr zuverlässiger Partner in",
     "titleHighlight": "Pirmasens",
+    "logoImage": "/B817091D-7DD4-4933-B2A3-C1F9F15867F1.png",
     "text1": "Salif Gebäudeservice steht für professionelle Reinigung in Pirmasens und der Region Südwestpfalz. Von der Gebäudereinigung über den Hausmeisterservice bis hin zu Umzügen und Entrümpelungen bieten wir Ihnen zuverlässige Reinigung aus einer Hand – für Privat und Gewerbe.",
     "text2": "Als lokale Reinigungsfirma in Pirmasens arbeiten wir gründlich, flexibel und immer mit dem Ziel, unsere Kunden zu 100 % zufriedenzustellen. Überzeugen Sie sich von unserer Qualität!",
     "keyPoints": [

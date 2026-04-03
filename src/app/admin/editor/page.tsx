@@ -15,6 +15,8 @@ import {
   AlertCircle,
   Loader2,
   Shield,
+  Upload,
+  ImageIcon,
 } from "lucide-react";
 import type { SiteContent, AboutStat } from "@/lib/content";
 import { DEFAULT_CONTENT } from "@/lib/content";
@@ -138,6 +140,127 @@ function ListField({
         <Plus className="w-4 h-4" />
         Eintrag hinzufügen
       </button>
+    </div>
+  );
+}
+
+/* ─── Image Upload Field ─────────────────────────────────────────────── */
+
+function ImageField({
+  label,
+  value,
+  onChange,
+  password,
+  hint,
+}: {
+  label: string;
+  value: string;
+  onChange: (path: string) => void;
+  password: string;
+  hint?: string;
+}) {
+  const [uploading, setUploading] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+
+  const handleUpload = async (file: File) => {
+    if (!file.type.startsWith("image/")) {
+      alert("Nur Bilddateien erlaubt.");
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      alert("Datei zu groß (max. 10 MB).");
+      return;
+    }
+
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("filename", `${Date.now()}-${file.name}`);
+      formData.append("password", password);
+
+      const res = await fetch("/api/content/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        onChange(data.path);
+      } else {
+        const data = await res.json().catch(() => ({}));
+        alert(`Upload-Fehler: ${data.error || res.statusText}`);
+      }
+    } catch {
+      alert("Netzwerkfehler beim Upload.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <div>
+      <label className="block text-sm font-semibold text-gray-600 mb-1.5">{label}</label>
+      {hint && <p className="text-xs text-gray-400 mb-2">{hint}</p>}
+
+      <div className="flex gap-4 items-start">
+        {/* Preview */}
+        {value && (
+          <div className="w-24 h-24 rounded-xl border border-gray-200 overflow-hidden flex-shrink-0 bg-gray-100">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={value} alt="Vorschau" className="w-full h-full object-cover" />
+          </div>
+        )}
+
+        {/* Upload area */}
+        <div className="flex-1 space-y-2">
+          <div
+            onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+            onDragLeave={() => setDragOver(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setDragOver(false);
+              const file = e.dataTransfer.files[0];
+              if (file) handleUpload(file);
+            }}
+            className={`relative flex flex-col items-center justify-center py-6 px-4 rounded-xl border-2 border-dashed transition-all cursor-pointer ${
+              dragOver
+                ? "border-[#22c55e] bg-[#22c55e]/5"
+                : "border-gray-200 bg-gray-50 hover:border-gray-300"
+            }`}
+          >
+            <input
+              type="file"
+              accept="image/*"
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) handleUpload(file);
+              }}
+            />
+            {uploading ? (
+              <Loader2 className="w-6 h-6 text-[#22c55e] animate-spin" />
+            ) : (
+              <>
+                <Upload className="w-5 h-5 text-gray-400 mb-1" />
+                <span className="text-xs text-gray-500">Bild hierher ziehen oder klicken</span>
+              </>
+            )}
+          </div>
+
+          {/* Current path */}
+          <div className="flex items-center gap-2">
+            <ImageIcon className="w-3.5 h-3.5 text-gray-400" />
+            <input
+              type="text"
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              placeholder="/pfad/zum/bild.jpg"
+              className="flex-1 px-3 py-1.5 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#22c55e] outline-none text-gray-600 text-xs"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -421,6 +544,13 @@ export default function AdminEditorPage() {
             onChange={(v) => set("hero", { ...content.hero, srText: v })}
             multiline
           />
+          <ImageField
+            label="Hintergrundbild"
+            value={content.hero.backgroundImage}
+            onChange={(v) => set("hero", { ...content.hero, backgroundImage: v })}
+            password={password}
+            hint="Das große Bild im Startbereich der Website"
+          />
         </Section>
 
         {/* ── Services Section ──────────────────────────────────────────── */}
@@ -455,6 +585,13 @@ export default function AdminEditorPage() {
               multiline
             />
           </div>
+          <ImageField
+            label="Hintergrundbild (Leistungen-Sektion)"
+            value={content.services.backgroundImage}
+            onChange={(v) => set("services", { ...content.services, backgroundImage: v })}
+            password={password}
+            hint="Das große Hintergrundbild hinter der Leistungsliste"
+          />
         </Section>
 
         {/* ── About Section ─────────────────────────────────────────────── */}
@@ -473,6 +610,13 @@ export default function AdminEditorPage() {
             label="Highlight-Wort (grün)"
             value={content.about.titleHighlight}
             onChange={(v) => set("about", { ...content.about, titleHighlight: v })}
+          />
+          <ImageField
+            label="Logo-Bild (Über uns Sektion)"
+            value={content.about.logoImage}
+            onChange={(v) => set("about", { ...content.about, logoImage: v })}
+            password={password}
+            hint="Das Logo/Bild links neben dem Über-uns-Text (nur auf Desktop sichtbar)"
           />
           <Field
             label="Absatz 1"

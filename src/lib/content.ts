@@ -13,6 +13,7 @@ export interface HeroContent {
   title3: string;
   subtitle: string;
   srText: string;
+  backgroundImage: string;
 }
 
 export interface ServicesContent {
@@ -21,6 +22,7 @@ export interface ServicesContent {
   items: string[];
   highlightTitle: string;
   highlightText: string;
+  backgroundImage: string;
 }
 
 export interface AboutStat {
@@ -32,6 +34,7 @@ export interface AboutContent {
   label: string;
   title: string;
   titleHighlight: string;
+  logoImage: string;
   text1: string;
   text2: string;
   keyPoints: string[];
@@ -81,6 +84,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     title3: "service",
     subtitle: "Professionelle Reinigung &\nGebäudeservice in Pirmasens",
     srText: "",
+    backgroundImage: "/Gemini_Generated_Image_lr33hilr33hilr33.png",
   },
   services: {
     label: "Was wir bieten",
@@ -88,11 +92,13 @@ export const DEFAULT_CONTENT: SiteContent = {
     items: [],
     highlightTitle: "",
     highlightText: "",
+    backgroundImage: "/9ABD4A74-BF19-4D7A-9ADE-51AC3DDCBBD1.png",
   },
   about: {
     label: "Über uns",
     title: "Ihr zuverlässiger Partner in",
     titleHighlight: "Pirmasens",
+    logoImage: "/B817091D-7DD4-4933-B2A3-C1F9F15867F1.png",
     text1: "",
     text2: "",
     keyPoints: [],

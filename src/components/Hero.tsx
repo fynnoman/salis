@@ -16,7 +16,7 @@ export default function Hero() {
     >
       {/* Background image */}
       <Image
-        src="/Gemini_Generated_Image_lr33hilr33hilr33.png"
+        src={hero.backgroundImage}
         alt="Salif Gebäudeservice – professionelle Reinigung und Hausmeisterservice in Pirmasens"
         fill
         priority
