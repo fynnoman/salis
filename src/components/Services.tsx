@@ -5,21 +5,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, Wrench } from "lucide-react";
 import Image from "next/image";
 import { useScrollLineY } from "./ScrollLineContext";
-
-const services = [
-  "Glas- & Fensterreinigung",
-  "Gebäudereinigung",
-  "Grundreinigung",
-  "Sonderreinigung",
-  "Unterhaltsreinigung",
-  "Hausmeisterservice",
-  "Treppenhausreinigung",
-  "Dachrinnenreinigung",
-  "Firmenreinigung",
-  "Hausreinigung",
-  "Umzüge & Entrümpelung",
-  "Kleintransporte",
-];
+import { useContent } from "@/hooks/useContent";
 
 function ServiceItem({ label, index }: { label: string; index: number }) {
   const ref = useRef<HTMLLIElement>(null);
@@ -73,6 +59,7 @@ function ServiceItem({ label, index }: { label: string; index: number }) {
 }
 
 export default function Services() {
+  const { services } = useContent();
   return (
     <section id="services" className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background image */}
@@ -95,14 +82,14 @@ export default function Services() {
           className="max-w-xl"
         >
           <span className="inline-block text-accent font-semibold text-sm tracking-widest uppercase mb-3">
-            Was wir bieten
+            {services.label}
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-primary mb-14 leading-tight">
-            Unsere Leistungen
+            {services.title}
           </h2>
 
           <ul className="space-y-8">
-            {services.map((service, i) => (
+            {services.items.map((service, i) => (
               <ServiceItem key={service} label={service} index={i} />
             ))}
           </ul>
@@ -121,13 +108,10 @@ export default function Services() {
               </div>
               <div>
                 <h3 className="text-base font-bold text-primary mb-2">
-                  Küchen­ab- & Wiederaufbau beim Umzug
+                  {services.highlightTitle}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Bei Umzügen übernehmen wir auf Wunsch den fachgerechten Abbau Ihrer Küche
-                  sowie die professionelle Wieder&shy;montage am neuen Standort. Bei Bedarf
-                  passen wir die Küche an die neuen Räumlichkeiten an – für einen sauberen,
-                  sicheren und professionellen Wiedereinbau.
+                  {services.highlightText}
                 </p>
               </div>
             </div>

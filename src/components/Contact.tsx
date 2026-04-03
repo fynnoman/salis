@@ -2,38 +2,41 @@
 
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import { useContent } from "@/hooks/useContent";
 
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
-const contactItems = [
-  {
-    icon: Phone,
-    label: "Telefon / WhatsApp",
-    value: "01522 904 3159",
-    href: "tel:015229043159",
-  },
-  {
-    icon: Mail,
-    label: "E-Mail",
-    value: "salif-dienstleistungen@gmx.de",
-    href: "mailto:salif-dienstleistungen@gmx.de",
-  },
-  {
-    icon: MapPin,
-    label: "Adresse",
-    value: "Emilienstraße 5a, 66955 Pirmasens",
-    href: null,
-  },
-  {
-    icon: Clock,
-    label: "Erreichbarkeit",
-    value: "Mo – Sa: 7:00 – 20:00 Uhr",
-    href: null,
-  },
-];
-
 export default function Contact() {
+  const { contact } = useContent();
+
+  const contactItems = [
+    {
+      icon: Phone,
+      label: "Telefon / WhatsApp",
+      value: contact.phone,
+      href: `tel:${contact.phoneRaw}`,
+    },
+    {
+      icon: Mail,
+      label: "E-Mail",
+      value: contact.email,
+      href: `mailto:${contact.email}`,
+    },
+    {
+      icon: MapPin,
+      label: "Adresse",
+      value: contact.address,
+      href: null,
+    },
+    {
+      icon: Clock,
+      label: "Erreichbarkeit",
+      value: contact.hours,
+      href: null,
+    },
+  ];
+
   return (
     <section id="contact" className="py-24 sm:py-32 bg-white relative overflow-hidden">
       {/* Subtle green grid */}
@@ -58,13 +61,13 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <span className="inline-block text-accent font-semibold text-sm tracking-widest uppercase mb-3">
-            Kontakt
+            {contact.label}
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-primary mb-4">
-            Jetzt Kontakt aufnehmen
+            {contact.title}
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-lg">
-            Wir freuen uns auf Ihre Anfrage – für ein unverbindliches Angebot einfach melden.
+            {contact.subtitle}
           </p>
         </motion.div>
 
@@ -117,7 +120,7 @@ export default function Contact() {
           className="flex justify-center"
         >
           <motion.a
-            href="https://wa.me/4915229043159"
+            href={`https://wa.me/49${contact.phoneRaw}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 rounded-2xl font-bold text-white text-lg"
@@ -126,7 +129,7 @@ export default function Contact() {
             whileTap={{ scale: 0.97 }}
           >
             <MessageCircle className="w-5 h-5" />
-            Über WhatsApp schreiben
+            {contact.whatsappText}
           </motion.a>
         </motion.div>
       </div>

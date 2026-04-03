@@ -3,10 +3,12 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { useContent } from "@/hooks/useContent";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 export default function Hero() {
+  const { hero } = useContent();
   return (
     <section
       id="hero"
@@ -37,14 +39,16 @@ export default function Hero() {
             >
               {/* Big brand heading */}
               <h1 className="font-[family-name:var(--font-space-grotesk)] text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[0.9] tracking-tight uppercase">
-                Salif<br />
-                <span className="text-[#22c55e]">Gebäude</span>service
+                {hero.title1}<br />
+                <span className="text-[#22c55e]">{hero.title2}</span>{hero.title3}
               </h1>
               <p className="font-[family-name:var(--font-space-grotesk)] text-lg sm:text-xl lg:text-2xl font-medium text-white/60 mt-4 tracking-wide uppercase">
-                Professionelle Reinigung &<br />Gebäudeservice in Pirmasens
+                {hero.subtitle.split("\n").map((line, i) => (
+                  <span key={i}>{line}{i < hero.subtitle.split("\n").length - 1 && <br />}</span>
+                ))}
               </p>
               <span className="sr-only">
-                Salif Gebäudeservice – Ihre Reinigungsfirma in Pirmasens. Professionelle Gebäudereinigung, Fensterreinigung, Treppenhausreinigung, Hausmeisterservice, Entrümpelung und Umzüge in Pirmasens, Zweibrücken und der Südwestpfalz.
+                {hero.srText}
               </span>
             </motion.div>
           </div>

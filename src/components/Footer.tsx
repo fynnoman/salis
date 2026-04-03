@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, ArrowUp, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { useContent } from "@/hooks/useContent";
 
 const footerLinks = [
   { name: "Start", href: "#hero" },
@@ -23,6 +24,7 @@ const serviceLinks = [
 ];
 
 export default function Footer() {
+  const { footer } = useContent();
   return (
     <footer className="bg-primary-dark text-white relative overflow-hidden">
       {/* Logo as full background */}
@@ -52,8 +54,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-              Haus und mehr – Ihre zuverlässigen Dienstleistungen aus einer
-              Hand in Pirmasens und Umgebung.
+              {footer.tagline}
             </p>
             <motion.a
               href="/portfolio"
@@ -116,26 +117,26 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:015229043159"
+                  href={`tel:${footer.phone.replace(/\s/g, "")}`}
                   className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors text-sm"
                 >
                   <Phone className="w-4 h-4" />
-                  01522 904 3159
+                  {footer.phone}
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:salif-dienstleistungen@gmx.de"
+                  href={`mailto:${footer.email}`}
                   className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors text-sm"
                 >
                   <Mail className="w-4 h-4" />
-                  salif-dienstleistungen@gmx.de
+                  {footer.email}
                 </a>
               </li>
               <li>
                 <div className="flex items-center gap-3 text-white/70 text-sm">
                   <MapPin className="w-4 h-4 flex-shrink-0" />
-                  Emilienstraße 5a, 66955 Pirmasens
+                  {footer.address}
                 </div>
               </li>
             </ul>
