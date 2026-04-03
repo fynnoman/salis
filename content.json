@@ -1,31 +1,66 @@
 {
   "hero": {
     "title1": "Salif",
-    "title2": "Gebäude",
+    "title2": "Gebäudo",
     "title3": "service",
     "subtitle": "Professionelle Reinigung &\nGebäudeservice in Pirmasens",
-    "srText": ""
+    "srText": "Salif Gebäudeservice – Ihre Reinigungsfirma in Pirmasens. Professionelle Gebäudereinigung, Fensterreinigung, Treppenhausreinigung, Hausmeisterservice, Entrümpelung und Umzüge in Pirmasens, Zweibrücken und der Südwestpfalz."
   },
   "services": {
     "label": "Was wir bieten",
     "title": "Unsere Leistungen",
-    "items": [],
-    "highlightTitle": "",
-    "highlightText": ""
+    "items": [
+      "Glas- & Fensterreinigung",
+      "Gebäudereinigung",
+      "Grundreinigung",
+      "Sonderreinigung",
+      "Unterhaltsreinigung",
+      "Hausmeisterservice",
+      "Treppenhausreinigung",
+      "Dachrinnenreinigung",
+      "Firmenreinigung",
+      "Hausreinigung",
+      "Umzüge & Entrümpelung",
+      "Kleintransporte"
+    ],
+    "highlightTitle": "Küchen­ab- & Wiederaufbau beim Umzug",
+    "highlightText": "Bei Umzügen übernehmen wir auf Wunsch den fachgerechten Abbau Ihrer Küche sowie die professionelle Wieder­montage am neuen Standort. Bei Bedarf passen wir die Küche an die neuen Räumlichkeiten an – für einen sauberen, sicheren und professionellen Wiedereinbau."
   },
   "about": {
     "label": "Über uns",
     "title": "Ihr zuverlässiger Partner in",
     "titleHighlight": "Pirmasens",
-    "text1": "",
-    "text2": "",
-    "keyPoints": [],
-    "stats": []
+    "text1": "Salif Gebäudeservice steht für professionelle Reinigung in Pirmasens und der Region Südwestpfalz. Von der Gebäudereinigung über den Hausmeisterservice bis hin zu Umzügen und Entrümpelungen bieten wir Ihnen zuverlässige Reinigung aus einer Hand – für Privat und Gewerbe.",
+    "text2": "Als lokale Reinigungsfirma in Pirmasens arbeiten wir gründlich, flexibel und immer mit dem Ziel, unsere Kunden zu 100 % zufriedenzustellen. Überzeugen Sie sich von unserer Qualität!",
+    "keyPoints": [
+      "Professionelle und erfahrene Mitarbeiter",
+      "Faire und transparente Preise",
+      "Flexible Terminvereinbarung",
+      "Persönliche Beratung vor Ort"
+    ],
+    "stats": [
+      {
+        "value": "Seit 2020",
+        "label": "Im Einsatz"
+      },
+      {
+        "value": "Regional",
+        "label": "In Pirmasens"
+      },
+      {
+        "value": "100%",
+        "label": "Zuverlässigkeit"
+      },
+      {
+        "value": "9+",
+        "label": "Dienstleistungen"
+      }
+    ]
   },
   "contact": {
     "label": "Kontakt",
     "title": "Jetzt Kontakt aufnehmen",
-    "subtitle": "",
+    "subtitle": "Wir freuen uns auf Ihre Anfrage – für ein unverbindliches Angebot einfach melden.",
     "phone": "01522 904 3159",
     "phoneRaw": "015229043159",
     "email": "salif-dienstleistungen@gmx.de",
@@ -34,12 +69,16 @@
     "whatsappText": "Über WhatsApp schreiben"
   },
   "seoBlock": {
-    "title": "",
-    "paragraphs": [],
-    "ctaText": ""
+    "title": "Ihre Reinigungsfirma in Pirmasens – Salif Gebäudeservice",
+    "paragraphs": [
+      "<strong>Salif Gebäudeservice</strong> ist Ihre professionelle Reinigungsfirma in Pirmasens. Als lokales Reinigungsunternehmen bieten wir Gebäudereinigung, Fensterreinigung, Treppenhausreinigung, Grundreinigung und Unterhaltsreinigung für Privat- und Gewerbekunden in Pirmasens und der gesamten Region Südwestpfalz.",
+      "Unser Leistungsspektrum umfasst professionelle <strong>Büroreinigung in Pirmasens</strong>, streifenfreie <strong>Glasreinigung</strong>, regelmäßige <strong>Treppenhausreinigung</strong> für Hausverwaltungen und Vermieter, sowie <strong>Hausmeisterservice</strong> mit Grünpflege, Winterdienst und Kleinreparaturen. Darüber hinaus bieten wir <strong>Entrümpelung</strong>, Wohnungsauflösungen, <strong>Umzüge</strong> und Kleintransporte an.",
+      "Mit erfahrenem Team, flexiblen Servicezeiten und fairen Preisen sorgt Salif Gebäudeservice für nachhaltige Sauberkeit – in Pirmasens, Zweibrücken, Kaiserslautern, Landau und der Südwestpfalz. Schnell, zuverlässig und persönlich."
+    ],
+    "ctaText": "Jetzt unverbindliches Angebot anfordern:"
   },
   "footer": {
-    "tagline": "",
+    "tagline": "Haus und mehr – Ihre zuverlässigen Dienstleistungen aus einer Hand in Pirmasens und Umgebung.",
     "phone": "01522 904 3159",
     "email": "salif-dienstleistungen@gmx.de",
     "address": "Emilienstraße 5a, 66955 Pirmasens"
