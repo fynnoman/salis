@@ -6,7 +6,6 @@ import Portfolio from "@/components/Portfolio";
 import BeforeAfter from "@/components/BeforeAfter";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ScrollLine from "@/components/ScrollLine";
 import { ScrollLineProvider } from "@/components/ScrollLineContext";
 import SeoTextblock from "@/components/SeoTextblock";
 
@@ -39,7 +38,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <ScrollLine />
     </ScrollLineProvider>
   );
 }
