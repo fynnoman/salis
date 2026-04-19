@@ -10,20 +10,9 @@
   "services": {
     "label": "Was wir bieten",
     "title": "Unsere Leistungen",
-    "items": [
-      "Gebäudereinigung (Unterhalts- & Grundreinigung)",
-      "Treppenhausreinigung",
-      "Fensterreinigung & Glasreinigung",
-      "Hausmeisterservice",
-      "Entrümpelung & Wohnungsauflösung",
-      "Umzüge & Kleintransporte",
-      "Büroreinigung",
-      "Grundreinigung",
-      "Dachrinnenreinigung",
-      "Winterdienst"
-    ],
-    "highlightTitle": "Küchenmontage & Möbelaufbau",
-    "highlightText": "Wir übernehmen auch den fachgerechten Aufbau Ihrer Küche oder Möbel – schnell, sauber und zuverlässig.",
+    "items": [],
+    "highlightTitle": "",
+    "highlightText": "",
     "backgroundImage": "/9ABD4A74-BF19-4D7A-9ADE-51AC3DDCBBD1.png"
   },
   "about": {
