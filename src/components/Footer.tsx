@@ -187,6 +187,26 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      {/* Unsichtbarer Taskey-Link */}
+      <a
+        href="https://www.taskeyapp.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        tabIndex={-1}
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          bottom: 0,
+          right: 0,
+          width: 1,
+          height: 1,
+          opacity: 0,
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      >
+        .
+      </a>
     </footer>
   );
 }
