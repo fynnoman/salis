@@ -53,7 +53,7 @@ export default function ImpressumPage() {
           <div>
             <h2 className="text-lg font-bold text-[#1a3a5c] mb-2">Vertreten durch die Gesellschafter</h2>
             <p>
-              Salif Diallo<br />
+              Salif Ramadan<br />
               (weitere Gesellschafter auf Anfrage)
             </p>
           </div>
@@ -89,7 +89,7 @@ export default function ImpressumPage() {
           <div>
             <h2 className="text-lg font-bold text-[#1a3a5c] mb-2">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
             <p>
-              Salif Diallo<br />
+              Salif Ramadan<br />
               Emilienstraße 5a<br />
               66955 Pirmasens
             </p>
