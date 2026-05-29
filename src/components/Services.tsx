@@ -49,7 +49,7 @@ function ServiceItem({ label, index }: { label: string; index: number }) {
         className={`text-lg sm:text-xl font-medium transition-all duration-300 ${
           active || isMobile
             ? "text-gray-900 font-semibold"
-            : "text-gray-300"
+            : "text-gray-900"
         }`}
       >
         {label}
