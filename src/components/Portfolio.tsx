@@ -279,7 +279,14 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   return (
     <div
       className="relative flex-shrink-0 rounded-3xl overflow-hidden flex flex-col"
-      style={{ backgroundColor: project.color, width: CARD_W, height: 520 }}
+      style={{
+        backgroundColor: project.color,
+        width: CARD_W,
+        height: 520,
+        contain: 'paint',
+        contentVisibility: 'auto',
+        containIntrinsicSize: `${CARD_W}px 520px`,
+      }}
     >
       {/* Photo — top half */}
       <div className="relative w-full h-56 flex-shrink-0 overflow-hidden">
@@ -316,7 +323,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         />
         {/* Glow blob */}
         <div
-          className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full opacity-20 blur-3xl"
+          className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full opacity-20 blur-xl pointer-events-none"
           style={{ backgroundColor: project.accent }}
         />
 
