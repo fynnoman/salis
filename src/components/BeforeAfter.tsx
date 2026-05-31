@@ -17,6 +17,11 @@ const pairs = [
     before: '/a998c5e8-6c48-4a0f-8b93-87a3f5254594.JPG',
     after: '/5230b468-5b76-4488-8abf-36743fe3922e.JPG',
   },
+  {
+    label: 'Glas- & Wintergartenreinigung',
+    before: 'https://i.ibb.co/WWJsrB7D/Whats-App-Image-2026-05-31-at-21-05-23-1.jpg',
+    after: 'https://i.ibb.co/QvMHYjZp/Whats-App-Image-2026-05-31-at-21-05-23-2.jpg',
+  },
 ];
 
 function SliderCard({ pair }: { pair: typeof pairs[0] }) {
