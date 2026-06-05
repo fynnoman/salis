@@ -12,7 +12,13 @@ export const metadata: Metadata = {
     "Unterhaltsreinigung Pirmasens",
     "Grundreinigung Pirmasens",
     "Reinigungsfirma Pirmasens",
+    "Reinigungsunternehmen Pirmasens",
     "Gewerbereinigung Pirmasens",
+    "Gebäudeservice Pirmasens",
+    "Gebäudereinigung Südwestpfalz",
+    "Reinigung Pirmasens Festpreis",
+    "Putzfirma Pirmasens",
+    "Reinigungsservice Pirmasens",
   ],
   alternates: {
     canonical: `${BASE_URL}/gebaeudereinigung-pirmasens`,

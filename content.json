@@ -3,8 +3,8 @@
     "title1": "Salif",
     "title2": "Gebäude",
     "title3": "service",
-    "subtitle": "Professionelle Reinigung &\nGebäudeservice in Pirmasens",
-    "srText": "",
+    "subtitle": "Professionelle Reinigung &\nGebäudeservice in Pirmasens, Kaiserslautern & der Westpfalz",
+    "srText": "Salif Gebäudeservice – Ihre zuverlässige Reinigungsfirma und Hausmeisterservice in Pirmasens, Kaiserslautern, Zweibrücken, Landstuhl und Homburg. Gebäudereinigung, Unterhaltsreinigung, Grundreinigung, Büroreinigung, Fensterreinigung, Glasreinigung, Wintergartenreinigung, Treppenhausreinigung, Dachrinnenreinigung, Hausmeisterservice, Entrümpelung und Winterdienst – alles aus einer Hand.",
     "backgroundImage": "/Gemini_Generated_Image_lr33hilr33hilr33.png"
   },
   "services": {
@@ -12,15 +12,17 @@
     "title": "Unsere Leistungen",
     "items": [
       "Gebäudereinigung (Unterhalts- & Grundreinigung)",
-      "Treppenhausreinigung",
+      "Unterhaltsreinigung für Büros, Praxen & WEGs",
+      "Grundreinigung mit Maschinentechnik",
+      "Büroreinigung & Praxisreinigung",
+      "Treppenhausreinigung in Mehrfamilienhäusern",
       "Fensterreinigung & Glasreinigung",
-      "Hausmeisterservice",
+      "Wintergartenreinigung innen & außen",
+      "Dachrinnenreinigung mit Endoskop-Prüfung",
+      "Hausmeisterservice & Kleinreparaturen",
       "Entrümpelung & Wohnungsauflösung",
       "Umzüge & Kleintransporte",
-      "Büroreinigung",
-      "Grundreinigung",
-      "Dachrinnenreinigung",
-      "Winterdienst"
+      "Winterdienst & Streudienst"
     ],
     "highlightTitle": "Küchenmontage & Möbelaufbau",
     "highlightText": "Wir übernehmen auch den fachgerechten Aufbau Ihrer Küche oder Möbel – schnell, sauber und zuverlässig.",
@@ -29,17 +31,29 @@
   "about": {
     "label": "Über uns",
     "title": "Ihr zuverlässiger Partner in",
-    "titleHighlight": "Pirmasens",
+    "titleHighlight": "Pirmasens & Kaiserslautern",
     "logoImage": "/B817091D-7DD4-4933-B2A3-C1F9F15867F1.png",
-    "text1": "",
-    "text2": "",
-    "keyPoints": [],
-    "stats": []
+    "text1": "Salif Gebäudeservice – Haus und Mehr ist ein inhabergeführter Familienbetrieb mit Sitz in Pirmasens. Seit unserer Gründung im Jahr 2020 stehen wir Privathaushalten, Hausverwaltungen, Vermietern, Praxen und Gewerbebetrieben in ganz Südwestpfalz und Westpfalz mit einem breiten Dienstleistungsspektrum zur Seite – von der täglichen Unterhaltsreinigung über professionelle Glas- und Fensterreinigung bis zur kompletten Wohnungsauflösung und dem klassischen Hausmeisterservice.",
+    "text2": "Unser Anspruch ist einfach: zuverlässige Termine, faire Preise und ein Ergebnis, das man sieht und das auch nach Wochen noch überzeugt. Wir arbeiten mit eigenen, geschulten Mitarbeitern, eigener Profi-Ausrüstung und einem Reinigungsplan, den Sie jederzeit nachvollziehen können. So wissen Sie zu jeder Zeit, was wann gemacht wird, wer kommt und was Sie dafür bezahlen – ohne versteckte Aufpreise, ohne wechselnde Subunternehmer, ohne böse Überraschungen am Monatsende.",
+    "keyPoints": [
+      "Inhabergeführter Familienbetrieb seit 2020 – kurze Wege, klare Ansprechpartner",
+      "Eigenes geschultes Personal, eigene Maschinen, eigene Materialien",
+      "Festpreise auf Begehung – keine versteckten Aufpreise oder Subunternehmer",
+      "Erreichbar Montag bis Samstag von 7 bis 20 Uhr – telefonisch und per WhatsApp",
+      "Umfassend haftpflicht- und betriebsversichert – Nachweise auf Anfrage",
+      "Aktiv in Pirmasens, Kaiserslautern, Zweibrücken, Landstuhl, Homburg & Umgebung"
+    ],
+    "stats": [
+      { "value": "5+", "label": "Jahre Erfahrung in der Region" },
+      { "value": "1.500+", "label": "Abgeschlossene Aufträge" },
+      { "value": "12", "label": "Leistungsbereiche aus einer Hand" },
+      { "value": "100 %", "label": "Nachreinigung bei Reklamation" }
+    ]
   },
   "contact": {
     "label": "Kontakt",
     "title": "Jetzt Kontakt aufnehmen",
-    "subtitle": "",
+    "subtitle": "Wir freuen uns auf Ihre Anfrage – ob kleine Reinigung in der Wohnung oder Rahmenvertrag für mehrere Objekte. Sie erreichen uns Mo–Sa von 7 bis 20 Uhr telefonisch, per WhatsApp oder per E-Mail. Antwort meistens innerhalb weniger Stunden.",
     "phone": "01522 904 3159",
     "phoneRaw": "015229043159",
     "email": "salif-dienstleistungen@gmx.de",
@@ -48,12 +62,19 @@
     "whatsappText": "Über WhatsApp schreiben"
   },
   "seoBlock": {
-    "title": "",
-    "paragraphs": [],
-    "ctaText": ""
+    "title": "Reinigungsfirma in Pirmasens, Kaiserslautern & der Westpfalz – aus einer Hand",
+    "paragraphs": [
+      "<strong>Salif Gebäudeservice – Haus und Mehr</strong> ist Ihr inhabergeführter Familienbetrieb für <strong>professionelle Gebäudereinigung in Pirmasens</strong> und <strong>Kaiserslautern</strong>. Seit unserer Gründung sind wir der zuverlässige Partner für Privathaushalte, Hausverwaltungen, Vermieter, Praxen, Kindergärten und Gewerbebetriebe in der gesamten Region Südwestpfalz und Westpfalz – mit eigenem Personal, eigener Maschinentechnik und einem klaren Versprechen: faire Festpreise, dokumentierte Qualität und sichtbare Ergebnisse.",
+      "Unser Leistungsspektrum umfasst alle klassischen Bereiche der modernen Gebäudereinigung: <strong>Unterhaltsreinigung</strong> für Büros, Arztpraxen und WEG-Anlagen, <strong>Grundreinigung</strong> mit Einscheibenmaschine und Pflegeschicht, <strong>Treppenhausreinigung</strong> in Mehrfamilienhäusern, <strong>Fenster- und Glasreinigung</strong> mit osmotisch entsalztem Wasser, <strong>Wintergartenreinigung</strong> mit Teleskoptechnik bis 12 Meter, <strong>Dachrinnenreinigung</strong> mit Endoskop-Kamera und Schadensprotokoll, <strong>Büroreinigung</strong> mit festem Personal sowie <strong>Glasreinigung</strong> von Schaufenstern, Glasfassaden und Lichtkuppeln.",
+      "Darüber hinaus übernehmen wir den klassischen <strong>Hausmeisterservice in Pirmasens und Kaiserslautern</strong>: Kleinreparaturen, Grünpflege, Mülltonnenservice, Sichtkontrollen, Glühbirnen-Tausch, Filterwechsel sowie den kompletten <strong>Winterdienst</strong> mit Räumprotokoll und Haftungsabsicherung. Bei Bedarf entrümpeln wir Wohnungen, lösen Haushalte auf und übernehmen Umzüge und Kleintransporte im gesamten Einzugsgebiet – von der ersten Besichtigung über die fachgerechte Entsorgung bis zur besenreinen Übergabe.",
+      "Wir arbeiten in Pirmasens, Kaiserslautern, Zweibrücken, Landstuhl, Homburg, Rodalben, Landau, Dahn, Waldfischbach-Burgalben und in der gesamten Region Westpfalz und Saarpfalz. Als ortsansässiger Betrieb kennen wir die regionalen Besonderheiten – vom rauen Mikroklima im Pfälzer Wald bis zur hohen Pollen- und Staubbelastung in der Kaiserslauterner Innenstadt. Wir wissen, welche Materialien und Reinigungstechniken wo am besten funktionieren, und arbeiten ausschließlich mit Produkten, die langlebige, materialschonende Ergebnisse liefern.",
+      "Ein besonderer Schwerpunkt liegt auf der <strong>regelmäßigen Objektpflege für Hausverwaltungen, WEG-Verwalter und Vermieter</strong>: feste Termine, dokumentierte Einsätze, ein klarer Ansprechpartner – und eine Rechnung pro Monat statt zehn Einzelpositionen. Auf Wunsch erhalten Sie ein digitales Leistungsprotokoll, das Sie eins zu eins als Beleg für die Betriebskostenabrechnung verwenden können. Darüber hinaus bieten wir Rahmenverträge mit gestaffelten Konditionen für Verwalter mit mehreren Objekten – ein Telefonat reicht, und ein neues Objekt ist Teil des laufenden Rhythmus.",
+      "Für Gewerbekunden in Kaiserslautern und Pirmasens haben wir ein modulares Reinigungskonzept entwickelt: Sie wählen aus Unterhaltsreinigung, Glasreinigung, Sanitärreinigung, Bodenpflege und Winterdienst, was Sie tatsächlich brauchen. Wir kalkulieren das Paket als monatlichen Festpreis und liefern ein dokumentiertes Ergebnis. Sie sparen sich Koordinationsaufwand mit mehreren Dienstleistern – und behalten die volle Kontrolle über das, was wir tun. Auf Wunsch beraten wir Sie kostenlos auch zu Optimierungen Ihrer Reinigungsfrequenz, Materialwahl und Hygienestandards."
+    ],
+    "ctaText": "Jetzt unverbindlich anfragen – telefonisch unter"
   },
   "footer": {
-    "tagline": "",
+    "tagline": "Ihr Partner für Reinigung, Hausmeisterservice und Gebäudepflege in Pirmasens, Kaiserslautern und der gesamten Westpfalz. Inhabergeführt seit 2020 – mit eigenem Personal, eigener Maschinentechnik und fairen Festpreisen.",
     "phone": "01522 904 3159",
     "email": "salif-dienstleistungen@gmx.de",
     "address": "Emilienstraße 5a, 66955 Pirmasens"

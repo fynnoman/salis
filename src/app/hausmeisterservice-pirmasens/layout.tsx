@@ -12,6 +12,12 @@ export const metadata: Metadata = {
     "Winterdienst Pirmasens",
     "Grünpflege Pirmasens",
     "Facility Management Pirmasens",
+    "Hausmeisterdienste Pirmasens",
+    "Mülltonnenservice Pirmasens",
+    "Kleinreparaturen Pirmasens",
+    "Dachrinnenreinigung Pirmasens",
+    "Hausmeisterservice Festpreis Pirmasens",
+    "Hausmeisterservice Südwestpfalz",
   ],
   alternates: {
     canonical: `${BASE_URL}/hausmeisterservice-pirmasens`,

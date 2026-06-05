@@ -11,6 +11,12 @@ export const metadata: Metadata = {
     "Glasreinigung Pirmasens",
     "Fensterputzer Pirmasens",
     "Schaufensterreinigung Pirmasens",
+    "Glasfassadenreinigung Pirmasens",
+    "Wintergartenreinigung Pirmasens",
+    "Fensterreinigung Südwestpfalz",
+    "Fensterputzer Festpreis Pirmasens",
+    "streifenfreie Fensterreinigung Pirmasens",
+    "Gewerbe Fensterreinigung Pirmasens",
   ],
   alternates: {
     canonical: `${BASE_URL}/fensterreinigung-pirmasens`,

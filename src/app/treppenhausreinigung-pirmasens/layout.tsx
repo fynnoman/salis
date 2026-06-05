@@ -11,6 +11,11 @@ export const metadata: Metadata = {
     "Treppenhaus reinigen Pirmasens",
     "Reinigung Treppenhaus Pirmasens",
     "Hausverwaltung Reinigung Pirmasens",
+    "WEG Reinigung Pirmasens",
+    "Mehrfamilienhaus Reinigung Pirmasens",
+    "Treppenhausreinigung Südwestpfalz",
+    "Treppenhaus Festpreis Pirmasens",
+    "Treppenhausreinigung wöchentlich Pirmasens",
   ],
   alternates: {
     canonical: `${BASE_URL}/treppenhausreinigung-pirmasens`,

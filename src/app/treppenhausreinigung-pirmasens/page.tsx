@@ -199,16 +199,22 @@ export default function TreppenhausreinigungPage() {
 
       {/* Interne Links */}
       <section className="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl font-bold text-[#1a3a5c] mb-6">Weitere Leistungen in Pirmasens</h2>
+        <h2 className="text-xl font-bold text-[#1a3a5c] mb-6">Weitere Leistungen & Standorte</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {[
-            { label: "Gebäudereinigung", href: "/gebaeudereinigung-pirmasens" },
-            { label: "Fensterreinigung", href: "/fensterreinigung-pirmasens" },
-            { label: "Hausmeisterservice", href: "/hausmeisterservice-pirmasens" },
+            { label: "Treppenhausreinigung Kaiserslautern", href: "/treppenhausreinigung-kaiserslautern" },
+            { label: "Unterhaltsreinigung Pirmasens", href: "/unterhaltsreinigung-pirmasens" },
+            { label: "Grundreinigung Pirmasens", href: "/grundreinigung-pirmasens" },
+            { label: "Gebäudereinigung Pirmasens", href: "/gebaeudereinigung-pirmasens" },
+            { label: "Fensterreinigung Pirmasens", href: "/fensterreinigung-pirmasens" },
+            { label: "Hausmeisterservice Pirmasens", href: "/hausmeisterservice-pirmasens" },
+            { label: "Glasreinigung Pirmasens", href: "/glasreinigung-pirmasens" },
+            { label: "Entrümpelung Pirmasens", href: "/entruempelung-pirmasens" },
+            { label: "Winterdienst Pirmasens", href: "/winterdienst-pirmasens" },
           ].map((link) => (
-            <Link key={link.href} href={link.href} className="flex items-center justify-between gap-2 p-4 rounded-xl border border-gray-100 hover:border-[#22c55e]/40 hover:shadow-sm transition-all text-sm font-semibold text-[#1a3a5c]">
+            <Link key={link.href} href={link.href} className="group flex items-center justify-between gap-2 p-4 rounded-xl border border-gray-100 hover:border-[#22c55e]/40 hover:shadow-sm transition-all text-sm font-semibold text-[#1a3a5c]">
               {link.label}
-              <ArrowRight className="w-4 h-4 text-[#22c55e]" />
+              <ArrowRight className="w-4 h-4 text-[#22c55e] group-hover:translate-x-0.5 transition-transform" />
             </Link>
           ))}
         </div>

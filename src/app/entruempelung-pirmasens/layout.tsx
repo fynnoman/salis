@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     "Haushaltsauflösung Pirmasens",
     "Kellerentrümpelung Pirmasens",
     "Entrümpelungsfirma Pirmasens",
+    "Wohnungsauflösung Festpreis Pirmasens",
+    "Messie-Wohnung Pirmasens",
+    "Entrümpelung mit Entsorgung Pirmasens",
+    "Entrümpelung Südwestpfalz",
+    "Sperrmüll Pirmasens",
   ],
   alternates: {
     canonical: `${BASE_URL}/entruempelung-pirmasens`,

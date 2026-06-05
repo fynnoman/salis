@@ -77,68 +77,7 @@ export interface SiteContent {
 
 // ─── Defaults (Fallback) ────────────────────────────────────────────
 
-export const DEFAULT_CONTENT: SiteContent = {
-  hero: {
-    title1: "Salif",
-    title2: "Gebäude",
-    title3: "service",
-    subtitle: "Professionelle Reinigung &\nGebäudeservice in Pirmasens",
-    srText: "",
-    backgroundImage: "/Gemini_Generated_Image_lr33hilr33hilr33.png",
-  },
-  services: {
-    label: "Was wir bieten",
-    title: "Unsere Leistungen",
-    items: [
-      "Gebäudereinigung (Unterhalts- & Grundreinigung)",
-      "Treppenhausreinigung",
-      "Fensterreinigung & Glasreinigung",
-      "Hausmeisterservice",
-      "Entrümpelung & Wohnungsauflösung",
-      "Umzüge & Kleintransporte",
-      "Büroreinigung",
-      "Grundreinigung",
-      "Dachrinnenreinigung",
-      "Winterdienst",
-    ],
-    highlightTitle: "Küchenmontage & Möbelaufbau",
-    highlightText:
-      "Wir übernehmen auch den fachgerechten Aufbau Ihrer Küche oder Möbel – schnell, sauber und zuverlässig.",
-    backgroundImage: "/9ABD4A74-BF19-4D7A-9ADE-51AC3DDCBBD1.png",
-  },
-  about: {
-    label: "Über uns",
-    title: "Ihr zuverlässiger Partner in",
-    titleHighlight: "Pirmasens",
-    logoImage: "/B817091D-7DD4-4933-B2A3-C1F9F15867F1.png",
-    text1: "",
-    text2: "",
-    keyPoints: [],
-    stats: [],
-  },
-  contact: {
-    label: "Kontakt",
-    title: "Jetzt Kontakt aufnehmen",
-    subtitle: "",
-    phone: "01522 904 3159",
-    phoneRaw: "015229043159",
-    email: "salif-dienstleistungen@gmx.de",
-    address: "Emilienstraße 5a, 66955 Pirmasens",
-    hours: "Mo – Sa: 7:00 – 20:00 Uhr",
-    whatsappText: "Über WhatsApp schreiben",
-  },
-  seoBlock: {
-    title: "",
-    paragraphs: [],
-    ctaText: "",
-  },
-  footer: {
-    tagline: "",
-    phone: "01522 904 3159",
-    email: "salif-dienstleistungen@gmx.de",
-    address: "Emilienstraße 5a, 66955 Pirmasens",
-  },
-};
+export const DEFAULT_CONTENT: SiteContent = contentJson as SiteContent;
 
 // ─── Lesen (kostenlos, direkt aus Datei beim Build) ─────────────────
 

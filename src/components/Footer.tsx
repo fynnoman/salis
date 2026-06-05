@@ -3,32 +3,66 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, ArrowUp, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useContent } from "@/hooks/useContent";
 
-const footerLinks = [
-  { name: "Start", href: "#hero" },
-  { name: "Leistungen", href: "#services" },
-  { name: "Über uns", href: "#about" },
+const footerNav = [
+  { name: "Start", href: "/#hero" },
+  { name: "Leistungen", href: "/#services" },
+  { name: "Über uns", href: "/#about" },
   { name: "Projekte", href: "/portfolio" },
   { name: "Preise", href: "/preise" },
   { name: "Anfahrt", href: "/anfahrt" },
-  { name: "Kontakt", href: "#contact" },
+  { name: "Kontakt", href: "/#contact" },
 ];
 
-const serviceLinks = [
-  { name: "Gebäudereinigung", href: "/gebaeudereinigung-pirmasens" },
-  { name: "Treppenhausreinigung", href: "/treppenhausreinigung-pirmasens" },
-  { name: "Fensterreinigung", href: "/fensterreinigung-pirmasens" },
-  { name: "Entrümpelung", href: "/entruempelung-pirmasens" },
-  { name: "Hausmeisterservice", href: "/hausmeisterservice-pirmasens" },
+const pirmasensLinks = [
+  { name: "Gebäudereinigung Pirmasens", href: "/gebaeudereinigung-pirmasens" },
+  { name: "Unterhaltsreinigung Pirmasens", href: "/unterhaltsreinigung-pirmasens" },
+  { name: "Grundreinigung Pirmasens", href: "/grundreinigung-pirmasens" },
+  { name: "Büroreinigung Pirmasens", href: "/bueroreinigung-pirmasens" },
+  { name: "Treppenhausreinigung Pirmasens", href: "/treppenhausreinigung-pirmasens" },
+  { name: "Fensterreinigung Pirmasens", href: "/fensterreinigung-pirmasens" },
+  { name: "Glasreinigung Pirmasens", href: "/glasreinigung-pirmasens" },
+  { name: "Wintergartenreinigung Pirmasens", href: "/wintergartenreinigung-pirmasens" },
+  { name: "Dachrinnenreinigung Pirmasens", href: "/dachrinnenreinigung-pirmasens" },
+  { name: "Hausmeisterservice Pirmasens", href: "/hausmeisterservice-pirmasens" },
+  { name: "Entrümpelung Pirmasens", href: "/entruempelung-pirmasens" },
+  { name: "Winterdienst Pirmasens", href: "/winterdienst-pirmasens" },
+];
+
+const kaiserslauternLinks = [
+  { name: "Gebäudereinigung Kaiserslautern", href: "/gebaeudereinigung-kaiserslautern" },
+  { name: "Unterhaltsreinigung Kaiserslautern", href: "/unterhaltsreinigung-kaiserslautern" },
+  { name: "Grundreinigung Kaiserslautern", href: "/grundreinigung-kaiserslautern" },
+  { name: "Büroreinigung Kaiserslautern", href: "/bueroreinigung-kaiserslautern" },
+  { name: "Treppenhausreinigung Kaiserslautern", href: "/treppenhausreinigung-kaiserslautern" },
+  { name: "Fensterreinigung Kaiserslautern", href: "/fensterreinigung-kaiserslautern" },
+  { name: "Glasreinigung Kaiserslautern", href: "/glasreinigung-kaiserslautern" },
+  { name: "Wintergartenreinigung Kaiserslautern", href: "/wintergartenreinigung-kaiserslautern" },
+  { name: "Dachrinnenreinigung Kaiserslautern", href: "/dachrinnenreinigung-kaiserslautern" },
+  { name: "Hausmeisterservice Kaiserslautern", href: "/hausmeisterservice-kaiserslautern" },
+  { name: "Entrümpelung Kaiserslautern", href: "/entruempelung-kaiserslautern" },
+  { name: "Winterdienst Kaiserslautern", href: "/winterdienst-kaiserslautern" },
+];
+
+const weitereStandorte = [
+  { name: "Gebäudereinigung Zweibrücken", href: "/gebaeudereinigung-zweibruecken" },
+  { name: "Fensterreinigung Zweibrücken", href: "/fensterreinigung-zweibruecken" },
+  { name: "Hausmeisterservice Zweibrücken", href: "/hausmeisterservice-zweibruecken" },
+  { name: "Gebäudereinigung Landstuhl", href: "/gebaeudereinigung-landstuhl" },
+  { name: "Hausmeisterservice Landstuhl", href: "/hausmeisterservice-landstuhl" },
+  { name: "Gebäudereinigung Homburg", href: "/gebaeudereinigung-homburg" },
+  { name: "Hausmeisterservice Homburg", href: "/hausmeisterservice-homburg" },
 ];
 
 export default function Footer() {
   const { footer } = useContent();
+
   return (
     <footer className="bg-primary-dark text-white relative overflow-hidden">
       {/* Logo as full background */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.10]">
+      <div className="absolute inset-0 pointer-events-none opacity-[0.08]">
         <Image
           src="/51D6E89F-A80E-41DF-9C4F-68DD77279567.png"
           alt="Salif Gebäudeservice Logo"
@@ -38,10 +72,10 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Main footer */}
-        <div className="grid md:grid-cols-4 gap-10 md:gap-12 py-14 md:py-28">
+        {/* Top — Brand & Quick contact */}
+        <div className="grid md:grid-cols-12 gap-10 md:gap-12 py-14 md:py-20">
           {/* Brand */}
-          <div>
+          <div className="md:col-span-4">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-accent to-emerald-400 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-lg">S</span>
@@ -54,71 +88,16 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-              {footer.tagline}
+              {footer.tagline ||
+                "Ihr Partner für Reinigung, Hausmeisterservice und Gebäudepflege in Pirmasens, Kaiserslautern und der gesamten Westpfalz."}
             </p>
-            <motion.a
-              href="/portfolio"
-              className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent/10 text-accent border border-accent/30 hover:bg-accent hover:text-white transition-all"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Alle Projekte ansehen
-              <ArrowRight className="w-4 h-4" />
-            </motion.a>
-          </div>
 
-          {/* Quick links */}
-          <div>
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-white/40 mb-5">
-              Navigation
-            </h4>
-            <nav aria-label="Footer Navigation">
-              <ul className="space-y-3">
-                {footerLinks.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-white/70 hover:text-accent transition-colors text-sm"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-
-          {/* Service links */}
-          <div>
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-white/40 mb-5">
-              Leistungen
-            </h4>
-            <nav aria-label="Leistungen Navigation">
-              <ul className="space-y-3">
-                {serviceLinks.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-white/70 hover:text-accent transition-colors text-sm"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-
-          {/* Contact info */}
-          <div>
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-white/40 mb-5">
-              Kontakt
-            </h4>
-            <ul className="space-y-4">
+            {/* Contact info */}
+            <ul className="space-y-3 mt-6">
               <li>
                 <a
                   href={`tel:${footer.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors text-sm"
+                  className="flex items-center gap-3 text-white/80 hover:text-accent transition-colors text-sm"
                 >
                   <Phone className="w-4 h-4" />
                   {footer.phone}
@@ -127,7 +106,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${footer.email}`}
-                  className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors text-sm"
+                  className="flex items-center gap-3 text-white/80 hover:text-accent transition-colors text-sm"
                 >
                   <Mail className="w-4 h-4" />
                   {footer.email}
@@ -140,6 +119,97 @@ export default function Footer() {
                 </div>
               </li>
             </ul>
+
+            <motion.a
+              href="/portfolio"
+              className="inline-flex items-center gap-2 mt-7 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent/10 text-accent border border-accent/30 hover:bg-accent hover:text-white transition-all"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Alle Projekte ansehen
+              <ArrowRight className="w-4 h-4" />
+            </motion.a>
+          </div>
+
+          {/* Pirmasens column */}
+          <div className="md:col-span-3">
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-accent mb-5 flex items-center gap-2">
+              <MapPin className="w-3.5 h-3.5" /> Pirmasens
+            </h4>
+            <nav aria-label="Leistungen Pirmasens">
+              <ul className="space-y-2.5">
+                {pirmasensLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-white/70 hover:text-accent transition-colors text-sm"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          {/* Kaiserslautern column */}
+          <div className="md:col-span-3">
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-accent mb-5 flex items-center gap-2">
+              <MapPin className="w-3.5 h-3.5" /> Kaiserslautern
+            </h4>
+            <nav aria-label="Leistungen Kaiserslautern">
+              <ul className="space-y-2.5">
+                {kaiserslauternLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-white/70 hover:text-accent transition-colors text-sm"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          {/* Weitere Standorte + Navigation */}
+          <div className="md:col-span-2">
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-accent mb-5 flex items-center gap-2">
+              <MapPin className="w-3.5 h-3.5" /> Weitere Standorte
+            </h4>
+            <nav aria-label="Weitere Standorte">
+              <ul className="space-y-2.5">
+                {weitereStandorte.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-white/70 hover:text-accent transition-colors text-sm"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <h4 className="font-semibold text-sm uppercase tracking-widest text-white/40 mt-8 mb-4">
+              Navigation
+            </h4>
+            <nav aria-label="Footer Navigation">
+              <ul className="space-y-2.5">
+                {footerNav.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-white/60 hover:text-accent transition-colors text-sm"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
 
@@ -149,18 +219,24 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between py-8 md:py-10 gap-4">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} Salif Gebäudeservice – Haus und mehr. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} Salif Gebäudeservice – Haus und mehr.
+            Alle Rechte vorbehalten.
           </p>
 
           <div className="flex items-center gap-6">
-            <a href="/impressum" className="text-white/40 hover:text-accent text-sm transition-colors">
+            <Link
+              href="/impressum"
+              className="text-white/40 hover:text-accent text-sm transition-colors"
+            >
               Impressum
-            </a>
-            <a href="/datenschutz" className="text-white/40 hover:text-accent text-sm transition-colors">
+            </Link>
+            <Link
+              href="/datenschutz"
+              className="text-white/40 hover:text-accent text-sm transition-colors"
+            >
               Datenschutz
-            </a>
+            </Link>
 
-            {/* Back to top */}
             <motion.a
               href="#hero"
               className="flex items-center gap-2 text-white/40 hover:text-accent text-sm transition-colors"
@@ -172,8 +248,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Designer credit (kleiner Schriftzug unten) */}
-        <div className="mt-4 pt-4 border-t border-white/6">
+        {/* Designer credit */}
+        <div className="mt-4 pt-4 border-t border-white/[0.06]">
           <p className="text-white/30 text-xs text-center">
             designed by{" "}
             <a
@@ -187,6 +263,7 @@ export default function Footer() {
           </p>
         </div>
       </div>
+
       {/* Unsichtbarer Taskey-Link */}
       <a
         href="https://www.taskeyapp.com"
