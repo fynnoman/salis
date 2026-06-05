@@ -38,7 +38,7 @@ const services = [
 export default function Hero() {
   const { hero, contact } = useContent();
   const ref = useRef<HTMLElement>(null);
-  const spot = useCursorSpot(ref);
+  useCursorSpot(ref);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -72,12 +72,12 @@ export default function Hero() {
       {/* grid overlay */}
       <div className="absolute inset-0 grid-bg-light pointer-events-none" />
 
-      {/* cursor spotlight */}
+      {/* cursor spotlight — driven by CSS vars set in useCursorSpot (no re-renders) */}
       <div
-        className="absolute inset-0 pointer-events-none transition-opacity duration-500"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(600px circle at ${spot.x}% ${spot.y}%, rgba(0,255,136,0.18), transparent 45%)`,
-          opacity: spot.active ? 1 : 0.4,
+          background:
+            "radial-gradient(600px circle at var(--spot-x,50%) var(--spot-y,50%), rgba(0,255,136,0.20), transparent 45%)",
         }}
       />
 

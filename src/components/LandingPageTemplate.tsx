@@ -115,6 +115,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
             "@graph": [
               {
                 "@type": "BreadcrumbList",
+                "@id": `https://www.salif-gebaeudeservice.de${data.path}#breadcrumb`,
                 itemListElement: [
                   {
                     "@type": "ListItem",
@@ -132,11 +133,23 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               },
               {
                 "@type": "Service",
+                "@id": `https://www.salif-gebaeudeservice.de${data.path}#service`,
                 serviceType: data.service,
+                category: "Cleaning Service",
+                name: `${data.service} ${data.city}`,
+                description: data.introLead,
+                inLanguage: "de-DE",
+                url: `https://www.salif-gebaeudeservice.de${data.path}`,
                 provider: {
-                  "@type": "LocalBusiness",
+                  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+                  "@id": "https://www.salif-gebaeudeservice.de/#localbusiness",
                   name: "Salif Gebäudeservice",
+                  alternateName: "Salif Haus und Mehr",
                   telephone: "+4915229043159",
+                  email: "salif-dienstleistungen@gmx.de",
+                  priceRange: "€€",
+                  paymentAccepted: "Bar, Überweisung",
+                  currenciesAccepted: "EUR",
                   address: {
                     "@type": "PostalAddress",
                     streetAddress: "Emilienstraße 5a",
@@ -145,17 +158,63 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
                     addressRegion: "Rheinland-Pfalz",
                     addressCountry: "DE",
                   },
+                  geo: {
+                    "@type": "GeoCoordinates",
+                    latitude: 49.2,
+                    longitude: 7.6,
+                  },
+                  openingHoursSpecification: [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      dayOfWeek: [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                      ],
+                      opens: "07:00",
+                      closes: "20:00",
+                    },
+                  ],
                 },
-                areaServed: { "@type": "City", name: data.city },
-                name: `${data.service} ${data.city}`,
-                description: data.introLead,
+                areaServed: [
+                  { "@type": "City", name: data.city },
+                  {
+                    "@type": "GeoCircle",
+                    geoMidpoint: {
+                      "@type": "GeoCoordinates",
+                      latitude: 49.2,
+                      longitude: 7.6,
+                    },
+                    geoRadius: 50000,
+                  },
+                ],
+                hasOfferCatalog: {
+                  "@type": "OfferCatalog",
+                  name: `${data.service} – Leistungspaket`,
+                  itemListElement: data.services.map((s) => ({
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: s.title,
+                      description: s.text,
+                    },
+                  })),
+                },
               },
               {
                 "@type": "FAQPage",
+                "@id": `https://www.salif-gebaeudeservice.de${data.path}#faq`,
+                inLanguage: "de-DE",
                 mainEntity: data.faqs.map((faq) => ({
                   "@type": "Question",
                   name: faq.q,
-                  acceptedAnswer: { "@type": "Answer", text: faq.a },
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: faq.a,
+                  },
                 })),
               },
             ],

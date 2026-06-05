@@ -3,12 +3,10 @@ import { CITIES, SERVICES, type CityKey, type ServiceKey } from "@/lib/landingDa
 
 const BASE_URL = "https://www.salif-gebaeudeservice.de";
 
-/**
- * Welche (Service × Stadt) Kombinationen wirklich existieren.
- * Muss synchron mit den vorhandenen App-Router-Ordnern bleiben.
- */
+// Welche (Service × Stadt) Kombinationen tatsächlich als Route existieren.
+// Muss synchron mit den App-Router-Ordnern bleiben.
 const LANDING_COMBINATIONS: Array<{ service: ServiceKey; city: CityKey }> = [
-  // Pirmasens — vorhandene + neue Kategorien
+  // Pirmasens (Heimatmarkt — alle 12)
   { service: "gebaeudereinigung", city: "pirmasens" },
   { service: "fensterreinigung", city: "pirmasens" },
   { service: "treppenhausreinigung", city: "pirmasens" },
@@ -22,7 +20,7 @@ const LANDING_COMBINATIONS: Array<{ service: ServiceKey; city: CityKey }> = [
   { service: "winterdienst", city: "pirmasens" },
   { service: "glasreinigung", city: "pirmasens" },
 
-  // Kaiserslautern — komplett
+  // Kaiserslautern (12)
   { service: "gebaeudereinigung", city: "kaiserslautern" },
   { service: "fensterreinigung", city: "kaiserslautern" },
   { service: "treppenhausreinigung", city: "kaiserslautern" },
@@ -53,33 +51,82 @@ const LANDING_COMBINATIONS: Array<{ service: ServiceKey; city: CityKey }> = [
   { service: "fensterreinigung", city: "homburg" },
 ];
 
+/**
+ * Hauptkategorien — höhere Priorität (Money-Pages)
+ */
+const PRIORITY_SERVICES: ServiceKey[] = [
+  "gebaeudereinigung",
+  "unterhaltsreinigung",
+  "fensterreinigung",
+  "hausmeisterservice",
+  "entruempelung",
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   const staticUrls: MetadataRoute.Sitemap = [
-    { url: BASE_URL, lastModified: now, changeFrequency: "monthly", priority: 1.0 },
-    { url: `${BASE_URL}/portfolio`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${BASE_URL}/preise`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/anfahrt`, lastModified: now, changeFrequency: "yearly", priority: 0.6 },
-    { url: `${BASE_URL}/impressum`, lastModified: now, changeFrequency: "yearly", priority: 0.1 },
-    { url: `${BASE_URL}/datenschutz`, lastModified: now, changeFrequency: "yearly", priority: 0.1 },
+    {
+      url: BASE_URL,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 1.0,
+    },
+    {
+      url: `${BASE_URL}/portfolio`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/preise`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/anfahrt`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
+      url: `${BASE_URL}/impressum`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.1,
+    },
+    {
+      url: `${BASE_URL}/datenschutz`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.1,
+    },
   ];
 
   const landingUrls: MetadataRoute.Sitemap = LANDING_COMBINATIONS.map(
     ({ service, city }) => {
-      const isPirmasens = city === "pirmasens";
-      const isKaiserslautern = city === "kaiserslautern";
+      const isMainCity = city === "pirmasens" || city === "kaiserslautern";
+      const isPriorityService = PRIORITY_SERVICES.includes(service);
+
+      // Priorität nach Stadt × Service-Stufe
+      let priority = 0.7;
+      if (isMainCity && isPriorityService) priority = 0.9;
+      else if (isMainCity) priority = 0.85;
+      else if (isPriorityService) priority = 0.75;
+
       return {
         url: `${BASE_URL}/${service}-${city}`,
         lastModified: now,
         changeFrequency: "monthly" as const,
-        // höhere Priority für Hauptstädte
-        priority: isPirmasens ? 0.9 : isKaiserslautern ? 0.9 : 0.75,
+        priority,
+        // Image-Extension für Image-SEO
+        images: [`${BASE_URL}/og-image.png`],
       };
     }
   );
 
-  // Verhindere "unused import" Warnungen
+  // Type-asserter — Imports werden indirekt genutzt
   void SERVICES;
   void CITIES;
 

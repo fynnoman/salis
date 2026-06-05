@@ -1080,14 +1080,71 @@ export function buildLandingData(
  * SEO metadata helper
  * =======================================================================*/
 
+/* Pro Service eigener Title-Tag und Description-Intro, damit Google
+ * nicht das gleiche Pattern auf 34 Pages sieht. */
+const SERVICE_TITLE_TAGLINES: Record<ServiceKey, string> = {
+  gebaeudereinigung: "Festpreis vom Profi",
+  unterhaltsreinigung: "Feste Termine · Eigenes Team",
+  grundreinigung: "Tiefenreinigung mit Maschine",
+  bueroreinigung: "Sauberes Büro · Festpreis",
+  treppenhausreinigung: "WEG-tauglich · Wöchentlich",
+  fensterreinigung: "Streifenfrei garantiert",
+  glasreinigung: "Schaufenster & Fassade",
+  wintergartenreinigung: "Glasklar · Innen & Außen",
+  dachrinnenreinigung: "Mit Endoskop-Sichtprüfung",
+  hausmeisterservice: "Eine Nummer für Ihr Objekt",
+  entruempelung: "Schnell · Komplett · Besenrein",
+  winterdienst: "Räumprotokoll inklusive",
+};
+
+const SERVICE_DESCRIPTION_INTROS: Record<ServiceKey, string> = {
+  gebaeudereinigung:
+    "Professionelle Gebäudereinigung mit eigenem Team und fairen Festpreisen.",
+  unterhaltsreinigung:
+    "Tägliche, wöchentliche oder monatliche Reinigung — feste Mitarbeiter, dokumentierte Qualität.",
+  grundreinigung:
+    "Tiefenreinigung mit Einscheibenmaschine, Pflegeschicht und materialgerechten Reinigern.",
+  bueroreinigung:
+    "Büroreinigung mit Hygienefokus — Sanitär, Küche, Schreibtische, Verbrauchsmaterial.",
+  treppenhausreinigung:
+    "Treppenhausreinigung für WEGs und Mehrfamilienhäuser — feste Wochentermine.",
+  fensterreinigung:
+    "Streifenfreie Fensterreinigung inkl. Rahmen und Falze, mit osmotisch entsalztem Wasser.",
+  glasreinigung:
+    "Schaufenster, Glasfassaden und Lichtkuppeln streifenfrei — Teleskoptechnik bis 12 m.",
+  wintergartenreinigung:
+    "Wintergartenreinigung innen und außen inklusive Dachglas, Profile und Dichtungen.",
+  dachrinnenreinigung:
+    "Dachrinne reinigen, Fallrohre frei spülen, Schadensprotokoll mit Endoskop-Kamera.",
+  hausmeisterservice:
+    "Kompletter Hausmeisterservice — Kleinreparaturen, Grünpflege, Mülltonnen, Winterdienst.",
+  entruempelung:
+    "Komplette Entrümpelung mit fachgerechter Entsorgung und besenreiner Übergabe.",
+  winterdienst:
+    "Winterdienst mit dokumentiertem Räumprotokoll zur Haftungsabsicherung.",
+};
+
 export function buildSeoMeta(serviceKey: ServiceKey, cityKey: CityKey) {
   const svc = SERVICES[serviceKey];
   const city = CITIES[cityKey];
   const url = `https://www.salif-gebaeudeservice.de/${serviceKey}-${cityKey}`;
 
+  const tagline = SERVICE_TITLE_TAGLINES[serviceKey];
+  const intro = SERVICE_DESCRIPTION_INTROS[serviceKey];
+
+  // Title leicht variieren pro Stadt — vermeidet Boilerplate-Erkennung
+  const title =
+    cityKey === "pirmasens"
+      ? `${svc.service} ${city.name} | Salif Gebäudeservice — ${tagline}`
+      : cityKey === "kaiserslautern"
+      ? `${svc.service} ${city.name} · ${tagline} | Salif`
+      : `${svc.service} in ${city.name} — ${tagline}`;
+
+  const description = `${svc.service} in ${city.name} (${city.region}): ${intro} Inhabergeführt, eigenes Personal, faire Festpreise. Jetzt Angebot: 01522 904 3159.`;
+
   return {
-    title: `${svc.service} ${city.name} | Festpreis & Profi-Ergebnis`,
-    description: `${svc.service} in ${city.name} vom Profi: faire Festpreise, eigenes Personal, dokumentierte Qualität. Jetzt unverbindliches Angebot anfordern: 01522 904 3159.`,
+    title,
+    description,
     keywords: [
       `${svc.service} ${city.name}`,
       `${svc.service.toLowerCase()} ${city.name.toLowerCase()}`,
@@ -1095,6 +1152,8 @@ export function buildSeoMeta(serviceKey: ServiceKey, cityKey: CityKey) {
       `Reinigungsservice ${city.name}`,
       `Gebäudeservice ${city.name}`,
       `${svc.service} ${city.region}`,
+      `${svc.service} Festpreis ${city.name}`,
+      `Salif Gebäudeservice ${city.name}`,
     ],
     url,
     canonical: url,

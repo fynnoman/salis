@@ -138,6 +138,11 @@ export default function RootLayout({
         <meta name="geo.position" content="49.2;7.6" />
         <meta name="ICBM" content="49.2, 7.6" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Hreflang — German only but explicit signal */}
+        <link rel="alternate" hrefLang="de-DE" href={BASE_URL} />
+        <link rel="alternate" hrefLang="de" href={BASE_URL} />
+        <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
         {/* Schema 1: WebSite */}
         <script
           type="application/ld+json"
@@ -216,15 +221,30 @@ export default function RootLayout({
               paymentAccepted: "Bar, Überweisung",
               areaServed: [
                 { "@type": "City", name: "Pirmasens" },
-                { "@type": "City", name: "Zweibrücken" },
                 { "@type": "City", name: "Kaiserslautern" },
+                { "@type": "City", name: "Zweibrücken" },
+                { "@type": "City", name: "Landstuhl" },
+                { "@type": "City", name: "Homburg" },
                 { "@type": "City", name: "Landau" },
                 { "@type": "City", name: "Rodalben" },
                 { "@type": "City", name: "Dahn" },
                 { "@type": "City", name: "Waldfischbach-Burgalben" },
                 { "@type": "AdministrativeArea", name: "Südwestpfalz" },
+                { "@type": "AdministrativeArea", name: "Westpfalz" },
+                { "@type": "AdministrativeArea", name: "Saarpfalz" },
                 { "@type": "AdministrativeArea", name: "Rheinland-Pfalz" },
+                {
+                  "@type": "GeoCircle",
+                  geoMidpoint: {
+                    "@type": "GeoCoordinates",
+                    latitude: 49.2,
+                    longitude: 7.6,
+                  },
+                  geoRadius: 50000,
+                },
               ],
+              sameAs: [],
+              slogan: "Haus und Mehr — Reinigung, Hausmeisterservice, Gebäudepflege",
               knowsLanguage: ["de", "fr"],
               hasOfferCatalog: {
                 "@type": "OfferCatalog",

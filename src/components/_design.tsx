@@ -211,30 +211,41 @@ export function RotaryBadge({
 }
 
 /* =============================================================
- * CURSOR SPOTLIGHT — radial gradient following mouse
+ * CURSOR SPOTLIGHT — CSS custom properties (no re-render on mousemove)
+ * Sets --spot-x / --spot-y / --spot-active on the ref'd element.
  * =============================================================*/
 export function useCursorSpot(ref: React.RefObject<HTMLElement | null>) {
-  const [pos, setPos] = useState({ x: 50, y: 50, active: false });
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    let raf = 0;
     const onMove = (e: MouseEvent) => {
-      const r = el.getBoundingClientRect();
-      setPos({
-        x: ((e.clientX - r.left) / r.width) * 100,
-        y: ((e.clientY - r.top) / r.height) * 100,
-        active: true,
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty(
+          "--spot-x",
+          `${((e.clientX - r.left) / r.width) * 100}%`
+        );
+        el.style.setProperty(
+          "--spot-y",
+          `${((e.clientY - r.top) / r.height) * 100}%`
+        );
+        el.style.setProperty("--spot-active", "1");
       });
     };
-    const onLeave = () => setPos((p) => ({ ...p, active: false }));
+    const onLeave = () => el.style.setProperty("--spot-active", "0.4");
+    el.style.setProperty("--spot-x", "50%");
+    el.style.setProperty("--spot-y", "50%");
+    el.style.setProperty("--spot-active", "0.4");
     el.addEventListener("mousemove", onMove);
     el.addEventListener("mouseleave", onLeave);
     return () => {
+      cancelAnimationFrame(raf);
       el.removeEventListener("mousemove", onMove);
       el.removeEventListener("mouseleave", onLeave);
     };
   }, [ref]);
-  return pos;
 }
 
 /* =============================================================
