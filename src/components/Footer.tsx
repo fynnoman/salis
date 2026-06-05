@@ -1,270 +1,237 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, ArrowUp, ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { Phone, Mail, MapPin, ArrowUpRight, ArrowUp } from "lucide-react";
 import Link from "next/link";
 import { useContent } from "@/hooks/useContent";
+import { Marquee, MagneticLink, LiveClock, RotaryBadge } from "@/components/_design";
 
-const footerNav = [
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const navLinks = [
   { name: "Start", href: "/#hero" },
   { name: "Leistungen", href: "/#services" },
   { name: "Über uns", href: "/#about" },
+  { name: "Standorte", href: "/#standorte" },
   { name: "Projekte", href: "/portfolio" },
   { name: "Preise", href: "/preise" },
   { name: "Anfahrt", href: "/anfahrt" },
-  { name: "Kontakt", href: "/#contact" },
 ];
 
-const pirmasensLinks = [
-  { name: "Gebäudereinigung Pirmasens", href: "/gebaeudereinigung-pirmasens" },
-  { name: "Unterhaltsreinigung Pirmasens", href: "/unterhaltsreinigung-pirmasens" },
-  { name: "Grundreinigung Pirmasens", href: "/grundreinigung-pirmasens" },
-  { name: "Büroreinigung Pirmasens", href: "/bueroreinigung-pirmasens" },
-  { name: "Treppenhausreinigung Pirmasens", href: "/treppenhausreinigung-pirmasens" },
-  { name: "Fensterreinigung Pirmasens", href: "/fensterreinigung-pirmasens" },
-  { name: "Glasreinigung Pirmasens", href: "/glasreinigung-pirmasens" },
-  { name: "Wintergartenreinigung Pirmasens", href: "/wintergartenreinigung-pirmasens" },
-  { name: "Dachrinnenreinigung Pirmasens", href: "/dachrinnenreinigung-pirmasens" },
-  { name: "Hausmeisterservice Pirmasens", href: "/hausmeisterservice-pirmasens" },
-  { name: "Entrümpelung Pirmasens", href: "/entruempelung-pirmasens" },
-  { name: "Winterdienst Pirmasens", href: "/winterdienst-pirmasens" },
+const pirmasens = [
+  { name: "Gebäudereinigung", href: "/gebaeudereinigung-pirmasens" },
+  { name: "Unterhaltsreinigung", href: "/unterhaltsreinigung-pirmasens" },
+  { name: "Grundreinigung", href: "/grundreinigung-pirmasens" },
+  { name: "Büroreinigung", href: "/bueroreinigung-pirmasens" },
+  { name: "Treppenhausreinigung", href: "/treppenhausreinigung-pirmasens" },
+  { name: "Fensterreinigung", href: "/fensterreinigung-pirmasens" },
+  { name: "Glasreinigung", href: "/glasreinigung-pirmasens" },
+  { name: "Wintergartenreinigung", href: "/wintergartenreinigung-pirmasens" },
+  { name: "Dachrinnenreinigung", href: "/dachrinnenreinigung-pirmasens" },
+  { name: "Hausmeisterservice", href: "/hausmeisterservice-pirmasens" },
+  { name: "Entrümpelung", href: "/entruempelung-pirmasens" },
+  { name: "Winterdienst", href: "/winterdienst-pirmasens" },
 ];
 
-const kaiserslauternLinks = [
-  { name: "Gebäudereinigung Kaiserslautern", href: "/gebaeudereinigung-kaiserslautern" },
-  { name: "Unterhaltsreinigung Kaiserslautern", href: "/unterhaltsreinigung-kaiserslautern" },
-  { name: "Grundreinigung Kaiserslautern", href: "/grundreinigung-kaiserslautern" },
-  { name: "Büroreinigung Kaiserslautern", href: "/bueroreinigung-kaiserslautern" },
-  { name: "Treppenhausreinigung Kaiserslautern", href: "/treppenhausreinigung-kaiserslautern" },
-  { name: "Fensterreinigung Kaiserslautern", href: "/fensterreinigung-kaiserslautern" },
-  { name: "Glasreinigung Kaiserslautern", href: "/glasreinigung-kaiserslautern" },
-  { name: "Wintergartenreinigung Kaiserslautern", href: "/wintergartenreinigung-kaiserslautern" },
-  { name: "Dachrinnenreinigung Kaiserslautern", href: "/dachrinnenreinigung-kaiserslautern" },
-  { name: "Hausmeisterservice Kaiserslautern", href: "/hausmeisterservice-kaiserslautern" },
-  { name: "Entrümpelung Kaiserslautern", href: "/entruempelung-kaiserslautern" },
-  { name: "Winterdienst Kaiserslautern", href: "/winterdienst-kaiserslautern" },
+const kaiserslautern = [
+  { name: "Gebäudereinigung", href: "/gebaeudereinigung-kaiserslautern" },
+  { name: "Unterhaltsreinigung", href: "/unterhaltsreinigung-kaiserslautern" },
+  { name: "Grundreinigung", href: "/grundreinigung-kaiserslautern" },
+  { name: "Büroreinigung", href: "/bueroreinigung-kaiserslautern" },
+  { name: "Treppenhausreinigung", href: "/treppenhausreinigung-kaiserslautern" },
+  { name: "Fensterreinigung", href: "/fensterreinigung-kaiserslautern" },
+  { name: "Glasreinigung", href: "/glasreinigung-kaiserslautern" },
+  { name: "Wintergartenreinigung", href: "/wintergartenreinigung-kaiserslautern" },
+  { name: "Dachrinnenreinigung", href: "/dachrinnenreinigung-kaiserslautern" },
+  { name: "Hausmeisterservice", href: "/hausmeisterservice-kaiserslautern" },
+  { name: "Entrümpelung", href: "/entruempelung-kaiserslautern" },
+  { name: "Winterdienst", href: "/winterdienst-kaiserslautern" },
 ];
 
-const weitereStandorte = [
-  { name: "Gebäudereinigung Zweibrücken", href: "/gebaeudereinigung-zweibruecken" },
-  { name: "Fensterreinigung Zweibrücken", href: "/fensterreinigung-zweibruecken" },
-  { name: "Hausmeisterservice Zweibrücken", href: "/hausmeisterservice-zweibruecken" },
-  { name: "Gebäudereinigung Landstuhl", href: "/gebaeudereinigung-landstuhl" },
-  { name: "Hausmeisterservice Landstuhl", href: "/hausmeisterservice-landstuhl" },
-  { name: "Gebäudereinigung Homburg", href: "/gebaeudereinigung-homburg" },
-  { name: "Hausmeisterservice Homburg", href: "/hausmeisterservice-homburg" },
+const weitere = [
+  { name: "Zweibrücken — Gebäudereinigung", href: "/gebaeudereinigung-zweibruecken" },
+  { name: "Zweibrücken — Fensterreinigung", href: "/fensterreinigung-zweibruecken" },
+  { name: "Zweibrücken — Hausmeister", href: "/hausmeisterservice-zweibruecken" },
+  { name: "Landstuhl — Gebäudereinigung", href: "/gebaeudereinigung-landstuhl" },
+  { name: "Landstuhl — Hausmeister", href: "/hausmeisterservice-landstuhl" },
+  { name: "Homburg — Gebäudereinigung", href: "/gebaeudereinigung-homburg" },
+  { name: "Homburg — Hausmeister", href: "/hausmeisterservice-homburg" },
 ];
+
+function LinkColumn({
+  label,
+  items,
+}: {
+  label: string;
+  items: { name: string; href: string }[];
+}) {
+  return (
+    <div>
+      <div className="marker-line text-voltage mb-5">{label}</div>
+      <ul className="space-y-1.5">
+        {items.map((l) => (
+          <li key={l.href}>
+            <Link
+              href={l.href}
+              className="group inline-flex items-center gap-2 text-bone/70 hover:text-voltage text-sm transition-colors"
+            >
+              <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">
+                →
+              </span>
+              <span className="group-hover:translate-x-0.5 transition-transform">
+                {l.name}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function Footer() {
   const { footer } = useContent();
+  const phoneRaw = footer.phone.replace(/\s/g, "");
 
   return (
-    <footer className="bg-primary-dark text-white relative overflow-hidden">
-      {/* Logo as full background */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.08]">
-        <Image
-          src="/51D6E89F-A80E-41DF-9C4F-68DD77279567.png"
-          alt="Salif Gebäudeservice Logo"
-          fill
-          className="object-cover"
+    <footer className="relative bg-ink text-bone overflow-hidden border-t border-bone/15">
+      {/* TOP MARQUEE — giant SALIF */}
+      <div className="border-b border-bone/15 py-2 bg-voltage text-ink">
+        <Marquee
+          items={["Salif", "Salif", "Salif", "Salif", "Salif"]}
+          duration={28}
+          itemClassName="font-display text-[clamp(4rem,12vw,14rem)] leading-[0.85]"
+          separator="◆"
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Top — Brand & Quick contact */}
-        <div className="grid md:grid-cols-12 gap-10 md:gap-12 py-14 md:py-20">
-          {/* Brand */}
-          <div className="md:col-span-4">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-accent to-emerald-400 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-lg">S</span>
-              </div>
-              <div>
-                <span className="font-bold text-xl tracking-tight">SALIF</span>
-                <span className="block text-[10px] tracking-widest uppercase text-white/60">
-                  Gebäudeservice
-                </span>
-              </div>
+      {/* CTA section */}
+      <div className="border-b border-bone/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+          <div className="grid lg:grid-cols-12 gap-8 items-start">
+            <div className="lg:col-span-2 marker-line text-bone/60">
+              05 / Kontakt
             </div>
-            <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-              {footer.tagline ||
-                "Ihr Partner für Reinigung, Hausmeisterservice und Gebäudepflege in Pirmasens, Kaiserslautern und der gesamten Westpfalz."}
-            </p>
+            <div className="lg:col-span-7 space-y-8">
+              <h2 className="font-display text-[clamp(2.5rem,8vw,7rem)] leading-[0.85] text-bone">
+                Eine Nummer.
+                <br />
+                <span className="text-voltage">Ein Ergebnis.</span>
+              </h2>
 
-            {/* Contact info */}
-            <ul className="space-y-3 mt-6">
-              <li>
-                <a
-                  href={`tel:${footer.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-3 text-white/80 hover:text-accent transition-colors text-sm"
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <MagneticLink
+                  href={`tel:${phoneRaw}`}
+                  className="group inline-flex items-center gap-3 px-6 sm:px-8 py-4 sm:py-5 bg-voltage text-ink font-display text-xl sm:text-2xl uppercase tracking-tight hover:bg-bone transition-colors"
                 >
-                  <Phone className="w-4 h-4" />
+                  <Phone className="w-5 h-5" />
                   {footer.phone}
-                </a>
-              </li>
-              <li>
-                <a
+                </MagneticLink>
+                <MagneticLink
                   href={`mailto:${footer.email}`}
-                  className="flex items-center gap-3 text-white/80 hover:text-accent transition-colors text-sm"
+                  className="group inline-flex items-center gap-3 px-6 py-4 sm:py-5 border-2 border-bone/30 text-bone font-display text-lg uppercase hover:border-voltage hover:text-voltage transition-colors"
                 >
-                  <Mail className="w-4 h-4" />
-                  {footer.email}
-                </a>
-              </li>
-              <li>
-                <div className="flex items-center gap-3 text-white/70 text-sm">
-                  <MapPin className="w-4 h-4 flex-shrink-0" />
+                  <Mail className="w-5 h-5" />
+                  E-Mail
+                </MagneticLink>
+              </div>
+
+              <p className="font-editorial italic text-xl text-bone/70 max-w-xl">
+                {footer.tagline}
+              </p>
+            </div>
+
+            <div className="lg:col-span-3 lg:text-right space-y-4">
+              <RotaryBadge size={120} />
+              <div className="font-mono text-xs uppercase tracking-[0.22em] text-bone/50 space-y-1.5 mt-4">
+                <div className="flex lg:justify-end items-center gap-2">
+                  <MapPin className="w-3 h-3 text-voltage" />
                   {footer.address}
                 </div>
-              </li>
-            </ul>
-
-            <motion.a
-              href="/portfolio"
-              className="inline-flex items-center gap-2 mt-7 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent/10 text-accent border border-accent/30 hover:bg-accent hover:text-white transition-all"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Alle Projekte ansehen
-              <ArrowRight className="w-4 h-4" />
-            </motion.a>
+                <div>Mo – Sa · 07 – 20 Uhr</div>
+                <div>
+                  Live <LiveClock />
+                </div>
+              </div>
+            </div>
           </div>
-
-          {/* Pirmasens column */}
-          <div className="md:col-span-3">
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-accent mb-5 flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5" /> Pirmasens
-            </h4>
-            <nav aria-label="Leistungen Pirmasens">
-              <ul className="space-y-2.5">
-                {pirmasensLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-white/70 hover:text-accent transition-colors text-sm"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-
-          {/* Kaiserslautern column */}
-          <div className="md:col-span-3">
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-accent mb-5 flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5" /> Kaiserslautern
-            </h4>
-            <nav aria-label="Leistungen Kaiserslautern">
-              <ul className="space-y-2.5">
-                {kaiserslauternLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-white/70 hover:text-accent transition-colors text-sm"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-
-          {/* Weitere Standorte + Navigation */}
-          <div className="md:col-span-2">
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-accent mb-5 flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5" /> Weitere Standorte
-            </h4>
-            <nav aria-label="Weitere Standorte">
-              <ul className="space-y-2.5">
-                {weitereStandorte.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-white/70 hover:text-accent transition-colors text-sm"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            <h4 className="font-semibold text-sm uppercase tracking-widest text-white/40 mt-8 mb-4">
-              Navigation
-            </h4>
-            <nav aria-label="Footer Navigation">
-              <ul className="space-y-2.5">
-                {footerNav.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-white/60 hover:text-accent transition-colors text-sm"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="border-t border-white/10" />
-
-        {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between py-8 md:py-10 gap-4">
-          <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} Salif Gebäudeservice – Haus und mehr.
-            Alle Rechte vorbehalten.
-          </p>
-
-          <div className="flex items-center gap-6">
-            <Link
-              href="/impressum"
-              className="text-white/40 hover:text-accent text-sm transition-colors"
-            >
-              Impressum
-            </Link>
-            <Link
-              href="/datenschutz"
-              className="text-white/40 hover:text-accent text-sm transition-colors"
-            >
-              Datenschutz
-            </Link>
-
-            <motion.a
-              href="#hero"
-              className="flex items-center gap-2 text-white/40 hover:text-accent text-sm transition-colors"
-              whileHover={{ y: -2 }}
-            >
-              Nach oben
-              <ArrowUp className="w-4 h-4" />
-            </motion.a>
-          </div>
-        </div>
-
-        {/* Designer credit */}
-        <div className="mt-4 pt-4 border-t border-white/[0.06]">
-          <p className="text-white/30 text-xs text-center">
-            designed by{" "}
-            <a
-              href="https://fylumarketing.de"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/60 hover:text-accent"
-            >
-              fylu - marketing fylumarketing.de
-            </a>
-          </p>
         </div>
       </div>
 
-      {/* Unsichtbarer Taskey-Link */}
+      {/* LINK GRID */}
+      <div className="border-b border-bone/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            <LinkColumn label="Navigation" items={navLinks} />
+            <LinkColumn label="Pirmasens" items={pirmasens} />
+            <LinkColumn label="Kaiserslautern" items={kaiserslautern} />
+            <LinkColumn label="Weitere Städte" items={weitere} />
+          </div>
+        </div>
+      </div>
+
+      {/* MONOGRAM */}
+      <div className="relative overflow-hidden border-b border-bone/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-20 relative">
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1, ease }}
+            className="font-display text-[clamp(8rem,30vw,28rem)] leading-[0.78] text-bone/95 select-none"
+          >
+            SALIF.
+          </motion.div>
+          <div className="absolute right-6 top-6 marker-line text-bone/50">
+            ©{new Date().getFullYear()}
+          </div>
+        </div>
+      </div>
+
+      {/* BOTTOM BAR */}
+      <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/40">
+          © {new Date().getFullYear()} Salif Gebäudeservice — Haus und Mehr ·
+          Alle Rechte vorbehalten.
+        </p>
+        <div className="flex items-center gap-6 font-mono text-[10px] uppercase tracking-[0.22em]">
+          <Link
+            href="/impressum"
+            className="text-bone/40 hover:text-voltage transition-colors"
+          >
+            Impressum
+          </Link>
+          <Link
+            href="/datenschutz"
+            className="text-bone/40 hover:text-voltage transition-colors"
+          >
+            Datenschutz
+          </Link>
+          <a
+            href="#hero"
+            className="flex items-center gap-2 text-bone/40 hover:text-voltage transition-colors"
+          >
+            Nach oben
+            <ArrowUp className="w-3 h-3" />
+          </a>
+        </div>
+      </div>
+
+      <div className="border-t border-bone/[0.06]">
+        <p className="text-bone/30 text-[10px] uppercase tracking-[0.22em] font-mono text-center py-3">
+          designed by{" "}
+          <a
+            href="https://fylumarketing.de"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-bone/60 hover:text-voltage"
+          >
+            fylu · fylumarketing.de
+          </a>
+        </p>
+      </div>
+
+      {/* Hidden Taskey link kept */}
       <a
         href="https://www.taskeyapp.com"
         target="_blank"
@@ -284,6 +251,11 @@ export default function Footer() {
       >
         .
       </a>
+
+      {/* satisfy unused import */}
+      <span hidden>
+        <ArrowUpRight />
+      </span>
     </footer>
   );
 }

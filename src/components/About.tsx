@@ -1,106 +1,148 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, Award, Users, Calendar } from "lucide-react";
+import { useRef } from "react";
+import { ArrowDownRight, Plus } from "lucide-react";
 import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
+import { RevealWords, useParallax } from "@/components/_design";
 
-const statIcons = [Calendar, Users, Award, CheckCircle];
-
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function About() {
   const { about } = useContent();
-  return (
-    <section id="about" className="py-24 sm:py-32 bg-white relative">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-accent/5 to-transparent rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-primary/5 to-transparent rounded-full blur-3xl" />
+  const ref = useRef<HTMLElement>(null);
+  const logoY = useParallax(ref, -120);
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left side - Logo: hidden on mobile, shown on lg+ */}
+  return (
+    <section
+      ref={ref}
+      id="about"
+      className="relative bg-bone text-ink overflow-hidden border-y border-ink/15"
+    >
+      {/* HEADER */}
+      <div className="border-b border-ink/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-20">
+          <div className="grid lg:grid-cols-12 gap-6 items-start">
+            <div className="lg:col-span-2 marker-line text-ink/60">
+              03 / Über uns
+            </div>
+            <div className="lg:col-span-10">
+              <h2 className="font-display text-[clamp(2.5rem,9vw,9rem)] leading-[0.82] text-ink">
+                <RevealWords text={about.title.toUpperCase()} />{" "}
+                <span className="font-editorial italic text-voltage-dim normal-case tracking-tight">
+                  <RevealWords text={about.titleHighlight} delay={0.15} />
+                </span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* BODY */}
+      <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-28">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+          {/* Logo side */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease }}
-            className="relative hidden lg:flex items-center justify-center"
+            style={{ y: logoY }}
+            className="lg:col-span-5 hidden lg:block"
           >
-            <div className="relative w-full max-w-lg mx-auto aspect-square rounded-3xl overflow-hidden shadow-2xl bg-white">
+            <div className="relative aspect-square w-full max-w-xl border-2 border-ink bg-ink overflow-hidden grain">
               <Image
                 src={about.logoImage}
-                alt="Salif Gebäudeservice Logo"
+                alt="Salif Gebäudeservice"
                 fill
-                className="object-contain scale-90"
-                style={{ mixBlendMode: 'multiply' }}
+                className="object-contain scale-90 opacity-95"
+                style={{ filter: "invert(1)" }}
               />
+              <div className="absolute top-4 left-4 marker-line text-bone/60">
+                A / Logo
+              </div>
+              <div className="absolute bottom-4 right-4 font-mono text-[10px] uppercase tracking-[0.22em] text-bone/40">
+                v.2020
+              </div>
             </div>
           </motion.div>
 
-          {/* Right side - Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease }}
-          >
-            <span className="inline-block text-accent font-semibold text-sm tracking-widest uppercase mb-3">
-              {about.label}
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight">
-              {about.title}{" "}
-              <span className="bg-gradient-to-r from-accent to-emerald-400 bg-clip-text text-transparent">
-                {about.titleHighlight}
-              </span>
-            </h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+          {/* Text side */}
+          <div className="lg:col-span-7 space-y-8">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, ease }}
+              className="font-editorial italic text-2xl sm:text-3xl lg:text-4xl leading-[1.15] text-ink"
+            >
               {about.text1}
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              {about.text2}
-            </p>
+            </motion.p>
 
-            {/* Key points */}
-            <div className="space-y-4 mb-10">
-              {about.keyPoints.map((point, i) => (
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, ease, delay: 0.1 }}
+              className="text-base sm:text-lg leading-relaxed text-ink/75 max-w-2xl"
+            >
+              {about.text2}
+            </motion.p>
+
+            {/* Key points as list with industrial markers */}
+            <div className="border-t border-ink/15 pt-6 space-y-0">
+              {about.keyPoints.map((p, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.4, ease, delay: i * 0.07 }}
-                  className="flex items-center gap-3"
+                  transition={{ duration: 0.5, ease, delay: i * 0.06 }}
+                  className="group flex items-center gap-5 py-4 border-b border-ink/10"
                 >
-                  <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                  <span className="text-gray-700 font-medium">{point}</span>
+                  <span className="font-mono text-xs uppercase tracking-[0.22em] text-ink/40 w-10 shrink-0">
+                    /{String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Plus className="w-4 h-4 text-voltage-dim shrink-0" />
+                  <span className="text-base sm:text-lg text-ink group-hover:text-voltage-dim transition-colors">
+                    {p}
+                  </span>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 sm:mt-20">
-          {about.stats.map((stat, i) => {
-            const Icon = statIcons[i % statIcons.length];
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, ease, delay: i * 0.07 }}
-                className="text-center bg-muted rounded-2xl p-6 border border-gray-100"
-              >
-                <Icon className="w-8 h-8 text-accent mx-auto mb-3" />
-                <div className="text-2xl font-bold text-primary">{stat.value}</div>
-                <div className="text-gray-500 text-sm mt-1">{stat.label}</div>
-              </motion.div>
-            );
-          })}
+          </div>
         </div>
       </div>
+
+      {/* STATS RIBBON */}
+      {about.stats.length > 0 && (
+        <div className="bg-ink text-bone border-t border-bone/10">
+          <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-16">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
+              {about.stats.map((s, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.7, ease, delay: i * 0.08 }}
+                  className="group relative"
+                >
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/40">
+                      /{String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.8] text-bone group-hover:text-voltage transition-colors mt-3">
+                    {s.value}
+                  </div>
+                  <div className="mt-2 font-editorial italic text-base sm:text-lg text-bone/70">
+                    {s.label}
+                  </div>
+                  <ArrowDownRight className="absolute top-0 right-0 w-4 h-4 text-bone/30 group-hover:text-voltage transition-colors" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

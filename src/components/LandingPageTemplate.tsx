@@ -5,61 +5,51 @@ import {
   ArrowLeft,
   Phone,
   MessageCircle,
-  CheckCircle,
-  ArrowRight,
+  ArrowUpRight,
   ChevronDown,
-  Sparkles,
+  Plus,
   ShieldCheck,
+  MapPin,
   Clock,
   Star,
-  MapPin,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Footer from "@/components/Footer";
+import {
+  Marquee,
+  MagneticLink,
+  RevealWords,
+  RotaryBadge,
+  LiveClock,
+} from "@/components/_design";
 
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
+const ease = [0.22, 1, 0.36, 1] as const;
 
+/* PUBLIC API — kept compatible with src/lib/landingData.ts */
 export type LandingFAQ = { q: string; a: string };
 export type LandingService = { title: string; text: string };
 export type LandingStep = { step: string; title: string; desc: string };
 export type LandingLink = { label: string; href: string };
 
 export type LandingPageData = {
-  /** SEO display name e.g. "Wintergartenreinigung" */
   service: string;
-  /** city e.g. "Kaiserslautern" */
   city: string;
-  /** small kicker above H1, e.g. "Strahlende Fassaden vom Profi" */
   kicker: string;
-  /** H1 highlight phrase, gets accent color */
   h1Highlight: string;
-  /** main intro paragraph */
   introLead: string;
-  /** secondary intro paragraph (HTML allowed) */
   introSecondary: string;
-  /** crumb label */
   breadcrumbLabel: string;
-  /** "Warum lohnt es sich" rich paragraphs */
   whyParagraphs: string[];
-  /** service bullets */
   services: LandingService[];
-  /** process steps */
   steps: LandingStep[];
-  /** pricing paragraphs (HTML allowed) */
   pricingParagraphs: string[];
-  /** reference / case study */
   referenceTitle: string;
   referenceText: string;
-  /** local trust signals shown above CTA */
   trustBullets: string[];
-  /** FAQs */
   faqs: LandingFAQ[];
-  /** internal cross-links */
   crossLinks: LandingLink[];
-  /** the canonical URL path (e.g. "/wintergartenreinigung-kaiserslautern") */
   path: string;
-  /** Stadtteile / local neighborhoods for embedded local references */
   neighborhoods: string[];
 };
 
@@ -67,33 +57,41 @@ function FAQItem({ faq, index }: { faq: LandingFAQ; index: number }) {
   const [open, setOpen] = useState(false);
   return (
     <motion.div
-      initial={{ opacity: 0, y: 14 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.4, ease, delay: index * 0.04 }}
-      className="border border-gray-100 rounded-2xl overflow-hidden bg-white"
+      transition={{ duration: 0.5, ease, delay: index * 0.04 }}
+      className="group border-t border-ink/15 last:border-b last:border-ink/15"
     >
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-gray-50/70 transition-colors"
+        className="w-full flex items-center justify-between gap-6 py-6 sm:py-8 text-left transition-colors"
         aria-expanded={open}
       >
-        <span className="font-semibold text-[#1a3a5c] text-sm sm:text-base pr-4">
-          {faq.q}
-        </span>
+        <div className="flex items-baseline gap-5 flex-1 min-w-0">
+          <span className="font-mono text-xs uppercase tracking-[0.22em] text-ink/40 w-8 shrink-0">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="font-display text-2xl sm:text-4xl lg:text-5xl leading-[0.95] text-ink group-hover:text-voltage-dim transition-colors">
+            {faq.q}
+          </span>
+        </div>
         <ChevronDown
-          className={`w-5 h-5 text-[#22c55e] flex-shrink-0 transition-transform duration-300 ${
+          className={`w-6 h-6 shrink-0 text-voltage-dim transition-transform duration-500 ${
             open ? "rotate-180" : ""
           }`}
         />
       </button>
       <motion.div
         initial={false}
-        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
-        transition={{ duration: 0.28, ease }}
+        animate={{
+          height: open ? "auto" : 0,
+          opacity: open ? 1 : 0,
+        }}
+        transition={{ duration: 0.4, ease }}
         className="overflow-hidden"
       >
-        <div className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+        <div className="pb-8 pl-0 sm:pl-[3.25rem] max-w-3xl text-base sm:text-lg leading-relaxed text-ink/75 font-editorial italic">
           {faq.a}
         </div>
       </motion.div>
@@ -107,8 +105,8 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
   const waNumber = "4915229043159";
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* JSON-LD: Breadcrumb + Service + FAQPage */}
+    <main className="min-h-screen bg-bone text-ink">
+      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -148,10 +146,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
                     addressCountry: "DE",
                   },
                 },
-                areaServed: {
-                  "@type": "City",
-                  name: data.city,
-                },
+                areaServed: { "@type": "City", name: data.city },
                 name: `${data.service} ${data.city}`,
                 description: data.introLead,
               },
@@ -169,139 +164,210 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
       />
 
       {/* HERO */}
-      <section className="relative bg-[#1a3a5c] overflow-hidden py-24 sm:py-32">
-        {/* Layered grid + radial glow */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.06]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(34,197,94,1) 1px, transparent 1px), linear-gradient(90deg, rgba(34,197,94,1) 1px, transparent 1px)`,
-            backgroundSize: "48px 48px",
-          }}
-        />
-        <div className="absolute -top-32 -right-32 w-[520px] h-[520px] bg-[#22c55e]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-40 -left-20 w-[420px] h-[420px] bg-[#22c55e]/8 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="mb-8">
-            <ol className="flex items-center gap-2 text-sm text-white/40">
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
-              <li className="text-white/70">{data.breadcrumbLabel}</li>
-            </ol>
-          </nav>
-
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-white/50 hover:text-white text-sm mb-10 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Zurück zur Startseite
-          </Link>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease }}
-          >
-            <span className="inline-flex items-center gap-2 text-[#22c55e] font-semibold text-sm tracking-widest uppercase mb-3">
-              <Sparkles className="w-4 h-4" />
-              {data.kicker}
+      <section className="relative bg-ink text-bone overflow-hidden grain">
+        {/* status bar */}
+        <div className="border-b border-bone/15 px-5 sm:px-8 lg:px-12 py-3.5 flex justify-between items-center font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em]">
+          <div className="flex items-center gap-4">
+            <Link href="/" className="hover:text-voltage transition-colors flex items-center gap-2">
+              <ArrowLeft className="w-3 h-3" />
+              Home
+            </Link>
+            <span aria-hidden className="text-bone/30">/</span>
+            <span className="text-bone/70 truncate max-w-[60vw] sm:max-w-none">
+              {data.breadcrumbLabel}
             </span>
-            <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6 leading-tight">
-              {data.service} {data.city} —{" "}
-              <span className="text-[#22c55e]">{data.h1Highlight}</span>
-            </h1>
-            <p className="text-white/70 text-lg sm:text-xl max-w-2xl leading-relaxed">
-              {data.introLead}
-            </p>
-            <p
-              className="text-white/55 text-base mt-4 leading-relaxed max-w-2xl"
-              dangerouslySetInnerHTML={{ __html: data.introSecondary }}
-            />
-
-            {/* Inline-CTA */}
-            <div className="flex flex-wrap items-center gap-3 mt-9">
-              <motion.a
-                href={`tel:${phoneRaw}`}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#22c55e] text-white font-bold text-sm sm:text-base"
-                style={{ boxShadow: "0 0 24px rgba(34,197,94,0.25)" }}
-              >
-                <Phone className="w-4 h-4" />
-                {phone}
-              </motion.a>
-              <motion.a
-                href={`https://wa.me/${waNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-white/15 text-white font-semibold text-sm sm:text-base hover:bg-white/5 transition"
-              >
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp
-              </motion.a>
-              <span className="inline-flex items-center gap-2 text-white/40 text-xs sm:text-sm">
-                <Clock className="w-3.5 h-3.5" />
-                Mo – Sa, 7 – 20 Uhr
+          </div>
+          <div className="hidden sm:flex items-center gap-4 text-bone/50">
+            <span className="flex items-center gap-2 text-voltage">
+              <span className="relative inline-flex w-1.5 h-1.5 bg-voltage rounded-full">
+                <span className="absolute inset-0 rounded-full bg-voltage animate-ping" />
               </span>
+              Verfügbar
+            </span>
+            <LiveClock />
+          </div>
+        </div>
+
+        {/* grid + voltage glow */}
+        <div className="absolute inset-x-0 top-12 bottom-0 grid-bg-light pointer-events-none" />
+        <div className="absolute -top-32 -right-32 w-[600px] h-[600px] bg-voltage/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 px-5 sm:px-8 lg:px-12 pt-10 sm:pt-16 pb-16 sm:pb-20">
+          <div className="grid lg:grid-cols-12 gap-8 items-start">
+            <div className="lg:col-span-9">
+              <div className="marker-line text-bone/60 mb-6 sm:mb-10">
+                01 / {data.kicker}
+              </div>
+
+              <h1 className="font-display text-bone leading-[0.82]">
+                <span className="block overflow-hidden">
+                  <motion.span
+                    initial={{ y: "110%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.9, ease, delay: 0.1 }}
+                    className="block text-[clamp(2.5rem,8.5vw,9rem)]"
+                  >
+                    {data.service}
+                  </motion.span>
+                </span>
+                <span className="block overflow-hidden">
+                  <motion.span
+                    initial={{ y: "110%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.9, ease, delay: 0.2 }}
+                    className="block text-[clamp(2.5rem,8.5vw,9rem)] text-voltage"
+                  >
+                    {data.city}.
+                  </motion.span>
+                </span>
+                <span className="block overflow-hidden">
+                  <motion.span
+                    initial={{ y: "110%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.9, ease, delay: 0.3 }}
+                    className="block text-[clamp(1.5rem,4vw,3.5rem)] font-editorial italic text-bone/85 not-uppercase normal-case mt-3"
+                    style={{ textTransform: "none", letterSpacing: 0, fontWeight: 400 }}
+                  >
+                    {data.h1Highlight}.
+                  </motion.span>
+                </span>
+              </h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease, delay: 0.5 }}
+                className="mt-8 sm:mt-12 max-w-2xl text-base sm:text-lg leading-relaxed text-bone/80"
+              >
+                {data.introLead}
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease, delay: 0.6 }}
+                className="mt-3 max-w-2xl text-sm sm:text-base leading-relaxed text-bone/60"
+                dangerouslySetInnerHTML={{ __html: data.introSecondary }}
+              />
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease, delay: 0.7 }}
+                className="mt-10 sm:mt-14 flex flex-wrap items-center gap-3 sm:gap-4"
+              >
+                <MagneticLink
+                  href={`tel:${phoneRaw}`}
+                  className="group relative inline-flex items-center gap-3 px-7 sm:px-8 py-4 sm:py-5 bg-voltage text-ink font-display text-xl sm:text-2xl uppercase tracking-tight border-2 border-voltage hover:bg-bone hover:border-bone transition-colors"
+                >
+                  <Phone className="w-5 h-5" />
+                  {phone}
+                  <span
+                    aria-hidden
+                    className="absolute -top-2 -right-2 w-4 h-4 bg-rust rounded-full animate-voltage-pulse"
+                  />
+                </MagneticLink>
+                <MagneticLink
+                  href={`https://wa.me/${waNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-4 sm:py-5 border-2 border-bone/30 text-bone font-display text-lg sm:text-xl uppercase hover:border-voltage hover:text-voltage transition-colors"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  WhatsApp
+                </MagneticLink>
+                <span className="hidden sm:inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-bone/50 ml-auto">
+                  <Clock className="w-3 h-3" />
+                  Mo – Sa · 07 – 20
+                </span>
+              </motion.div>
             </div>
-          </motion.div>
+
+            <div className="lg:col-span-3 flex flex-col gap-6 lg:items-end">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease, delay: 0.6 }}
+              >
+                <RotaryBadge size={130} />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-bone/15 bg-ink py-1">
+          <Marquee
+            items={[data.service, data.city, "Festpreis", "Eigenes Team", "Versichert"]}
+            duration={32}
+            itemClassName="font-display text-bone text-3xl sm:text-5xl py-2"
+            separator="◆"
+          />
         </div>
       </section>
 
       {/* WARUM */}
-      <section className="py-20 sm:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#1a3a5c] mb-6">
-            Warum professionelle {data.service.toLowerCase()} in {data.city} sich
-            lohnt
-          </h2>
-          <div className="text-gray-600 text-base sm:text-lg leading-relaxed space-y-4">
-            {data.whyParagraphs.map((p, i) => (
-              <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
-            ))}
+      <section className="bg-bone text-ink border-b border-ink/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+            <div className="lg:col-span-2 marker-line text-ink/60">
+              02 / Warum
+            </div>
+            <div className="lg:col-span-10">
+              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85] mb-10">
+                <RevealWords
+                  text={`Warum ${data.service} in ${data.city} sich lohnt.`}
+                />
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-x-10 gap-y-6 text-base sm:text-lg leading-relaxed text-ink/80 max-w-5xl">
+                {data.whyParagraphs.map((p, i) => (
+                  <motion.p
+                    key={i}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, ease, delay: i * 0.08 }}
+                    dangerouslySetInnerHTML={{ __html: p }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* LEISTUNGEN */}
-      <section className="py-20 sm:py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a3a5c] mb-10">
-              Unsere Leistungen rund um {data.service} in {data.city}
-            </h2>
-          </motion.div>
-          <div className="space-y-8">
+      {/* LEISTUNGEN — alternating dark */}
+      <section className="bg-ink text-bone border-b border-bone/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+          <div className="grid lg:grid-cols-12 gap-8 mb-10">
+            <div className="lg:col-span-2 marker-line text-bone/60">
+              03 / Leistungen
+            </div>
+            <div className="lg:col-span-10">
+              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85]">
+                <RevealWords text={`Unsere ${data.service} im Detail.`} />
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-0 border-t border-bone/15">
             {data.services.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, ease, delay: i * 0.07 }}
-                className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                transition={{ duration: 0.6, ease, delay: (i % 2) * 0.08 }}
+                className="group relative p-6 sm:p-10 border-r border-b border-bone/15 last:border-r-0 md:nth-[2n]:border-r-0 hover:bg-graphite transition-colors"
               >
-                <h3 className="text-lg sm:text-xl font-bold text-[#1a3a5c] mb-3">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-xs uppercase tracking-[0.22em] text-bone/40">
+                    /{String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Plus className="w-4 h-4 text-voltage" />
+                </div>
+                <h3 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl leading-tight text-bone group-hover:text-voltage transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                <p className="mt-4 text-sm sm:text-base leading-relaxed text-bone/70 max-w-xl">
                   {item.text}
                 </p>
               </motion.div>
@@ -311,148 +377,168 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
       </section>
 
       {/* ABLAUF */}
-      <section className="py-20 sm:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#1a3a5c] mb-8">
-            So läuft Ihre {data.service} in {data.city} ab
-          </h2>
-          <div className="space-y-6">
+      <section className="bg-bone text-ink border-b border-ink/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+          <div className="grid lg:grid-cols-12 gap-8 mb-10">
+            <div className="lg:col-span-2 marker-line text-ink/60">
+              04 / Ablauf
+            </div>
+            <div className="lg:col-span-10">
+              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85]">
+                <RevealWords text="So läuft Ihr Auftrag." />
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid gap-0 border-t border-ink/15">
             {data.steps.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -16 }}
+                initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.4, ease, delay: i * 0.07 }}
-                className="flex gap-4"
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.55, ease, delay: i * 0.06 }}
+                className="group grid lg:grid-cols-12 gap-4 lg:gap-8 py-8 sm:py-10 border-b border-ink/15"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#22c55e]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-[#22c55e] font-bold text-sm">
-                    {item.step}
-                  </span>
+                <div className="lg:col-span-2 font-mono text-xs uppercase tracking-[0.22em] text-ink/40 pt-1">
+                  Schritt {item.step}
                 </div>
-                <div>
-                  <h3 className="font-bold text-[#1a3a5c] mb-1">
+                <div className="lg:col-span-4">
+                  <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl leading-tight text-ink group-hover:text-voltage-dim transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {item.desc}
-                  </p>
+                </div>
+                <div className="lg:col-span-6 text-base sm:text-lg leading-relaxed text-ink/75">
+                  {item.desc}
                 </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* KOSTEN */}
-      <section className="py-20 sm:py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a3a5c] mb-6">
-              Was kostet {data.service} in {data.city}?
-            </h2>
-            <div className="text-gray-600 text-base sm:text-lg leading-relaxed space-y-4">
-              {data.pricingParagraphs.map((p, i) => (
-                <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
-              ))}
+      <section className="relative bg-rust text-bone overflow-hidden">
+        <div className="absolute inset-0 hatch-bg-light pointer-events-none" />
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24 relative">
+          <div className="grid lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-2 marker-line text-bone/80">
+              05 / Preis
             </div>
-          </motion.div>
+            <div className="lg:col-span-7">
+              <h2 className="font-display text-[clamp(2rem,7vw,6rem)] leading-[0.85] mb-6">
+                Was kostet das?
+              </h2>
+              <div className="space-y-4 text-base sm:text-lg leading-relaxed text-bone/95 max-w-2xl">
+                {data.pricingParagraphs.map((p, i) => (
+                  <p
+                    key={i}
+                    dangerouslySetInnerHTML={{ __html: p }}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="lg:col-span-3 flex lg:justify-end items-start">
+              <div className="font-display text-[clamp(4rem,12vw,9rem)] leading-[0.8] text-bone">
+                €€
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* LOCAL / NEIGHBORHOODS */}
-      <section className="py-20 sm:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#1a3a5c] mb-6">
-            {data.service} in ganz {data.city} und Umgebung
-          </h2>
-          <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-6">
-            Wir sind in folgenden Stadtteilen und Umlandgemeinden für Sie im
-            Einsatz — schnelle Termine, kurze Wege, faire Preise:
-          </p>
+      {/* NEIGHBORHOODS */}
+      <section className="bg-bone text-ink border-b border-ink/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+          <div className="grid lg:grid-cols-12 gap-8 mb-8">
+            <div className="lg:col-span-2 marker-line text-ink/60">
+              06 / Gebiet
+            </div>
+            <div className="lg:col-span-10">
+              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85]">
+                <RevealWords text={`In ganz ${data.city} unterwegs.`} />
+              </h2>
+            </div>
+          </div>
           <div className="flex flex-wrap gap-2">
-            {data.neighborhoods.map((n) => (
-              <span
+            {data.neighborhoods.map((n, i) => (
+              <motion.span
                 key={n}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm bg-white border border-gray-200 text-[#1a3a5c] hover:border-[#22c55e]/40 transition-colors"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.4, ease, delay: i * 0.03 }}
+                className="inline-flex items-center gap-2 px-4 py-2.5 border border-ink/20 text-sm font-mono uppercase tracking-[0.15em] hover:bg-ink hover:text-bone transition-colors"
               >
-                <MapPin className="w-3.5 h-3.5 text-[#22c55e]" />
+                <MapPin className="w-3.5 h-3.5 text-voltage-dim" />
                 {n}
-              </span>
+              </motion.span>
             ))}
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* REFERENZ */}
-      <section className="py-20 sm:py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a3a5c] mb-6">
-              Referenz — {data.referenceTitle}
-            </h2>
-            <div className="flex items-start gap-3 text-gray-600 text-base sm:text-lg leading-relaxed">
-              <CheckCircle className="w-5 h-5 text-[#22c55e] flex-shrink-0 mt-1" />
-              <p>{data.referenceText}</p>
+      <section className="bg-ink text-bone border-b border-bone/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+          <div className="grid lg:grid-cols-12 gap-8 items-start">
+            <div className="lg:col-span-2 marker-line text-bone/60">
+              07 / Referenz
             </div>
-          </motion.div>
+            <div className="lg:col-span-10">
+              <div className="font-editorial italic text-2xl sm:text-3xl lg:text-4xl leading-[1.2] text-bone/90 max-w-4xl">
+                „{data.referenceText}"
+              </div>
+              <div className="mt-8 marker-line text-voltage">
+                {data.referenceTitle}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* TRUST BULLETS */}
-      <section className="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid sm:grid-cols-2 gap-4">
-          {data.trustBullets.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, ease, delay: i * 0.05 }}
-              className="flex items-start gap-3 p-4 rounded-2xl border border-gray-100 bg-white"
-            >
-              <ShieldCheck className="w-5 h-5 text-[#22c55e] flex-shrink-0 mt-0.5" />
-              <span className="text-gray-700 text-sm leading-relaxed">{t}</span>
-            </motion.div>
-          ))}
+      {/* TRUST */}
+      <section className="bg-bone text-ink border-b border-ink/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+          <div className="grid lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-2 marker-line text-ink/60">
+              08 / Versprechen
+            </div>
+            <div className="lg:col-span-10 grid sm:grid-cols-2 gap-0 border-t border-ink/15">
+              {data.trustBullets.map((t, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.5, ease, delay: i * 0.05 }}
+                  className="flex items-start gap-4 py-6 px-2 sm:px-6 border-b border-ink/15 sm:[&:nth-child(2n+1)]:border-r sm:[&:nth-child(2n+1)]:border-ink/15"
+                >
+                  <ShieldCheck className="w-5 h-5 text-voltage-dim shrink-0 mt-1" />
+                  <span className="text-base sm:text-lg leading-relaxed">
+                    {t}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-20 sm:py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a3a5c] mb-10">
-              Häufige Fragen zur {data.service} in {data.city}
-            </h2>
-          </motion.div>
-          <div className="space-y-3">
+      <section className="bg-bone text-ink border-b border-ink/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+          <div className="grid lg:grid-cols-12 gap-8 mb-6">
+            <div className="lg:col-span-2 marker-line text-ink/60">
+              09 / FAQ
+            </div>
+            <div className="lg:col-span-10">
+              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85]">
+                <RevealWords text="Häufige Fragen." />
+              </h2>
+            </div>
+          </div>
+          <div>
             {data.faqs.map((faq, i) => (
               <FAQItem key={i} faq={faq} index={i} />
             ))}
@@ -460,83 +546,75 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
         </div>
       </section>
 
-      {/* INTERNE LINKS */}
-      <section className="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl font-bold text-[#1a3a5c] mb-6">
-          Weitere Leistungen & Standorte
-        </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {data.crossLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="group flex items-center justify-between gap-2 p-4 rounded-xl border border-gray-100 hover:border-[#22c55e]/40 hover:shadow-sm transition-all text-sm font-semibold text-[#1a3a5c]"
-            >
-              {link.label}
-              <ArrowRight className="w-4 h-4 text-[#22c55e] group-hover:translate-x-0.5 transition-transform" />
-            </Link>
-          ))}
+      {/* CROSS-LINKS */}
+      <section className="bg-ink text-bone border-b border-bone/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+          <div className="grid lg:grid-cols-12 gap-8 mb-10">
+            <div className="lg:col-span-2 marker-line text-bone/60">
+              10 / Weiter
+            </div>
+            <div className="lg:col-span-10">
+              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85]">
+                <RevealWords text="Mehr aus dem Programm." />
+              </h2>
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-bone/15">
+            {data.crossLinks.map((link, i) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group relative px-5 py-6 border-r border-b border-bone/15 last:border-r-0 hover:bg-voltage hover:text-ink transition-colors flex items-end justify-between gap-4"
+              >
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/40 group-hover:text-ink/60 mb-2">
+                    /{String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="font-display text-2xl sm:text-3xl leading-tight">
+                    {link.label}
+                  </div>
+                </div>
+                <ArrowUpRight className="w-6 h-6 shrink-0 group-hover:rotate-45 transition-transform duration-500" />
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 sm:py-24 bg-[#1a3a5c] relative overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.06]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(34,197,94,1) 1px, transparent 1px), linear-gradient(90deg, rgba(34,197,94,1) 1px, transparent 1px)`,
-            backgroundSize: "48px 48px",
-          }}
-        />
-        <div className="absolute -top-32 -right-32 w-[520px] h-[520px] bg-[#22c55e]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease }}
-          >
-            <div className="flex items-center justify-center gap-1 mb-4">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Star
-                  key={i}
-                  className="w-5 h-5 text-[#22c55e]"
-                  fill="#22c55e"
-                  strokeWidth={0}
-                />
-              ))}
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Jetzt unverbindliches Angebot für {data.city} anfordern
-            </h2>
-            <p className="text-white/60 text-lg mb-8">
-              Rufen Sie uns an oder schreiben Sie uns per WhatsApp. Antwort
-              meistens innerhalb weniger Stunden.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <motion.a
-                href={`tel:${phoneRaw}`}
-                className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-white text-lg bg-[#22c55e]"
-                style={{ boxShadow: "0 0 32px rgba(34,197,94,0.25)" }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Phone className="w-5 h-5" />
-                {phone}
-              </motion.a>
-              <motion.a
-                href={`https://wa.me/${waNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-[#22c55e] text-lg border-2 border-[#22c55e]/30 hover:bg-[#22c55e]/10 transition-colors"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <MessageCircle className="w-5 h-5" />
-                WhatsApp schreiben
-              </motion.a>
-            </div>
-          </motion.div>
+      <section className="relative bg-voltage text-ink overflow-hidden">
+        <div className="absolute inset-0 hatch-bg pointer-events-none" />
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 relative">
+          <div className="flex items-center gap-1 mb-6">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <Star key={i} className="w-5 h-5" fill="#0a0a0a" strokeWidth={0} />
+            ))}
+            <span className="ml-3 font-mono text-xs uppercase tracking-[0.22em]">
+              Festpreis · Termin meist diese Woche
+            </span>
+          </div>
+          <h2 className="font-display text-[clamp(2.5rem,9vw,9rem)] leading-[0.8] mb-10">
+            <RevealWords text={`Jetzt Angebot für ${data.city}.`} />
+          </h2>
+
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <MagneticLink
+              href={`tel:${phoneRaw}`}
+              className="group inline-flex items-center gap-3 px-7 sm:px-9 py-4 sm:py-5 bg-ink text-bone font-display text-xl sm:text-2xl uppercase tracking-tight border-2 border-ink hover:bg-bone hover:text-ink transition-colors"
+            >
+              <Phone className="w-5 h-5" />
+              {phone}
+            </MagneticLink>
+            <MagneticLink
+              href={`https://wa.me/${waNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-7 py-4 sm:py-5 border-2 border-ink text-ink font-display text-lg sm:text-xl uppercase hover:bg-ink hover:text-voltage transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              WhatsApp
+            </MagneticLink>
+          </div>
         </div>
       </section>
 

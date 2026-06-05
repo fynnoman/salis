@@ -1,17 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { Marquee, RevealWords } from "@/components/_design";
 
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
+const ease = [0.22, 1, 0.36, 1] as const;
 
 type ServiceLink = { label: string; href: string };
 type CityBlock = {
   key: string;
   city: string;
-  region: string;
+  meta: string;
   description: string;
   services: ServiceLink[];
 };
@@ -20,191 +21,215 @@ const CITIES: CityBlock[] = [
   {
     key: "pirmasens",
     city: "Pirmasens",
-    region: "Südwestpfalz · Sitz unseres Betriebs",
+    meta: "Heimatmarkt · 12 Leistungen",
     description:
-      "Unser Heimatmarkt – hier sind wir täglich für Privathaushalte, Hausverwaltungen und Gewerbekunden im Einsatz. Kurze Wege, oft Termine am gleichen Tag möglich.",
+      "Unser Betriebssitz seit 2020. Hier arbeiten wir täglich für Privathaushalte, Hausverwaltungen, Praxen und Gewerbe — kurze Wege, oft Termine am gleichen Tag.",
     services: [
-      { label: "Gebäudereinigung Pirmasens", href: "/gebaeudereinigung-pirmasens" },
-      { label: "Unterhaltsreinigung Pirmasens", href: "/unterhaltsreinigung-pirmasens" },
-      { label: "Grundreinigung Pirmasens", href: "/grundreinigung-pirmasens" },
-      { label: "Büroreinigung Pirmasens", href: "/bueroreinigung-pirmasens" },
-      { label: "Treppenhausreinigung Pirmasens", href: "/treppenhausreinigung-pirmasens" },
-      { label: "Fensterreinigung Pirmasens", href: "/fensterreinigung-pirmasens" },
-      { label: "Glasreinigung Pirmasens", href: "/glasreinigung-pirmasens" },
-      { label: "Wintergartenreinigung Pirmasens", href: "/wintergartenreinigung-pirmasens" },
-      { label: "Dachrinnenreinigung Pirmasens", href: "/dachrinnenreinigung-pirmasens" },
-      { label: "Hausmeisterservice Pirmasens", href: "/hausmeisterservice-pirmasens" },
-      { label: "Entrümpelung Pirmasens", href: "/entruempelung-pirmasens" },
-      { label: "Winterdienst Pirmasens", href: "/winterdienst-pirmasens" },
+      { label: "Gebäudereinigung", href: "/gebaeudereinigung-pirmasens" },
+      { label: "Unterhaltsreinigung", href: "/unterhaltsreinigung-pirmasens" },
+      { label: "Grundreinigung", href: "/grundreinigung-pirmasens" },
+      { label: "Büroreinigung", href: "/bueroreinigung-pirmasens" },
+      { label: "Treppenhausreinigung", href: "/treppenhausreinigung-pirmasens" },
+      { label: "Fensterreinigung", href: "/fensterreinigung-pirmasens" },
+      { label: "Glasreinigung", href: "/glasreinigung-pirmasens" },
+      { label: "Wintergartenreinigung", href: "/wintergartenreinigung-pirmasens" },
+      { label: "Dachrinnenreinigung", href: "/dachrinnenreinigung-pirmasens" },
+      { label: "Hausmeisterservice", href: "/hausmeisterservice-pirmasens" },
+      { label: "Entrümpelung", href: "/entruempelung-pirmasens" },
+      { label: "Winterdienst", href: "/winterdienst-pirmasens" },
     ],
   },
   {
     key: "kaiserslautern",
     city: "Kaiserslautern",
-    region: "Westpfalz · Komplette Dienstleistungspalette",
+    meta: "Westpfalz · 12 Leistungen",
     description:
-      "In der Barbarossastadt betreuen wir Bürogebäude, Universitäts-Liegenschaften, Praxen, Mehrfamilienhäuser und Gewerbeobjekte mit festen Reinigungsplänen und eigenem Personal vor Ort.",
+      "In der Barbarossastadt betreuen wir Bürogebäude, Praxen, Mehrfamilienhäuser und Gewerbeobjekte mit festen Reinigungsplänen und eigenem Personal vor Ort.",
     services: [
-      { label: "Gebäudereinigung Kaiserslautern", href: "/gebaeudereinigung-kaiserslautern" },
-      { label: "Unterhaltsreinigung Kaiserslautern", href: "/unterhaltsreinigung-kaiserslautern" },
-      { label: "Grundreinigung Kaiserslautern", href: "/grundreinigung-kaiserslautern" },
-      { label: "Büroreinigung Kaiserslautern", href: "/bueroreinigung-kaiserslautern" },
-      { label: "Treppenhausreinigung Kaiserslautern", href: "/treppenhausreinigung-kaiserslautern" },
-      { label: "Fensterreinigung Kaiserslautern", href: "/fensterreinigung-kaiserslautern" },
-      { label: "Glasreinigung Kaiserslautern", href: "/glasreinigung-kaiserslautern" },
-      { label: "Wintergartenreinigung Kaiserslautern", href: "/wintergartenreinigung-kaiserslautern" },
-      { label: "Dachrinnenreinigung Kaiserslautern", href: "/dachrinnenreinigung-kaiserslautern" },
-      { label: "Hausmeisterservice Kaiserslautern", href: "/hausmeisterservice-kaiserslautern" },
-      { label: "Entrümpelung Kaiserslautern", href: "/entruempelung-kaiserslautern" },
-      { label: "Winterdienst Kaiserslautern", href: "/winterdienst-kaiserslautern" },
+      { label: "Gebäudereinigung", href: "/gebaeudereinigung-kaiserslautern" },
+      { label: "Unterhaltsreinigung", href: "/unterhaltsreinigung-kaiserslautern" },
+      { label: "Grundreinigung", href: "/grundreinigung-kaiserslautern" },
+      { label: "Büroreinigung", href: "/bueroreinigung-kaiserslautern" },
+      { label: "Treppenhausreinigung", href: "/treppenhausreinigung-kaiserslautern" },
+      { label: "Fensterreinigung", href: "/fensterreinigung-kaiserslautern" },
+      { label: "Glasreinigung", href: "/glasreinigung-kaiserslautern" },
+      { label: "Wintergartenreinigung", href: "/wintergartenreinigung-kaiserslautern" },
+      { label: "Dachrinnenreinigung", href: "/dachrinnenreinigung-kaiserslautern" },
+      { label: "Hausmeisterservice", href: "/hausmeisterservice-kaiserslautern" },
+      { label: "Entrümpelung", href: "/entruempelung-kaiserslautern" },
+      { label: "Winterdienst", href: "/winterdienst-kaiserslautern" },
     ],
   },
   {
     key: "zweibruecken",
     city: "Zweibrücken",
-    region: "Südwestpfalz · Regelmäßige Einsätze",
+    meta: "Südwestpfalz · 4 Leistungen",
     description:
-      "Vom Outlet bis zur Rosenstadt: wir reinigen Geschäfte, WEGs und Gewerbeobjekte in Zweibrücken mit festen Wartungsverträgen und fairen Festpreisen.",
+      "Vom Outlet bis zur Rosenstadt — Wartungsverträge für Geschäfte, WEGs und Gewerbeobjekte zu fairen Festpreisen.",
     services: [
-      { label: "Gebäudereinigung Zweibrücken", href: "/gebaeudereinigung-zweibruecken" },
-      { label: "Fensterreinigung Zweibrücken", href: "/fensterreinigung-zweibruecken" },
-      { label: "Hausmeisterservice Zweibrücken", href: "/hausmeisterservice-zweibruecken" },
-      { label: "Unterhaltsreinigung Zweibrücken", href: "/unterhaltsreinigung-zweibruecken" },
+      { label: "Gebäudereinigung", href: "/gebaeudereinigung-zweibruecken" },
+      { label: "Fensterreinigung", href: "/fensterreinigung-zweibruecken" },
+      { label: "Hausmeisterservice", href: "/hausmeisterservice-zweibruecken" },
+      { label: "Unterhaltsreinigung", href: "/unterhaltsreinigung-zweibruecken" },
     ],
   },
   {
     key: "landstuhl",
     city: "Landstuhl",
-    region: "Sickinger Höhe · Schnelle Anfahrt",
+    meta: "Sickinger Höhe · 3 Leistungen",
     description:
-      "In Landstuhl betreuen wir Eigentümer, Vermieter und Praxen rund um die Sickinger Höhe – mit Fokus auf Gebäudereinigung und klassischen Hausmeisterservice.",
+      "Sickinger Höhe und Umgebung — Eigentümer, Vermieter und Praxen rund um die Burg. Fokus Gebäudereinigung und Hausmeisterservice.",
     services: [
-      { label: "Gebäudereinigung Landstuhl", href: "/gebaeudereinigung-landstuhl" },
-      { label: "Hausmeisterservice Landstuhl", href: "/hausmeisterservice-landstuhl" },
-      { label: "Fensterreinigung Landstuhl", href: "/fensterreinigung-landstuhl" },
+      { label: "Gebäudereinigung", href: "/gebaeudereinigung-landstuhl" },
+      { label: "Hausmeisterservice", href: "/hausmeisterservice-landstuhl" },
+      { label: "Fensterreinigung", href: "/fensterreinigung-landstuhl" },
     ],
   },
   {
     key: "homburg",
     city: "Homburg",
-    region: "Saarpfalz · Region grenzüberschreitend",
+    meta: "Saarpfalz · 3 Leistungen",
     description:
-      "In Homburg und Umgebung sind wir für Gewerbeobjekte rund um die Uniklinik und für WEGs am Schlossberg im Einsatz.",
+      "Homburg und Umgebung — Gewerbeobjekte rund um die Uniklinik und WEGs am Schlossberg.",
     services: [
-      { label: "Gebäudereinigung Homburg", href: "/gebaeudereinigung-homburg" },
-      { label: "Hausmeisterservice Homburg", href: "/hausmeisterservice-homburg" },
-      { label: "Fensterreinigung Homburg", href: "/fensterreinigung-homburg" },
+      { label: "Gebäudereinigung", href: "/gebaeudereinigung-homburg" },
+      { label: "Hausmeisterservice", href: "/hausmeisterservice-homburg" },
+      { label: "Fensterreinigung", href: "/fensterreinigung-homburg" },
     ],
   },
 ];
 
 export default function StandorteSection() {
-  const [activeCity, setActiveCity] = useState<string>("pirmasens");
-  const active = CITIES.find((c) => c.key === activeCity) ?? CITIES[0];
+  const [active, setActive] = useState<string>("pirmasens");
+  const current = CITIES.find((c) => c.key === active) ?? CITIES[0];
 
   return (
     <section
       id="standorte"
-      className="relative py-24 sm:py-32 bg-white overflow-hidden"
+      className="relative bg-ink text-bone overflow-hidden border-t border-bone/15"
     >
-      {/* soft decorative glows */}
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#22c55e]/8 to-transparent rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#1a3a5c]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+      {/* Header */}
+      <div className="border-b border-bone/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-20">
+          <div className="grid lg:grid-cols-12 gap-6 items-end">
+            <div className="lg:col-span-2 marker-line text-bone/60">
+              04 / Standorte
+            </div>
+            <div className="lg:col-span-7">
+              <h2 className="font-display text-[clamp(2.5rem,9vw,9rem)] leading-[0.82] text-bone">
+                <RevealWords text="WIR SIND DA," />
+                <br />
+                <span className="text-voltage">
+                  <RevealWords text="WO SIE UNS BRAUCHEN." delay={0.15} />
+                </span>
+              </h2>
+            </div>
+            <div className="lg:col-span-3">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.6, ease, delay: 0.2 }}
+                className="font-editorial italic text-xl sm:text-2xl text-bone/70 leading-snug"
+              >
+                Fünf Städte. Vierunddreißig Landingpages. Eine Hotline.
+              </motion.p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease }}
-          className="max-w-2xl mb-12"
-        >
-          <span className="inline-block text-[#22c55e] font-semibold text-sm tracking-widest uppercase mb-3">
-            Standorte & Leistungen
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1a3a5c] leading-tight">
-            Wir sind dort, wo{" "}
-            <span className="bg-gradient-to-r from-[#22c55e] to-emerald-400 bg-clip-text text-transparent">
-              Sie uns brauchen
-            </span>
-          </h2>
-          <p className="text-gray-600 text-lg leading-relaxed mt-5">
-            Wählen Sie Ihren Standort und sehen Sie alle Leistungen, die wir dort
-            anbieten. Jede Stadt hat eine eigene Seite je Leistung – mit lokalen
-            Referenzen, fairen Festpreisen und festen Ansprechpartnern.
-          </p>
-        </motion.div>
-
-        {/* City Tabs */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {CITIES.map((c) => (
+      {/* City picker — horizontal scroll on mobile */}
+      <div className="border-b border-bone/15 overflow-x-auto">
+        <div className="flex min-w-max">
+          {CITIES.map((c, i) => (
             <button
               key={c.key}
-              onClick={() => setActiveCity(c.key)}
-              className={`relative px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
-                activeCity === c.key
-                  ? "bg-[#1a3a5c] text-white shadow-md"
-                  : "bg-gray-100 text-[#1a3a5c] hover:bg-gray-200"
+              onClick={() => setActive(c.key)}
+              className={`relative flex-1 min-w-[180px] sm:min-w-0 group px-6 sm:px-8 py-6 sm:py-8 text-left border-r border-bone/15 last:border-r-0 transition-colors ${
+                active === c.key
+                  ? "bg-voltage text-ink"
+                  : "bg-ink text-bone hover:bg-graphite"
               }`}
             >
-              <span className="flex items-center gap-2">
-                <MapPin
-                  className={`w-4 h-4 ${
-                    activeCity === c.key ? "text-[#22c55e]" : "text-[#1a3a5c]/40"
-                  }`}
-                />
+              <div className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-60 mb-2">
+                /{String(i + 1).padStart(2, "0")}
+              </div>
+              <div className="font-display text-2xl sm:text-3xl lg:text-4xl leading-none">
                 {c.city}
-              </span>
+              </div>
             </button>
           ))}
         </div>
+      </div>
 
-        {/* Active city card */}
-        <motion.div
-          key={active.key}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease }}
-          className="bg-gradient-to-br from-gray-50 to-white rounded-3xl border border-gray-100 p-6 sm:p-10 shadow-sm"
-        >
-          <div className="grid md:grid-cols-12 gap-8">
-            <div className="md:col-span-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22c55e]/10 text-[#22c55e] text-xs font-semibold mb-4">
-                <MapPin className="w-3.5 h-3.5" />
-                {active.region}
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#1a3a5c] mb-3">
-                Leistungen in {active.city}
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                {active.description}
+      {/* Active city panel */}
+      <motion.div
+        key={current.key}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease }}
+        className="relative"
+      >
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-20">
+          {/* Massive city name */}
+          <div className="relative mb-12 sm:mb-16">
+            <h3
+              key={current.city + "title"}
+              className="font-display text-[clamp(5rem,18vw,20rem)] leading-[0.78] text-bone tracking-tight"
+            >
+              <motion.span
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, ease }}
+                className="block overflow-hidden"
+              >
+                <span className="block">{current.city}.</span>
+              </motion.span>
+            </h3>
+            <div className="absolute right-0 top-0 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-voltage">
+              {current.meta}
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-4">
+              <p className="font-editorial italic text-xl sm:text-2xl leading-snug text-bone/85">
+                {current.description}
               </p>
             </div>
 
-            <div className="md:col-span-8">
-              <div className="grid sm:grid-cols-2 gap-2.5">
-                {active.services.map((svc, i) => (
-                  <motion.div
+            <div className="lg:col-span-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border border-bone/15">
+                {current.services.map((svc, i) => (
+                  <Link
                     key={svc.href}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, ease, delay: i * 0.03 }}
+                    href={svc.href}
+                    className="group relative px-5 py-6 border-r border-b border-bone/15 last:border-r-0 hover:bg-voltage hover:text-ink transition-colors"
                   >
-                    <Link
-                      href={svc.href}
-                      className="group flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-white border border-gray-100 hover:border-[#22c55e]/40 hover:shadow-sm transition-all"
-                    >
-                      <span className="text-sm font-medium text-[#1a3a5c] group-hover:text-[#1a3a5c]">
-                        {svc.label}
-                      </span>
-                      <ArrowRight className="w-4 h-4 text-[#22c55e] group-hover:translate-x-0.5 transition-transform" />
-                    </Link>
-                  </motion.div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/40 group-hover:text-ink/60 mb-2">
+                      /{String(i + 1).padStart(2, "0")}
+                    </div>
+                    <div className="font-display text-2xl sm:text-3xl leading-none flex items-end justify-between gap-3">
+                      <span>{svc.label}</span>
+                      <ArrowUpRight className="w-5 h-5 mt-1 shrink-0 group-hover:rotate-45 transition-transform duration-500" />
+                    </div>
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Marquee with city names */}
+      <div className="border-t border-bone/15 bg-ink py-3">
+        <Marquee
+          items={CITIES.map((c) => c.city)}
+          duration={32}
+          itemClassName="font-display text-bone text-5xl sm:text-7xl py-2"
+          separator="●"
+        />
       </div>
     </section>
   );

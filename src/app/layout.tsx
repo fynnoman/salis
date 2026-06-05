@@ -1,21 +1,42 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import {
+  Archivo_Black,
+  Anton,
+  Instrument_Serif,
+  JetBrains_Mono,
+  Manrope,
+} from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const archivoBlack = Archivo_Black({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const anton = Anton({
+  variable: "--font-display-alt",
   subsets: ["latin"],
+  weight: ["400"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["700"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
+const manrope = Manrope({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const BASE_URL = "https://www.salif-gebaeudeservice.de";
@@ -111,7 +132,7 @@ export default function RootLayout({
     <html lang="de">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta name="theme-color" content="#1a3a5c" />
+        <meta name="theme-color" content="#0a0a0a" />
         <meta name="geo.region" content="DE-RP" />
         <meta name="geo.placename" content="Pirmasens" />
         <meta name="geo.position" content="49.2;7.6" />
@@ -227,7 +248,7 @@ export default function RootLayout({
 
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
+        className={`${archivoBlack.variable} ${anton.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} ${manrope.variable} antialiased`}
       >
         <style>{`[data-nextjs-scroll-focus-boundary] > a { display: none !important; }`}</style>
         {children}

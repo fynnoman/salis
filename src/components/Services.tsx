@@ -1,124 +1,196 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { CheckCircle2, Wrench } from "lucide-react";
-import Image from "next/image";
-import { useScrollLineY } from "./ScrollLineContext";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight, Wrench } from "lucide-react";
+import { useRef } from "react";
+import Link from "next/link";
 import { useContent } from "@/hooks/useContent";
+import { Marquee, RevealWords } from "@/components/_design";
 
-function ServiceItem({ label, index }: { label: string; index: number }) {
-  const ref = useRef<HTMLLIElement>(null);
-  const lineY = useScrollLineY();
-  const [active, setActive] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+const ease = [0.22, 1, 0.36, 1] as const;
 
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 1024);
-  }, []);
+const SERVICE_ROUTES: Record<string, string> = {
+  "gebäudereinigung": "/gebaeudereinigung-pirmasens",
+  "unterhaltsreinigung": "/unterhaltsreinigung-pirmasens",
+  "grundreinigung": "/grundreinigung-pirmasens",
+  "büroreinigung": "/bueroreinigung-pirmasens",
+  "praxisreinigung": "/bueroreinigung-pirmasens",
+  "treppenhausreinigung": "/treppenhausreinigung-pirmasens",
+  "fensterreinigung": "/fensterreinigung-pirmasens",
+  "glasreinigung": "/glasreinigung-pirmasens",
+  "wintergartenreinigung": "/wintergartenreinigung-pirmasens",
+  "dachrinnenreinigung": "/dachrinnenreinigung-pirmasens",
+  "hausmeisterservice": "/hausmeisterservice-pirmasens",
+  "kleinreparaturen": "/hausmeisterservice-pirmasens",
+  "entrümpelung": "/entruempelung-pirmasens",
+  "wohnungsauflösung": "/entruempelung-pirmasens",
+  "umzüge": "/entruempelung-pirmasens",
+  "kleintransporte": "/entruempelung-pirmasens",
+  "winterdienst": "/winterdienst-pirmasens",
+  "streudienst": "/winterdienst-pirmasens",
+};
 
-  useEffect(() => {
-    if (!lineY) return;
-    // Check initial value
-    const check = (y: number) => {
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      const absTop = rect.top + window.scrollY;
-      setActive(y >= absTop);
-    };
-    check(lineY.get());
-    const unsub = lineY.on("change", check);
-    return unsub;
-  }, [lineY]);
+function findRouteFor(label: string): string | null {
+  const lower = label.toLowerCase();
+  for (const key in SERVICE_ROUTES) {
+    if (lower.includes(key)) return SERVICE_ROUTES[key];
+  }
+  return null;
+}
+
+function StickyCard({
+  index,
+  total,
+  label,
+  href,
+}: {
+  index: number;
+  total: number;
+  label: string;
+  href: string | null;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [1, 1 - (total - index) * 0.025]
+  );
+  const numStr = String(index + 1).padStart(2, "0");
+
+  const inner = (
+    <motion.div
+      style={{ scale }}
+      className="origin-top group relative bg-ink text-bone border-t border-bone/15 px-5 sm:px-10 lg:px-14 py-12 sm:py-16 lg:py-24 overflow-hidden"
+    >
+      <div className="absolute inset-0 hatch-bg-light opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-voltage scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500" />
+
+      <div className="relative grid grid-cols-12 gap-4 items-end">
+        <div className="col-span-2 sm:col-span-1 font-mono text-xs sm:text-sm uppercase tracking-[0.22em] text-bone/40 self-start pt-2">
+          {numStr}
+        </div>
+        <div className="col-span-10 sm:col-span-9">
+          <h3 className="font-display text-[clamp(2rem,7vw,7.5rem)] leading-[0.85] text-bone group-hover:text-voltage transition-colors">
+            {label}
+          </h3>
+        </div>
+        <div className="col-span-12 sm:col-span-2 flex justify-end items-end">
+          {href ? (
+            <span className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-bone/60 group-hover:text-voltage transition-colors">
+              <span className="hidden sm:inline">Mehr</span>
+              <ArrowUpRight className="w-7 h-7 group-hover:rotate-45 transition-transform duration-500" />
+            </span>
+          ) : (
+            <ArrowUpRight className="w-7 h-7 text-bone/30" />
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
 
   return (
-    <motion.li
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94], delay: index * 0.05 }}
-      className="flex items-center gap-5 group border-b border-gray-100 pb-8 last:border-0 last:pb-0"
+      className="sticky"
+      style={{ top: `calc(4rem + ${index * 8}px)` }}
     >
-      <CheckCircle2
-        className={`w-6 h-6 flex-shrink-0 transition-colors duration-300 ${
-          active || isMobile ? "text-accent" : "text-gray-300"
-        }`}
-      />
-      <span
-        className={`text-lg sm:text-xl font-medium transition-all duration-300 ${
-          active || isMobile
-            ? "text-gray-900 font-semibold"
-            : "text-gray-900"
-        }`}
-      >
-        {label}
-      </span>
-    </motion.li>
+      {href ? (
+        <Link href={href} className="block">
+          {inner}
+        </Link>
+      ) : (
+        inner
+      )}
+    </div>
   );
 }
 
 export default function Services() {
   const { services } = useContent();
+  const items = services.items.slice(0, 12);
+
   return (
-    <section id="services" className="relative py-24 sm:py-32 overflow-hidden">
-      {/* Background image */}
-      <Image
-        src={services.backgroundImage}
-        alt="Hintergrund Reinigungsservice Pirmasens"
-        fill
-        className="object-cover object-center"
-        loading="lazy"
-        sizes="100vw"
-      />
-
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="max-w-xl"
-        >
-          <span className="inline-block text-accent font-semibold text-sm tracking-widest uppercase mb-3">
-            {services.label}
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-primary mb-14 leading-tight">
-            {services.title}
-          </h2>
-
-          <ul className="space-y-8">
-            {services.items.map((service, i) => (
-              <ServiceItem key={service} label={service} index={i} />
-            ))}
-          </ul>
-
-          {/* Küchenmontage Highlight */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
-            className="mt-12 rounded-2xl border border-accent/30 bg-white/80 backdrop-blur-sm p-6 shadow-sm"
-          >
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Wrench className="w-5 h-5 text-accent" />
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-primary mb-2">
-                  {services.highlightTitle}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {services.highlightText}
-                </p>
-              </div>
+    <section id="services" className="relative bg-bone text-ink overflow-hidden">
+      <div className="border-b border-ink/15">
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-20">
+          <div className="grid lg:grid-cols-12 gap-6 items-end">
+            <div className="lg:col-span-2">
+              <div className="marker-line text-ink/60">02 / Leistungen</div>
             </div>
-          </motion.div>
-        </motion.div>
+            <div className="lg:col-span-7">
+              <h2 className="font-display text-[clamp(2.5rem,8vw,8rem)] leading-[0.85] text-ink">
+                <RevealWords text={services.title.toUpperCase()} />
+              </h2>
+            </div>
+            <div className="lg:col-span-3">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.6, ease, delay: 0.2 }}
+                className="font-editorial text-xl sm:text-2xl leading-snug text-ink/70"
+              >
+                Zwölf Disziplinen. Eine Nummer. Alles aus einer Hand — von der Wochenpflege bis zur kompletten Wohnungsauflösung.
+              </motion.p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative">
+        {items.map((label, i) => (
+          <StickyCard
+            key={label + i}
+            index={i}
+            total={items.length}
+            label={label}
+            href={findRouteFor(label)}
+          />
+        ))}
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease }}
+        className="relative bg-rust text-bone py-16 sm:py-24"
+      >
+        <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-2 font-mono text-xs uppercase tracking-[0.22em] text-bone/80">
+            + Extra
+          </div>
+          <div className="lg:col-span-7">
+            <h3 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.9] text-bone">
+              {services.highlightTitle}
+            </h3>
+            <p className="mt-4 font-editorial text-xl sm:text-2xl leading-snug text-bone/95 max-w-2xl">
+              {services.highlightText}
+            </p>
+          </div>
+          <div className="lg:col-span-3 flex lg:justify-end">
+            <motion.div
+              whileHover={{ rotate: 25 }}
+              transition={{ type: "spring", stiffness: 200, damping: 14 }}
+              className="w-20 h-20 sm:w-28 sm:h-28 border-2 border-bone flex items-center justify-center"
+            >
+              <Wrench className="w-10 h-10 sm:w-14 sm:h-14 text-bone" />
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+
+      <div className="bg-ink text-bone border-y border-bone/10 py-2">
+        <Marquee
+          items={items.map((s) => s.split(" ")[0])}
+          duration={42}
+          itemClassName="font-display text-bone text-4xl sm:text-6xl py-2"
+        />
       </div>
     </section>
   );
 }
-
