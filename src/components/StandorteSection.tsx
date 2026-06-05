@@ -115,8 +115,8 @@ export default function StandorteSection() {
             <div className="lg:col-span-2 marker-line text-bone/60">
               04 / Standorte
             </div>
-            <div className="lg:col-span-7">
-              <h2 className="font-display text-[clamp(2.5rem,9vw,9rem)] leading-[0.82] text-bone">
+            <div className="lg:col-span-7 min-w-0">
+              <h2 className="font-display text-[clamp(2rem,6.5vw,6rem)] leading-[0.92] text-bone break-words">
                 <RevealWords text="WIR SIND DA," />
                 <br />
                 <span className="text-voltage">
@@ -155,7 +155,7 @@ export default function StandorteSection() {
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-60 mb-2">
                 /{String(i + 1).padStart(2, "0")}
               </div>
-              <div className="font-display text-2xl sm:text-3xl lg:text-4xl leading-none">
+              <div className="font-display text-xl sm:text-2xl lg:text-3xl leading-tight break-words">
                 {c.city}
               </div>
             </button>
@@ -173,21 +173,23 @@ export default function StandorteSection() {
       >
         <div className="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-20">
           {/* Massive city name */}
-          <div className="relative mb-12 sm:mb-16">
+          <div className="relative mb-12 sm:mb-16 min-w-0">
             <h3
               key={current.city + "title"}
-              className="font-display text-[clamp(5rem,18vw,20rem)] leading-[0.78] text-bone tracking-tight"
+              className="font-display text-[clamp(3rem,11vw,10rem)] leading-[0.9] text-bone tracking-tight break-words"
             >
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.9, ease }}
-                className="block overflow-hidden"
-              >
-                <span className="block">{current.city}.</span>
-              </motion.span>
+              <span className="block overflow-hidden">
+                <motion.span
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, ease }}
+                  className="block"
+                >
+                  {current.city}.
+                </motion.span>
+              </span>
             </h3>
-            <div className="absolute right-0 top-0 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-voltage">
+            <div className="absolute right-0 -top-6 sm:top-0 font-mono text-[10px] sm:text-xs uppercase tracking-[0.22em] text-voltage">
               {current.meta}
             </div>
           </div>
@@ -210,8 +212,8 @@ export default function StandorteSection() {
                     <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/40 group-hover:text-ink/60 mb-2">
                       /{String(i + 1).padStart(2, "0")}
                     </div>
-                    <div className="font-display text-2xl sm:text-3xl leading-none flex items-end justify-between gap-3">
-                      <span>{svc.label}</span>
+                    <div className="font-display text-xl sm:text-2xl leading-tight flex items-end justify-between gap-3 break-words">
+                      <span className="min-w-0">{svc.label}</span>
                       <ArrowUpRight className="w-5 h-5 mt-1 shrink-0 group-hover:rotate-45 transition-transform duration-500" />
                     </div>
                   </Link>
@@ -227,7 +229,7 @@ export default function StandorteSection() {
         <Marquee
           items={CITIES.map((c) => c.city)}
           duration={32}
-          itemClassName="font-display text-bone text-5xl sm:text-7xl py-2"
+          itemClassName="font-display text-bone text-4xl sm:text-6xl py-2 whitespace-nowrap"
           separator="●"
         />
       </div>

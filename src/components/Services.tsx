@@ -73,8 +73,8 @@ function StickyCard({
         <div className="col-span-2 sm:col-span-1 font-mono text-xs sm:text-sm uppercase tracking-[0.22em] text-bone/40 self-start pt-2">
           {numStr}
         </div>
-        <div className="col-span-10 sm:col-span-9">
-          <h3 className="font-display text-[clamp(2rem,7vw,7.5rem)] leading-[0.85] text-bone group-hover:text-voltage transition-colors">
+        <div className="col-span-10 sm:col-span-9 min-w-0">
+          <h3 className="font-display text-[clamp(1.5rem,4.5vw,4.5rem)] leading-[0.95] text-bone group-hover:text-voltage transition-colors break-words hyphens-auto">
             {label}
           </h3>
         </div>
@@ -121,8 +121,8 @@ export default function Services() {
             <div className="lg:col-span-2">
               <div className="marker-line text-ink/60">02 / Leistungen</div>
             </div>
-            <div className="lg:col-span-7">
-              <h2 className="font-display text-[clamp(2.5rem,8vw,8rem)] leading-[0.85] text-ink">
+            <div className="lg:col-span-7 min-w-0">
+              <h2 className="font-display text-[clamp(2.25rem,6.5vw,6rem)] leading-[0.9] text-ink break-words">
                 <RevealWords text={services.title.toUpperCase()} />
               </h2>
             </div>
@@ -164,8 +164,8 @@ export default function Services() {
           <div className="lg:col-span-2 font-mono text-xs uppercase tracking-[0.22em] text-bone/80">
             + Extra
           </div>
-          <div className="lg:col-span-7">
-            <h3 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.9] text-bone">
+          <div className="lg:col-span-7 min-w-0">
+            <h3 className="font-display text-[clamp(1.75rem,4.5vw,4rem)] leading-[0.95] text-bone break-words">
               {services.highlightTitle}
             </h3>
             <p className="mt-4 font-editorial text-xl sm:text-2xl leading-snug text-bone/95 max-w-2xl">
@@ -188,7 +188,7 @@ export default function Services() {
         <Marquee
           items={items.map((s) => s.split(" ")[0])}
           duration={42}
-          itemClassName="font-display text-bone text-4xl sm:text-6xl py-2"
+          itemClassName="font-display text-bone text-3xl sm:text-5xl py-2 whitespace-nowrap"
         />
       </div>
     </section>

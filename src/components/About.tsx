@@ -27,10 +27,10 @@ export default function About() {
             <div className="lg:col-span-2 marker-line text-ink/60">
               03 / Über uns
             </div>
-            <div className="lg:col-span-10">
-              <h2 className="font-display text-[clamp(2.5rem,9vw,9rem)] leading-[0.82] text-ink">
-                <RevealWords text={about.title.toUpperCase()} />{" "}
-                <span className="font-editorial italic text-voltage-dim normal-case tracking-tight">
+            <div className="lg:col-span-10 min-w-0">
+              <h2 className="font-display text-[clamp(2rem,6.5vw,6rem)] leading-[0.92] text-ink break-words">
+                <RevealWords text={about.title.toUpperCase()} />
+                <span className="block font-editorial italic font-normal text-voltage-dim tracking-tight mt-2" style={{ textTransform: "none" }}>
                   <RevealWords text={about.titleHighlight} delay={0.15} />
                 </span>
               </h2>
@@ -130,7 +130,7 @@ export default function About() {
                       /{String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <div className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.8] text-bone group-hover:text-voltage transition-colors mt-3">
+                  <div className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.9] text-bone group-hover:text-voltage transition-colors mt-3 break-words">
                     {s.value}
                   </div>
                   <div className="mt-2 font-editorial italic text-base sm:text-lg text-bone/70">

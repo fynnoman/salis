@@ -72,7 +72,7 @@ function FAQItem({ faq, index }: { faq: LandingFAQ; index: number }) {
           <span className="font-mono text-xs uppercase tracking-[0.22em] text-ink/40 w-8 shrink-0">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <span className="font-display text-2xl sm:text-4xl lg:text-5xl leading-[0.95] text-ink group-hover:text-voltage-dim transition-colors">
+          <span className="font-display text-lg sm:text-2xl lg:text-3xl leading-[1.1] text-ink group-hover:text-voltage-dim transition-colors break-words min-w-0">
             {faq.q}
           </span>
         </div>
@@ -199,38 +199,32 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
                 01 / {data.kicker}
               </div>
 
-              <h1 className="font-display text-bone leading-[0.82]">
-                <span className="block overflow-hidden">
-                  <motion.span
-                    initial={{ y: "110%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.9, ease, delay: 0.1 }}
-                    className="block text-[clamp(2.5rem,8.5vw,9rem)]"
-                  >
-                    {data.service}
-                  </motion.span>
-                </span>
-                <span className="block overflow-hidden">
-                  <motion.span
-                    initial={{ y: "110%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.9, ease, delay: 0.2 }}
-                    className="block text-[clamp(2.5rem,8.5vw,9rem)] text-voltage"
-                  >
-                    {data.city}.
-                  </motion.span>
-                </span>
-                <span className="block overflow-hidden">
-                  <motion.span
-                    initial={{ y: "110%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.9, ease, delay: 0.3 }}
-                    className="block text-[clamp(1.5rem,4vw,3.5rem)] font-editorial italic text-bone/85 not-uppercase normal-case mt-3"
-                    style={{ textTransform: "none", letterSpacing: 0, fontWeight: 400 }}
-                  >
-                    {data.h1Highlight}.
-                  </motion.span>
-                </span>
+              <h1 className="font-display text-bone leading-[0.92] break-words hyphens-auto min-w-0">
+                <motion.span
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease, delay: 0.1 }}
+                  className="block text-[clamp(1.8rem,5.5vw,5.5rem)]"
+                >
+                  {data.service}
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease, delay: 0.22 }}
+                  className="block text-[clamp(1.8rem,5.5vw,5.5rem)] text-voltage"
+                >
+                  {data.city}.
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease, delay: 0.34 }}
+                  className="block text-[clamp(1.2rem,3vw,2.5rem)] font-editorial italic text-bone/85 mt-4"
+                  style={{ textTransform: "none", letterSpacing: 0, fontWeight: 400, lineHeight: 1.15 }}
+                >
+                  {data.h1Highlight}.
+                </motion.span>
               </h1>
 
               <motion.p
@@ -298,7 +292,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
           <Marquee
             items={[data.service, data.city, "Festpreis", "Eigenes Team", "Versichert"]}
             duration={32}
-            itemClassName="font-display text-bone text-3xl sm:text-5xl py-2"
+            itemClassName="font-display text-bone text-2xl sm:text-4xl py-2 whitespace-nowrap"
             separator="◆"
           />
         </div>
@@ -312,7 +306,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               02 / Warum
             </div>
             <div className="lg:col-span-10">
-              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85] mb-10">
+              <h2 className="font-display text-[clamp(1.75rem,4.5vw,3.75rem)] leading-[0.92] break-words min-w-0 mb-10">
                 <RevealWords
                   text={`Warum ${data.service} in ${data.city} sich lohnt.`}
                 />
@@ -342,7 +336,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               03 / Leistungen
             </div>
             <div className="lg:col-span-10">
-              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85]">
+              <h2 className="font-display text-[clamp(1.75rem,4.5vw,3.75rem)] leading-[0.92] break-words min-w-0">
                 <RevealWords text={`Unsere ${data.service} im Detail.`} />
               </h2>
             </div>
@@ -364,7 +358,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
                   </span>
                   <Plus className="w-4 h-4 text-voltage" />
                 </div>
-                <h3 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl leading-tight text-bone group-hover:text-voltage transition-colors">
+                <h3 className="mt-4 font-display text-xl sm:text-2xl lg:text-3xl leading-[1.1] text-bone group-hover:text-voltage transition-colors break-words">
                   {item.title}
                 </h3>
                 <p className="mt-4 text-sm sm:text-base leading-relaxed text-bone/70 max-w-xl">
@@ -384,7 +378,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               04 / Ablauf
             </div>
             <div className="lg:col-span-10">
-              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85]">
+              <h2 className="font-display text-[clamp(1.75rem,4.5vw,3.75rem)] leading-[0.92] break-words min-w-0">
                 <RevealWords text="So läuft Ihr Auftrag." />
               </h2>
             </div>
@@ -404,7 +398,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
                   Schritt {item.step}
                 </div>
                 <div className="lg:col-span-4">
-                  <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl leading-tight text-ink group-hover:text-voltage-dim transition-colors">
+                  <h3 className="font-display text-xl sm:text-2xl lg:text-3xl leading-[1.1] text-ink group-hover:text-voltage-dim transition-colors break-words">
                     {item.title}
                   </h3>
                 </div>
@@ -426,7 +420,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               05 / Preis
             </div>
             <div className="lg:col-span-7">
-              <h2 className="font-display text-[clamp(2rem,7vw,6rem)] leading-[0.85] mb-6">
+              <h2 className="font-display text-[clamp(2rem,5vw,4.5rem)] leading-[0.92] break-words min-w-0 mb-6">
                 Was kostet das?
               </h2>
               <div className="space-y-4 text-base sm:text-lg leading-relaxed text-bone/95 max-w-2xl">
@@ -439,7 +433,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               </div>
             </div>
             <div className="lg:col-span-3 flex lg:justify-end items-start">
-              <div className="font-display text-[clamp(4rem,12vw,9rem)] leading-[0.8] text-bone">
+              <div className="font-display text-[clamp(3rem,9vw,7rem)] leading-[0.9] text-bone">
                 €€
               </div>
             </div>
@@ -455,7 +449,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               06 / Gebiet
             </div>
             <div className="lg:col-span-10">
-              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85]">
+              <h2 className="font-display text-[clamp(1.75rem,4.5vw,3.75rem)] leading-[0.92] break-words min-w-0">
                 <RevealWords text={`In ganz ${data.city} unterwegs.`} />
               </h2>
             </div>
@@ -486,7 +480,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               07 / Referenz
             </div>
             <div className="lg:col-span-10">
-              <div className="font-editorial italic text-2xl sm:text-3xl lg:text-4xl leading-[1.2] text-bone/90 max-w-4xl">
+              <div className="font-editorial italic text-xl sm:text-2xl lg:text-3xl leading-[1.2] text-bone/90 max-w-4xl">
                 „{data.referenceText}"
               </div>
               <div className="mt-8 marker-line text-voltage">
@@ -533,7 +527,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               09 / FAQ
             </div>
             <div className="lg:col-span-10">
-              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85]">
+              <h2 className="font-display text-[clamp(1.75rem,4.5vw,3.75rem)] leading-[0.92] break-words min-w-0">
                 <RevealWords text="Häufige Fragen." />
               </h2>
             </div>
@@ -554,7 +548,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               10 / Weiter
             </div>
             <div className="lg:col-span-10">
-              <h2 className="font-display text-[clamp(2rem,6vw,5rem)] leading-[0.85]">
+              <h2 className="font-display text-[clamp(1.75rem,4.5vw,3.75rem)] leading-[0.92] break-words min-w-0">
                 <RevealWords text="Mehr aus dem Programm." />
               </h2>
             </div>
@@ -570,7 +564,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/40 group-hover:text-ink/60 mb-2">
                     /{String(i + 1).padStart(2, "0")}
                   </div>
-                  <div className="font-display text-2xl sm:text-3xl leading-tight">
+                  <div className="font-display text-lg sm:text-xl lg:text-2xl leading-tight break-words">
                     {link.label}
                   </div>
                 </div>
@@ -593,7 +587,7 @@ export default function LandingPageTemplate({ data }: { data: LandingPageData })
               Festpreis · Termin meist diese Woche
             </span>
           </div>
-          <h2 className="font-display text-[clamp(2.5rem,9vw,9rem)] leading-[0.8] mb-10">
+          <h2 className="font-display text-[clamp(2rem,5.5vw,5rem)] leading-[0.92] break-words min-w-0 mb-10">
             <RevealWords text={`Jetzt Angebot für ${data.city}.`} />
           </h2>
 

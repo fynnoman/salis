@@ -56,7 +56,7 @@ export default function Hero() {
     >
       {/* parallax background image */}
       <motion.div
-        className="absolute inset-0 opacity-[0.22]"
+        className="absolute inset-0 opacity-[0.5]"
         style={{ y: imageY }}
       >
         <Image
@@ -124,7 +124,7 @@ export default function Hero() {
             {/* MASSIVE TITLE */}
             <motion.h1
               style={{ y: titleY, opacity: titleOpacity }}
-              className="font-display text-bone leading-[0.78] tracking-tight"
+              className="font-display text-bone leading-[0.88] tracking-tight break-words hyphens-auto"
               aria-label={`${hero.title1} ${hero.title2}${hero.title3}`}
             >
               <span className="block overflow-hidden">
@@ -132,7 +132,7 @@ export default function Hero() {
                   initial={{ y: "110%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-                  className="block text-[clamp(4.5rem,14vw,17rem)]"
+                  className="block text-[clamp(2.75rem,11vw,12rem)]"
                 >
                   {hero.title1}
                 </motion.span>
@@ -142,7 +142,7 @@ export default function Hero() {
                   initial={{ y: "110%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1], delay: 0.28 }}
-                  className="block text-[clamp(4.5rem,14vw,17rem)] text-voltage"
+                  className="block text-[clamp(2.75rem,11vw,12rem)] text-voltage"
                 >
                   {hero.title2}
                 </motion.span>
@@ -152,7 +152,7 @@ export default function Hero() {
                   initial={{ y: "110%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1], delay: 0.41 }}
-                  className="block text-[clamp(4.5rem,14vw,17rem)] text-outline"
+                  className="block text-[clamp(2.75rem,11vw,12rem)] text-outline"
                 >
                   {hero.title3}.
                 </motion.span>
@@ -245,7 +245,7 @@ export default function Hero() {
         <Marquee
           items={services}
           duration={36}
-          itemClassName="font-display text-bone text-5xl sm:text-7xl lg:text-8xl py-4 sm:py-5"
+          itemClassName="font-display text-bone text-4xl sm:text-6xl lg:text-7xl py-4 sm:py-5 whitespace-nowrap"
         />
       </div>
     </section>

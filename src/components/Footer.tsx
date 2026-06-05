@@ -96,11 +96,11 @@ export default function Footer() {
   return (
     <footer className="relative bg-ink text-bone overflow-hidden border-t border-bone/15">
       {/* TOP MARQUEE — giant SALIF */}
-      <div className="border-b border-bone/15 py-2 bg-voltage text-ink">
+      <div className="border-b border-bone/15 py-2 bg-voltage text-ink overflow-hidden">
         <Marquee
           items={["Salif", "Salif", "Salif", "Salif", "Salif"]}
           duration={28}
-          itemClassName="font-display text-[clamp(4rem,12vw,14rem)] leading-[0.85]"
+          itemClassName="font-display text-[clamp(3rem,10vw,10rem)] leading-[0.9] whitespace-nowrap"
           separator="◆"
         />
       </div>
@@ -112,8 +112,8 @@ export default function Footer() {
             <div className="lg:col-span-2 marker-line text-bone/60">
               05 / Kontakt
             </div>
-            <div className="lg:col-span-7 space-y-8">
-              <h2 className="font-display text-[clamp(2.5rem,8vw,7rem)] leading-[0.85] text-bone">
+            <div className="lg:col-span-7 space-y-8 min-w-0">
+              <h2 className="font-display text-[clamp(2rem,6vw,5.5rem)] leading-[0.92] text-bone break-words">
                 Eine Nummer.
                 <br />
                 <span className="text-voltage">Ein Ergebnis.</span>
@@ -178,7 +178,7 @@ export default function Footer() {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1, ease }}
-            className="font-display text-[clamp(8rem,30vw,28rem)] leading-[0.78] text-bone/95 select-none"
+            className="font-display text-[clamp(5rem,22vw,18rem)] leading-[0.88] text-bone/95 select-none break-words"
           >
             SALIF.
           </motion.div>
