@@ -3,16 +3,23 @@ import { NextRequest, NextResponse } from "next/server";
 const GITHUB_OWNER = "fynnoman";
 const GITHUB_REPO = "salis";
 const BRANCH = "main";
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "default-password";
 
 export async function POST(request: NextRequest) {
   try {
+    const adminPassword = process.env.ADMIN_PASSWORD;
+    if (!adminPassword) {
+      return NextResponse.json(
+        { error: "ADMIN_PASSWORD nicht konfiguriert." },
+        { status: 503 }
+      );
+    }
+
     const formData = await request.formData();
     const password = formData.get("password") as string;
     const file = formData.get("file") as File;
     const filename = formData.get("filename") as string;
 
-    if (password !== ADMIN_PASSWORD) {
+    if (password !== adminPassword) {
       return NextResponse.json({ error: "Falsches Passwort." }, { status: 401 });
     }
 
