@@ -1,13 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { saveContent, SiteContent } from "@/lib/content";
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "default-password";
-
 export async function POST(request: NextRequest) {
   try {
+    const adminPassword = process.env.ADMIN_PASSWORD;
+    if (!adminPassword) {
+      return NextResponse.json(
+        { error: "ADMIN_PASSWORD nicht konfiguriert." },
+        { status: 503 }
+      );
+    }
+
     const { password, content } = await request.json();
 
-    if (password !== ADMIN_PASSWORD) {
+    if (password !== adminPassword) {
       return NextResponse.json(
         { error: "Falsches Passwort." },
         { status: 401 }
